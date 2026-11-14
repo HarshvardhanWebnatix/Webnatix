@@ -209,8 +209,8 @@ export function Navbar() {
       onMouseLeave={() => setActiveMenu(null)}
     >
       
-      {/* ── 1. Top Green Utility Bar ── */}
-      <div className="hidden bg-[#0a3532] text-xs text-white/90 lg:block">
+      {/* ── 1. Top Utility Bar ── */}
+      <div className="hidden bg-[#0a192f] text-xs text-white/90 lg:block">
         <div className="mx-auto flex min-h-9 max-w-[1780px] items-center justify-between gap-x-2 px-4 sm:px-8 lg:px-12 xl:px-16 py-1.5">
           
           {/* Left contact info */}
@@ -220,7 +220,7 @@ export function Navbar() {
                 href={`mailto:${SITE_CONFIG.email}`}
                 className="flex items-center gap-1.5 transition-colors hover:text-white text-gray-200"
               >
-                <Mail size={13} className="text-[#2dd4bf]" />
+                <Mail size={13} className="text-[#38bdf8]" />
                 <span>{SITE_CONFIG.email}</span>
               </a>
               <span className="text-white/30">|</span>
@@ -228,7 +228,7 @@ export function Navbar() {
                 href={`tel:${SITE_CONFIG.phone}`}
                 className="flex items-center gap-1.5 transition-colors hover:text-white text-gray-200"
               >
-                <PhoneCall size={13} className="text-[#2dd4bf]" />
+                <PhoneCall size={13} className="text-[#38bdf8]" />
                 <span>{SITE_CONFIG.phone}</span>
               </a>
               <span className="text-white/30">|</span>
@@ -256,16 +256,16 @@ export function Navbar() {
                 href="/contact"
                 className="flex items-center gap-1.5 transition-colors hover:text-white text-gray-200"
               >
-                <Calendar size={13} className="text-[#2dd4bf]" />
+                <Calendar size={13} className="text-[#38bdf8]" />
                 Schedule a Consultation
               </Link>
 
               {/* Request a Quote Pill */}
               <button
                 onClick={() => window.dispatchEvent(new Event("open-lead-modal"))}
-                className="inline-flex items-center gap-1.5 bg-white text-[#0a3532] font-bold text-[11px] px-3.5 py-1 rounded-full shadow-sm hover:bg-gray-100 transition-colors ml-1 cursor-pointer"
+                className="inline-flex items-center gap-1.5 bg-[#0066cc] text-white font-bold text-[11px] px-3.5 py-1 rounded-full shadow-sm hover:bg-[#0052a3] transition-colors ml-1 cursor-pointer"
               >
-                <Rocket size={12} className="text-[#008974]" />
+                <Rocket size={12} className="text-white" />
                 Request a Quote
               </button>
             </div>
@@ -301,7 +301,7 @@ export function Navbar() {
           />
           <div className="flex flex-col">
             <span className="text-lg font-extrabold text-slate-900 leading-tight tracking-tight">
-              WebNatixx <span className="text-[#008974] font-medium text-xs">Technologies</span>
+              WebNatixx <span className="text-[#0066cc] font-semibold text-xs">Technologies</span>
             </span>
             <span className="text-[9.5px] uppercase font-bold tracking-widest text-slate-400">
               IT Consulting &amp; Technology Solutions
@@ -321,15 +321,15 @@ export function Navbar() {
                   onMouseEnter={() => setActiveMenu(item.key)}
                 >
                   <button className={cn(
-                    "relative flex items-center gap-1 rounded-md px-3 py-2 text-[13.5px] font-semibold transition-colors hover:text-[#008974] whitespace-nowrap",
-                    isOpen ? "text-[#008974]" : "text-gray-800"
+                    "relative flex items-center gap-1 rounded-md px-3 py-2 text-[13.5px] font-semibold transition-colors hover:text-[#0066cc] whitespace-nowrap",
+                    isOpen ? "text-[#0066cc]" : "text-gray-800"
                   )}>
                     <span>{item.label}</span>
                     <ChevronDown
                       size={13}
                       className={cn(
                         "transition-transform duration-200 mt-0.5 text-gray-400",
-                        isOpen && "rotate-180 text-[#008974]"
+                        isOpen && "rotate-180 text-[#0066cc]"
                       )}
                     />
                   </button>
@@ -343,7 +343,7 @@ export function Navbar() {
         <div className="hidden sm:flex items-center gap-3 shrink-0">
           <button
             onClick={() => window.dispatchEvent(new Event("open-lead-modal"))}
-            className="inline-flex items-center gap-2 rounded-full bg-[#008974] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#008974]/20 hover:bg-[#007361] hover:shadow-lg transition-all active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0052a3] hover:shadow-lg transition-all active:scale-95 cursor-pointer"
           >
             <Headphones size={15} />
             Request a Quote
@@ -379,13 +379,13 @@ export function Navbar() {
               {activeMenu === "services" && (
                 <div>
                   <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-3">
-                    <span className="text-xs font-bold uppercase tracking-widest text-teal-800">
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#0066cc]">
                       Explore Full Technology &amp; Engineering Services
                     </span>
                     <Link 
                       href="/services" 
                       onClick={() => setActiveMenu(null)}
-                      className="text-xs font-semibold text-[#008974] hover:underline flex items-center gap-1"
+                      className="text-xs font-semibold text-[#0066cc] hover:underline flex items-center gap-1"
                     >
                       View All Services Overview <ArrowRight size={13} />
                     </Link>
@@ -394,7 +394,7 @@ export function Navbar() {
                   <div className="grid grid-cols-5 gap-6">
                     {HEADER_NAV_DATA[0].categories?.map((cat, idx) => (
                       <div key={idx} className="space-y-3">
-                        <div className="text-xs font-extrabold text-gray-900 border-b border-teal-100 pb-1.5 text-teal-900">
+                        <div className="text-xs font-extrabold text-gray-900 border-b border-blue-100 pb-1.5 text-blue-900">
                           {cat.title}
                         </div>
                         <ul className="space-y-1.5">
@@ -403,7 +403,7 @@ export function Navbar() {
                               <Link
                                 href={sub.href}
                                 onClick={() => setActiveMenu(null)}
-                                className="block text-[12px] font-medium text-gray-600 hover:text-[#008974] transition-colors py-0.5 leading-snug hover:translate-x-0.5 transform duration-150"
+                                className="block text-[12px] font-medium text-gray-600 hover:text-[#0066cc] transition-colors py-0.5 leading-snug hover:translate-x-0.5 transform duration-150"
                               >
                                 {sub.label}
                               </Link>
@@ -420,13 +420,13 @@ export function Navbar() {
               {activeMenu === "industries" && (
                 <div>
                   <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-3">
-                    <span className="text-xs font-bold uppercase tracking-widest text-teal-800">
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#0066cc]">
                       Domain Expertise Across Regulated &amp; High-Growth Sectors
                     </span>
                     <Link 
                       href="/industries" 
                       onClick={() => setActiveMenu(null)}
-                      className="text-xs font-semibold text-[#008974] hover:underline flex items-center gap-1"
+                      className="text-xs font-semibold text-[#0066cc] hover:underline flex items-center gap-1"
                     >
                       Explore All Industries <ArrowRight size={13} />
                     </Link>
@@ -435,7 +435,7 @@ export function Navbar() {
                   <div className="grid grid-cols-3 gap-8">
                     {HEADER_NAV_DATA[1].categories?.map((cat, idx) => (
                       <div key={idx} className="space-y-3">
-                        <div className="text-xs font-extrabold text-gray-900 border-b border-teal-100 pb-1.5 text-teal-900">
+                        <div className="text-xs font-extrabold text-gray-900 border-b border-blue-100 pb-1.5 text-blue-900">
                           {cat.title}
                         </div>
                         <ul className="space-y-2">
@@ -444,7 +444,7 @@ export function Navbar() {
                               <Link
                                 href={sub.href}
                                 onClick={() => setActiveMenu(null)}
-                                className="block text-[12.5px] font-medium text-gray-600 hover:text-[#008974] transition-colors hover:translate-x-0.5 transform duration-150"
+                                className="block text-[12.5px] font-medium text-gray-600 hover:text-[#0066cc] transition-colors hover:translate-x-0.5 transform duration-150"
                               >
                                 {sub.label}
                               </Link>
@@ -461,13 +461,13 @@ export function Navbar() {
               {activeMenu === "technologies" && (
                 <div>
                   <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-3">
-                    <span className="text-xs font-bold uppercase tracking-widest text-teal-800">
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#0066cc]">
                       Modern Full-Stack, Mobile, Cloud &amp; Enterprise Platforms
                     </span>
                     <Link 
                       href="/technologies" 
                       onClick={() => setActiveMenu(null)}
-                      className="text-xs font-semibold text-[#008974] hover:underline flex items-center gap-1"
+                      className="text-xs font-semibold text-[#0066cc] hover:underline flex items-center gap-1"
                     >
                       View Full Technology Matrix <ArrowRight size={13} />
                     </Link>
@@ -476,7 +476,7 @@ export function Navbar() {
                   <div className="grid grid-cols-3 gap-8">
                     {HEADER_NAV_DATA[2].categories?.map((cat, idx) => (
                       <div key={idx} className="space-y-3">
-                        <div className="text-xs font-extrabold text-gray-900 border-b border-teal-100 pb-1.5 text-teal-900">
+                        <div className="text-xs font-extrabold text-gray-900 border-b border-blue-100 pb-1.5 text-blue-900">
                           {cat.title}
                         </div>
                         <ul className="space-y-2">
@@ -485,7 +485,7 @@ export function Navbar() {
                               <Link
                                 href={sub.href}
                                 onClick={() => setActiveMenu(null)}
-                                className="block text-[12.5px] font-medium text-gray-600 hover:text-[#008974] transition-colors hover:translate-x-0.5 transform duration-150"
+                                className="block text-[12.5px] font-medium text-gray-600 hover:text-[#0066cc] transition-colors hover:translate-x-0.5 transform duration-150"
                               >
                                 {sub.label}
                               </Link>
@@ -501,7 +501,7 @@ export function Navbar() {
               {/* STANDARD DROPDOWN: INDUSTRY INSIGHTS */}
               {activeMenu === "resources" && (
                 <div className="max-w-md mx-auto">
-                  <div className="text-xs font-bold uppercase tracking-widest text-teal-800 mb-3 pb-1 border-b border-gray-100">
+                  <div className="text-xs font-bold uppercase tracking-widest text-[#0066cc] mb-3 pb-1 border-b border-gray-100">
                     5. Industry Insights &amp; Resources
                   </div>
                   <div className="grid grid-cols-2 gap-3">
@@ -510,7 +510,7 @@ export function Navbar() {
                         key={idx}
                         href={item.href}
                         onClick={() => setActiveMenu(null)}
-                        className="rounded-lg p-2.5 text-xs font-medium text-gray-700 hover:bg-teal-50 hover:text-[#008974] transition-colors"
+                        className="rounded-lg p-2.5 text-xs font-medium text-gray-700 hover:bg-blue-50 hover:text-[#0066cc] transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -522,7 +522,7 @@ export function Navbar() {
               {/* STANDARD DROPDOWN: COMPANY */}
               {activeMenu === "company" && (
                 <div className="max-w-md mx-auto">
-                  <div className="text-xs font-bold uppercase tracking-widest text-teal-800 mb-3 pb-1 border-b border-gray-100">
+                  <div className="text-xs font-bold uppercase tracking-widest text-[#0066cc] mb-3 pb-1 border-b border-gray-100">
                     6. Company &amp; Engineering Collective
                   </div>
                   <div className="grid grid-cols-2 gap-3">
@@ -531,7 +531,7 @@ export function Navbar() {
                         key={idx}
                         href={item.href}
                         onClick={() => setActiveMenu(null)}
-                        className="rounded-lg p-2.5 text-xs font-medium text-gray-700 hover:bg-teal-50 hover:text-[#008974] transition-colors"
+                        className="rounded-lg p-2.5 text-xs font-medium text-gray-700 hover:bg-blue-50 hover:text-[#0066cc] transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -563,14 +563,14 @@ export function Navbar() {
                     <div className="pl-2 space-y-2 pt-1">
                       {item.categories.map((c, cIdx) => (
                         <div key={cIdx}>
-                          <div className="text-[11px] font-bold text-teal-800 uppercase">{c.title}</div>
+                          <div className="text-[11px] font-bold text-[#0066cc] uppercase">{c.title}</div>
                           <div className="pl-2 space-y-1">
                             {c.items.map((sub, sIdx) => (
                               <Link
                                 key={sIdx}
                                 href={sub.href}
                                 onClick={() => setMobileOpen(false)}
-                                className="block text-xs text-gray-600 hover:text-[#008974] py-0.5"
+                                className="block text-xs text-gray-600 hover:text-[#0066cc] py-0.5"
                               >
                                 {sub.label}
                               </Link>
@@ -588,7 +588,7 @@ export function Navbar() {
                           key={sIdx}
                           href={sub.href}
                           onClick={() => setMobileOpen(false)}
-                          className="block text-xs text-gray-600 hover:text-[#008974] py-0.5"
+                          className="block text-xs text-gray-600 hover:text-[#0066cc] py-0.5"
                         >
                           {sub.label}
                         </Link>
@@ -601,7 +601,7 @@ export function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full rounded-full bg-[#008974] py-3 text-sm font-bold text-white shadow-md"
+                  className="flex items-center justify-center gap-2 w-full rounded-full bg-[#0066cc] py-3 text-sm font-bold text-white shadow-md"
                 >
                   <Headphones size={16} /> Request a Quote
                 </Link>

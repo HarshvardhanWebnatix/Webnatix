@@ -40,7 +40,7 @@ export function TrustBar() {
             {[...partners, ...partners].map((name, i) => (
               <span
                 key={i}
-                className="text-sm font-bold tracking-wide text-slate-400 hover:text-[#008974] transition-colors cursor-pointer"
+                className="text-sm font-bold tracking-wide text-slate-400 hover:text-[#0066cc] transition-colors cursor-pointer"
               >
                 {name}
               </span>

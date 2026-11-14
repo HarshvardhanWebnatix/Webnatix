@@ -64,11 +64,11 @@ const footerSections = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#012624] text-slate-300 border-t border-[#023b38]">
+    <footer className="bg-[#071322] text-slate-300 border-t border-[#0e223d]">
       <div className="mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16 py-16">
         
         {/* Top footer row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-[#034d4a]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-[#0e223d]">
           
           {/* Brand info (2 cols) */}
           <div className="lg:col-span-2">
@@ -80,9 +80,9 @@ export function Footer() {
               />
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-white tracking-tight">
-                  WebNatixx <span className="text-[#2dd4bf]">Technologies</span>
+                  WebNatixx <span className="text-[#38bdf8]">Technologies</span>
                 </span>
-                <span className="text-[10px] text-teal-300 uppercase tracking-widest font-semibold">
+                <span className="text-[10px] text-blue-300 uppercase tracking-widest font-semibold">
                   Global Software Engineering Studio
                 </span>
               </div>
@@ -103,7 +103,7 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#023835] text-slate-400 hover:bg-[#008782] hover:text-white transition-colors"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0f2238] text-slate-400 hover:bg-[#0066cc] hover:text-white transition-colors"
                 >
                   <Icon />
                 </a>
@@ -122,7 +122,7 @@ export function Footer() {
                   <li key={lIdx}>
                     <Link
                       href={link.href}
-                      className="text-slate-400 hover:text-[#2dd4bf] transition-colors"
+                      className="text-slate-400 hover:text-[#38bdf8] transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -138,12 +138,12 @@ export function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-4">
           <p>© 2026 Webnatixx Technologies. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <span className="text-teal-300 flex items-center gap-1">
+            <span className="text-blue-300 flex items-center gap-1">
               <ShieldCheck size={12} /> Custom-built &amp; yours to own 100% IP.
             </span>
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-            <span className="flex items-center gap-1 text-[#2dd4bf]">
+            <span className="flex items-center gap-1 text-[#38bdf8]">
               <Globe size={11} /> Global Engineering SLA Active
             </span>
           </div>

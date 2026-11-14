@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
-/* ─── Exact Color Palette matching metablockigaming.com ─────── */
+/* ─── Professional Corporate Palette matching Webnatix Logo ─────── */
 :root {
-  /* Brand Teal / Emerald Palette */
-  --brand-teal-deep: #013735;     /* Top bar */
-  --brand-teal: #008782;          /* Primary button & brand highlights */
-  --brand-teal-hover: #00706c;    /* Primary hover */
-  --brand-teal-light: #e6f7f5;    /* Pill badge background */
-  --brand-teal-border: #a2e6df;   /* Pill badge border */
-  --brand-strip: #00716c;         /* Bottom hero value strip */
+  /* Brand Logo Palette (Royal Blue & Deep Navy) */
+  --brand-navy-deep: #0a192f;     /* Top utility bar & dark sections */
+  --brand-blue: #0066cc;          /* Primary brand & button color */
+  --brand-blue-hover: #0052a3;    /* Primary button hover */
+  --brand-blue-light: #eff6ff;    /* Badge pill background */
+  --brand-blue-border: #bfdbfe;   /* Badge pill border */
+  --brand-red-accent: #e52320;    /* Logo red accent */
+  --brand-strip: #0b2545;         /* Bottom hero value strip */
 
   /* Neutral Surface & Backgrounds */
   --bg-page: #ffffff;
@@ -71,6 +72,6 @@ html.lenis, html.lenis body {
 }
 
 ::selection {
-  background: #a2e6df;
-  color: #013735;
+  background: #bfdbfe;
+  color: #1e3a8a;
 }
