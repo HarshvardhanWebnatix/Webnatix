@@ -261,13 +261,13 @@ export function Navbar() {
               </Link>
 
               {/* Request a Quote Pill */}
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-1.5 bg-white text-[#0a3532] font-bold text-[11px] px-3.5 py-1 rounded-full shadow-sm hover:bg-gray-100 transition-colors ml-1"
+              <button
+                onClick={() => window.dispatchEvent(new Event("open-lead-modal"))}
+                className="inline-flex items-center gap-1.5 bg-white text-[#0a3532] font-bold text-[11px] px-3.5 py-1 rounded-full shadow-sm hover:bg-gray-100 transition-colors ml-1 cursor-pointer"
               >
                 <Rocket size={12} className="text-[#008974]" />
                 Request a Quote
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -341,13 +341,13 @@ export function Navbar() {
 
         {/* Right Contact Button */}
         <div className="hidden sm:flex items-center gap-3 shrink-0">
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-[#008974] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#008974]/20 hover:bg-[#007361] hover:shadow-lg transition-all active:scale-95"
+          <button
+            onClick={() => window.dispatchEvent(new Event("open-lead-modal"))}
+            className="inline-flex items-center gap-2 rounded-full bg-[#008974] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#008974]/20 hover:bg-[#007361] hover:shadow-lg transition-all active:scale-95 cursor-pointer"
           >
             <Headphones size={15} />
             Request a Quote
-          </Link>
+          </button>
         </div>
 
         {/* Mobile menu toggle */}

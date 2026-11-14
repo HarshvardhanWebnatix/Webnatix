@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { LeadCaptureModal } from "@/components/ui/LeadCaptureModal";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const inter = Inter({
@@ -34,6 +35,11 @@ export const metadata: Metadata = {
     title: `${SITE_CONFIG.name} — ${SITE_CONFIG.tagline}`,
     description: SITE_CONFIG.description,
   },
+  icons: {
+    icon: "/assets/navbar/webnatix-logo.png",
+    shortcut: "/assets/navbar/webnatix-logo.png",
+    apple: "/assets/navbar/webnatix-logo.png",
+  },
   robots: {
     index: true,
     follow: true,
@@ -56,6 +62,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
         <SmoothScroll />
+        <LeadCaptureModal />
         <Navbar />
         <main>{children}</main>
         <Footer />
