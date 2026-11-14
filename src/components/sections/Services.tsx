@@ -24,10 +24,10 @@ const iconMap = [
 export function Services() {
   return (
     <section className="py-20 bg-white">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3.5 py-1 text-[11px] font-bold text-teal-800 uppercase mb-3">
             Core Engineering Capabilities
           </div>

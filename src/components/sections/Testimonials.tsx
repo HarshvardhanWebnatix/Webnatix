@@ -15,7 +15,7 @@ export function Testimonials() {
 
   return (
     <section className="py-20 bg-slate-50 border-t border-slate-200">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <div className="mx-auto max-w-5xl px-4 sm:px-8 lg:px-12 xl:px-16 text-center">
         
         <div className="inline-flex items-center gap-2 rounded-full bg-teal-50 border border-teal-200 px-3.5 py-1 text-xs font-bold text-teal-800 uppercase mb-4">
           Testimonials

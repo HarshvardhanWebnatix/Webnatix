@@ -211,7 +211,7 @@ export function Navbar() {
       
       {/* ── 1. Top Green Utility Bar ── */}
       <div className="hidden bg-[#0a3532] text-xs text-white/90 lg:block">
-        <div className="mx-auto flex min-h-9 max-w-[1480px] items-center justify-between gap-x-2 px-3 sm:px-5 lg:px-6 py-1.5">
+        <div className="mx-auto flex min-h-9 max-w-[1780px] items-center justify-between gap-x-2 px-4 sm:px-8 lg:px-12 xl:px-16 py-1.5">
           
           {/* Left contact info */}
           <div className="flex items-center gap-x-2 xl:gap-x-4 shrink-0">
@@ -290,7 +290,7 @@ export function Navbar() {
       </div>
 
       {/* ── 2. Main White Navigation Bar ── */}
-      <div className="relative mx-auto flex h-20 max-w-[1480px] items-center justify-between gap-0 px-3 sm:px-6">
+      <div className="relative mx-auto flex h-20 max-w-[1780px] items-center justify-between gap-0 px-4 sm:px-8 lg:px-12 xl:px-16">
         
         {/* Brand Logo with exact official Webnatix logo */}
         <Link href="/" className="group flex items-center gap-3 shrink-0" aria-label="Webnatixx Technologies — Home">
@@ -373,7 +373,7 @@ export function Navbar() {
             onMouseEnter={() => setActiveMenu(activeMenu)}
             onMouseLeave={() => setActiveMenu(null)}
           >
-            <div className="mx-auto max-w-[1480px] px-6 py-8">
+            <div className="mx-auto max-w-[1780px] px-6 lg:px-12 xl:px-16 py-8">
               
               {/* MEGA MENU: SERVICES (5 Columns) */}
               {activeMenu === "services" && (

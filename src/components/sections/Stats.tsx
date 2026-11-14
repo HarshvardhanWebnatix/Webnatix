@@ -5,7 +5,7 @@ import { STATS } from "@/lib/constants";
 export function Stats() {
   return (
     <section className="py-16 bg-white border-b border-slate-200">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 text-center">
           {STATS.map((item, idx) => (
             <div key={idx} className="p-4">

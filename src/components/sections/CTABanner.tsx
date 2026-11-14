@@ -12,7 +12,7 @@ export function CTABanner() {
         style={{ background: "#2dd4bf" }}
       />
 
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div className="mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16 text-center relative z-10">
         
         <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/30 bg-teal-500/10 px-3.5 py-1 text-xs font-semibold text-teal-300 uppercase mb-6">
           Ready to Engineer Something Extraordinary?

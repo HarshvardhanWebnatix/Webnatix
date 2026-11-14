@@ -46,10 +46,10 @@ export function Hero() {
     <section className="relative w-full overflow-hidden bg-[#FAFAF9]">
       
       {/* ── Main Hero Row (Full bleed split with generous padding) ── */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center min-h-[540px] px-6 sm:px-10 lg:pl-12 xl:pl-20 lg:pr-6 py-12 lg:py-0 gap-8 lg:gap-4 max-w-[1520px] mx-auto">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center min-h-[580px] px-4 sm:px-8 lg:px-12 xl:px-16 py-12 lg:py-6 gap-8 lg:gap-8 max-w-[1780px] mx-auto">
         
-        {/* ── Left Column (48% width) ── */}
-        <div className="w-full lg:w-[48%] shrink-0 lg:py-16 text-left">
+        {/* ── Left Column (46% width) ── */}
+        <div className="w-full lg:w-[46%] shrink-0 lg:py-16 text-left">
           
           {/* Badge Pill */}
           <div className="inline-flex items-center gap-2 bg-teal-50 border border-teal-200 rounded-full px-4 py-1.5 mb-5 shadow-sm">
@@ -60,13 +60,13 @@ export function Hero() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-[48px] xl:text-[54px] font-bold text-gray-900 leading-[1.12] tracking-tight mb-5">
+          <h1 className="text-4xl sm:text-5xl lg:text-[50px] xl:text-[58px] font-bold text-gray-900 leading-[1.12] tracking-tight mb-5">
             We Build Digital Products <br />
             That Move <span className="text-teal-600">Businesses Forward.</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-gray-500 text-[15px] lg:text-[16px] leading-[1.8] mb-9 max-w-[460px]">
+          <p className="text-gray-500 text-[15px] lg:text-[16.5px] leading-[1.8] mb-9 max-w-[560px]">
             Global software engineering studio designing and building high-performance websites, SaaS platforms, portals, dashboards, mobile apps, and AI platforms for ambitious businesses.
           </p>
 
@@ -120,9 +120,9 @@ export function Hero() {
 
         </div>
 
-        {/* ── Right Column (52% width) with the Official WebP Image ── */}
-        <div className="w-full lg:w-[52%] flex items-center justify-center lg:justify-end px-4 sm:px-6 lg:px-0 pb-8 lg:pb-0 lg:self-stretch">
-          <div className="relative w-full max-w-[720px]">
+        {/* ── Right Column (54% width) with the Official WebP Image ── */}
+        <div className="w-full lg:w-[54%] flex items-center justify-center lg:justify-end px-2 sm:px-4 lg:px-0 pb-8 lg:pb-0 lg:self-stretch">
+          <div className="relative w-full max-w-[920px]">
             <div 
               className="absolute inset-0 rounded-3xl"
               style={{ background: "radial-gradient(ellipse at 60% 50%, rgba(20,184,166,0.18) 0%, transparent 70%)" }}
@@ -142,7 +142,7 @@ export function Hero() {
 
       {/* ── Bottom 5-Column Teal Highlight Strip (Full Bleed) ── */}
       <div className="relative z-10 bg-teal-700 overflow-hidden">
-        <div className="flex flex-wrap lg:flex-nowrap max-w-[1520px] mx-auto">
+        <div className="flex flex-wrap lg:flex-nowrap max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
           {highlights.map((item, idx) => {
             const Icon = item.icon;
             return (
