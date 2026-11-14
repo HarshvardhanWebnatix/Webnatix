@@ -1,121 +1,76 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens ──────────────────────────────────────────── */
+/* ─── Exact Color Palette matching metablockigaming.com ─────── */
 :root {
-  /* Backgrounds */
-  --bg-base: #080808;
-  --bg-surface: #111111;
-  --bg-elevated: #161616;
-  --bg-hover: #1c1c1c;
+  /* Brand Teal / Emerald Palette */
+  --brand-teal-deep: #013735;     /* Top bar */
+  --brand-teal: #008782;          /* Primary button & brand highlights */
+  --brand-teal-hover: #00706c;    /* Primary hover */
+  --brand-teal-light: #e6f7f5;    /* Pill badge background */
+  --brand-teal-border: #a2e6df;   /* Pill badge border */
+  --brand-strip: #00716c;         /* Bottom hero value strip */
 
-  /* Borders */
-  --border-subtle: #1e1e1e;
-  --border-default: #2a2a2a;
-  --border-strong: #3a3a3a;
-
-  /* Text */
-  --text-primary: #f0ece4;
-  --text-secondary: #a09b94;
-  --text-muted: #5a5652;
-
-  /* Accent — warm gold, NOT neon */
-  --accent: #c9a96e;
-  --accent-light: #dfc08a;
-  --accent-dark: #a8873e;
-
-  /* Gradients */
-  --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,169,110,0.08) 0%, transparent 60%);
-  --gradient-card: linear-gradient(145deg, #161616 0%, #111111 100%);
+  /* Neutral Surface & Backgrounds */
+  --bg-page: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-border: #e2e8f0;
 
   /* Typography */
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --text-heading: #0f172a;        /* Deep slate/charcoal */
+  --text-body: #475569;           /* Clean readable gray */
+  --text-muted: #94a3b8;
 
-  /* Spacing scale */
-  --section-py: clamp(5rem, 10vw, 9rem);
+  /* Font */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--bg-base);
-  --color-foreground: var(--text-primary);
+  --color-background: var(--bg-page);
+  --color-foreground: var(--text-heading);
   --font-sans: var(--font-sans);
 }
 
-/* ─── Base Reset ─────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
 body {
-  background-color: var(--bg-base);
-  color: var(--text-primary);
+  background-color: var(--bg-page);
+  color: var(--text-heading);
   font-family: var(--font-sans);
-  line-height: 1.6;
+  line-height: 1.5;
   overflow-x: hidden;
 }
 
-/* ─── Selection ──────────────────────────────────────────────── */
-::selection {
-  background: rgba(201, 169, 110, 0.2);
-  color: var(--text-primary);
+/* ─── Lenis Smooth Scroll Easing Rules ───────────────────────── */
+html.lenis, html.lenis body {
+  height: auto;
 }
 
-/* ─── Scrollbar ──────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-base);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border-default);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-dark);
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
-/* ─── Focus ──────────────────────────────────────────────────── */
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
-/* ─── Utility Classes ────────────────────────────────────────── */
-.text-gradient {
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
-.border-subtle {
-  border-color: var(--border-subtle);
-}
-
-.section-py {
-  padding-top: var(--section-py);
-  padding-bottom: var(--section-py);
-}
-
-.noise-texture {
-  position: relative;
-}
-.noise-texture::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+.lenis.lenis-smooth iframe {
   pointer-events: none;
-  z-index: 0;
+}
+
+::selection {
+  background: #a2e6df;
+  color: #013735;
 }

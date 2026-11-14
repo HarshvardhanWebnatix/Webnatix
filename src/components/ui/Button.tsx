@@ -11,23 +11,23 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseStyles =
-  "inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] disabled:opacity-50 disabled:pointer-events-none cursor-pointer select-none";
+  "inline-flex items-center justify-center gap-2 font-medium rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-base)] disabled:opacity-50 disabled:pointer-events-none cursor-pointer select-none no-underline";
 
-const variantStyles = {
+const variantStyles: Record<string, string> = {
   primary:
-    "bg-[var(--accent)] text-[#080808] hover:bg-[var(--accent-light)] active:scale-[0.98]",
+    "bg-[var(--accent)] text-[#080808] border border-[var(--accent)] hover:bg-[var(--accent-light)] hover:border-[var(--accent-light)] active:scale-[0.97]",
   secondary:
-    "bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border-default)] hover:border-[var(--accent)] hover:bg-[var(--bg-hover)] active:scale-[0.98]",
+    "bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border-default)] hover:border-[var(--accent)]/60 hover:bg-[var(--bg-hover)] active:scale-[0.97]",
   ghost:
-    "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] active:scale-[0.98]",
+    "bg-transparent text-[var(--text-secondary)] border border-transparent hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] active:scale-[0.97]",
   outline:
-    "border border-[var(--border-default)] text-[var(--text-primary)] hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-[0.98]",
+    "bg-transparent text-[var(--text-primary)] border border-[var(--border-default)] hover:border-[var(--accent)]/60 hover:text-[var(--accent)] active:scale-[0.97]",
 };
 
-const sizeStyles = {
-  sm: "text-sm px-4 py-2 rounded-lg",
-  md: "text-sm px-5 py-2.5 rounded-lg",
-  lg: "text-base px-7 py-3.5 rounded-xl",
+const sizeStyles: Record<string, string> = {
+  sm: "text-xs px-4 py-2",
+  md: "text-sm px-5 py-2.5",
+  lg: "text-sm px-7 py-3.5",
 };
 
 export function Button({

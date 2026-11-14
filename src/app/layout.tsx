@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const inter = Inter({
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
-  keywords: ["web development", "software agency", "Next.js", "React", "TypeScript"],
+  keywords: ["software engineering studio", "SaaS development", "Next.js", "AI automation", "mobile apps", "Webnatixx Technologies", "custom software"],
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
   openGraph: {
@@ -52,8 +53,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={inter.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
+        <SmoothScroll />
         <Navbar />
         <main>{children}</main>
         <Footer />

@@ -1,49 +1,53 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container } from "@/components/ui/Container";
 
-const logos = [
-  "Acme Corp",
-  "Finova",
-  "Launchpad",
-  "Stackr",
-  "Meridian",
-  "Nexus",
-  "Orbit",
-  "Prism",
+const partners = [
+  "Next.js",
+  "Amazon Web Services",
+  "PostgreSQL",
+  "Docker",
+  "Kubernetes",
+  "TypeScript",
+  "Stripe",
+  "OpenAI",
+  "Tailwind CSS",
+  "Supabase",
+  "Google Cloud",
+  "Redis",
 ];
 
 export function TrustBar() {
   return (
-    <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)] py-10">
-      <Container>
-        <p className="mb-8 text-center text-xs font-medium uppercase tracking-widest text-[var(--text-muted)]">
-          Trusted by leading companies worldwide
+    <section className="bg-slate-50 py-10 border-b border-slate-200">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        <p className="mb-6 text-center text-xs font-bold uppercase tracking-widest text-slate-400">
+          Built on Modern Production-Grade Engineering Stacks
         </p>
+
         <div className="relative overflow-hidden">
-          {/* Fade masks */}
-          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[var(--bg-surface)] to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[var(--bg-surface)] to-transparent" />
+          {/* Subtle fade masks */}
+          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-slate-50 to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-slate-50 to-transparent" />
 
           <motion.div
             animate={{ x: ["0%", "-50%"] }}
             transition={{
-              x: { repeat: Infinity, duration: 24, ease: "linear" },
+              x: { repeat: Infinity, duration: 25, ease: "linear" },
             }}
-            className="flex gap-16 whitespace-nowrap"
+            className="flex gap-14 whitespace-nowrap items-center"
           >
-            {[...logos, ...logos].map((logo, i) => (
+            {[...partners, ...partners].map((name, i) => (
               <span
                 key={i}
-                className="text-sm font-semibold tracking-wide text-[var(--text-muted)] opacity-50"
+                className="text-sm font-bold tracking-wide text-slate-400 hover:text-[#008974] transition-colors cursor-pointer"
               >
-                {logo}
+                {name}
               </span>
             ))}
           </motion.div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

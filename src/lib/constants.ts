@@ -1,11 +1,15 @@
 export const SITE_CONFIG = {
-  name: "Webnatix",
-  tagline: "Engineering the Digital Future",
+  name: "Webnatixx Technologies",
+  shortName: "Webnatixx",
+  tagline: "We Build Digital Products That Move Businesses Forward",
   description:
-    "Webnatix builds scalable, high-performance digital products — from enterprise platforms to custom software solutions that move business forward.",
-  email: "hello@webnatix.com",
-  phone: "+1 (555) 000-0000",
-  address: "San Francisco, CA",
+    "Global software engineering studio designing and building high-performance websites, SaaS platforms, portals, dashboards, mobile apps, and AI platforms for ambitious businesses worldwide.",
+  email: "info@webnatix.com",
+  phone: "+91 8619478769",
+  whatsapp: "https://wa.me/918619478769",
+  telegram: "https://t.me/webnatix",
+  meetingUrl: "/contact",
+  address: "Global Studio · US · APAC · Europe",
   social: {
     twitter: "https://twitter.com/webnatix",
     linkedin: "https://linkedin.com/company/webnatix",
@@ -15,90 +19,88 @@ export const SITE_CONFIG = {
 
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
-  { label: "Work", href: "/work" },
-  { label: "Blog", href: "/blog" },
+  { label: "Selected Work", href: "/work" },
+  { label: "Why Webnatixx", href: "/about" },
+  { label: "Our Process", href: "/about#process" },
+  { label: "Engineering Stack", href: "/services#stack" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const SERVICES = [
   {
-    id: "web-development",
-    icon: "Code2",
-    title: "Web Development",
+    id: "web-platforms",
+    icon: "Layout",
+    title: "High-Performance Web Platforms",
     description:
-      "Full-stack web applications built with modern frameworks — fast, scalable, and built to last.",
-    tags: ["Next.js", "React", "Node.js"],
+      "Ultra-fast platforms engineered with modern stacks like Next.js and Astro, featuring custom headless CMS architectures and Core Web Vitals optimization.",
+    tags: ["Next.js", "Astro", "Headless CMS", "Tailwind CSS"],
+  },
+  {
+    id: "saas-products",
+    icon: "Layers",
+    title: "SaaS Platforms & Products",
+    description:
+      "Scalable multi-tenant SaaS applications equipped with role-based auth, automated Stripe subscription billing, and real-time interactive user dashboards.",
+    tags: ["Multi-Tenant", "Stripe Billing", "RBAC Auth", "PostgreSQL"],
+  },
+  {
+    id: "portals-dashboards",
+    icon: "Gauge",
+    title: "Enterprise Portals & Dashboards",
+    description:
+      "Custom business management consoles, analytics reporting dashboards, client portals, and internal workflows engineered for enterprise clarity.",
+    tags: ["Real-time Analytics", "Data Viz", "Audit Logging", "APIs"],
   },
   {
     id: "mobile-apps",
     icon: "Smartphone",
-    title: "Mobile Applications",
+    title: "Mobile App Development",
     description:
-      "Native and cross-platform mobile apps that deliver exceptional user experiences across all devices.",
-    tags: ["React Native", "iOS", "Android"],
+      "High-performance native and cross-platform mobile apps for iOS and Android, built with React Native and smooth 60fps gesture-driven interfaces.",
+    tags: ["React Native", "iOS & Android", "Offline Sync", "Push Notifs"],
   },
   {
-    id: "ui-ux",
-    icon: "Layers",
-    title: "UI/UX Design",
-    description:
-      "Thoughtful, conversion-focused design systems that balance aesthetics with functionality.",
-    tags: ["Figma", "Design Systems", "Prototyping"],
-  },
-  {
-    id: "cloud",
-    icon: "Cloud",
-    title: "Cloud & DevOps",
-    description:
-      "Scalable cloud infrastructure, CI/CD pipelines, and DevOps practices that keep your product reliable.",
-    tags: ["AWS", "Docker", "Kubernetes"],
-  },
-  {
-    id: "ai-ml",
+    id: "ai-solutions",
     icon: "Brain",
-    title: "AI Integration",
+    title: "AI & Autonomous Workflows",
     description:
-      "Intelligent features and automation powered by machine learning — built into your product, not bolted on.",
-    tags: ["LLMs", "ML Pipelines", "APIs"],
+      "Custom RAG vector databases, enterprise LLM integrations, intelligent conversational agents, and multi-agent workflow systems engineered for automation.",
+    tags: ["Custom RAG", "Vector DBs", "OpenAI / Claude", "Agents"],
   },
   {
-    id: "consulting",
-    icon: "LineChart",
-    title: "Tech Consulting",
+    id: "legacy-modernization",
+    icon: "Workflow",
+    title: "Cloud & Legacy Modernization",
     description:
-      "Strategic technology guidance for startups and enterprises navigating complex digital transformations.",
-    tags: ["Architecture", "Audits", "Strategy"],
+      "Auditing, refactoring, and migrating complex legacy web infrastructure into modern Docker/Kubernetes cloud microservices with 99.99% uptime.",
+    tags: ["AWS / GCP", "Docker", "Kubernetes", "Zero Downtime"],
   },
 ];
 
 export const STATS = [
-  { value: "150+", label: "Projects Delivered" },
-  { value: "98%", label: "Client Satisfaction" },
-  { value: "50+", label: "Global Clients" },
-  { value: "8+", label: "Years Experience" },
+  { value: "100%", label: "Source Code & IP Ownership" },
+  { value: "4-8 wks", label: "Average MVP Launch Velocity" },
+  { value: "24/7", label: "Global Dedicated Tech Coverage" },
+  { value: "99.99%", label: "Uptime SLA Guarantee" },
 ];
 
 export const TESTIMONIALS = [
   {
-    name: "Sarah Chen",
-    role: "CTO, Finova",
-    avatar: "/images/testimonials/sarah.jpg",
+    name: "Alex V.",
+    role: "Founder, Fintech SaaS",
     content:
-      "Webnatix transformed our legacy platform into a modern, scalable product in record time. The attention to performance and code quality is exceptional.",
+      "Webnatixx delivered our complete multi-tenant platform 2 weeks ahead of schedule. The code quality, speed, and architectural clarity were exceptional.",
   },
   {
-    name: "Marcus Reid",
-    role: "Founder, Launchpad",
-    avatar: "/images/testimonials/marcus.jpg",
+    name: "David K.",
+    role: "VP of Engineering, Logistics Network",
     content:
-      "They don't just build software — they think through problems with you. The result was a product our users love and our team can actually maintain.",
+      "Working with Webnatixx felt like having a senior Principal Engineering collective embedded right inside our company. Clean code, 100% IP handed over.",
   },
   {
-    name: "Priya Nair",
-    role: "Head of Product, Stackr",
-    avatar: "/images/testimonials/priya.jpg",
+    name: "Elena R.",
+    role: "Co-Founder, AI Productivity Suite",
     content:
-      "Every deadline was met, every spec was exceeded. Working with Webnatix feels like having a senior engineering team embedded in your company.",
+      "From database schema to real-time agent workflows, they architected everything flawlessly. Highly recommend Webnatixx for any ambitious founder.",
   },
 ];
