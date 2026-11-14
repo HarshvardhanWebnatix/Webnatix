@@ -12,137 +12,202 @@ import {
   Headphones, 
   Rocket, 
   Globe,
-  PhoneCall
+  PhoneCall,
+  Code2,
+  Building2,
+  Cpu,
+  BookOpen,
+  Users,
+  ArrowRight,
+  Sparkles
 } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SITE_CONFIG } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-const NAV_ITEMS = [
+// ─── EXACT SITEMAP & DEVELOPMENT ROADMAP DATA ─────────────────────
+
+export const HEADER_NAV_DATA = [
   {
+    key: "services",
     label: "Services",
     href: "/services",
-    children: [
-      { label: "High-Performance Web Platforms", href: "/services#web" },
-      { label: "SaaS Platforms & Products", href: "/services#saas" },
-      { label: "Enterprise Portals & Dashboards", href: "/services#portals" },
-      { label: "Mobile App Development", href: "/services#mobile" },
-      { label: "AI & Autonomous Workflows", href: "/services#ai" },
-      { label: "Cloud & Legacy Modernization", href: "/services#cloud" },
+    isMega: true,
+    categories: [
+      {
+        title: "2.1 Design & Development",
+        items: [
+          { label: "Website Development", href: "/services#web" },
+          { label: "Mobile App Development", href: "/services#mobile" },
+          { label: "E-commerce Development", href: "/services#ecommerce" },
+          { label: "Software Development", href: "/services#software" },
+          { label: "Game Development", href: "/services#game" },
+          { label: "API Development", href: "/services#api" },
+          { label: "Custom Software Integration", href: "/services#integration" },
+        ],
+      },
+      {
+        title: "2.2 Enterprise Solutions",
+        items: [
+          { label: "CRM Solutions", href: "/services#crm" },
+          { label: "Cloud Solutions", href: "/services#cloud" },
+          { label: "AI & Machine Learning Solutions", href: "/services#ai-ml" },
+          { label: "Salesforce Solutions", href: "/services#salesforce" },
+          { label: "HubSpot Solutions", href: "/services#hubspot" },
+          { label: "Zoho Solutions", href: "/services#zoho" },
+        ],
+      },
+      {
+        title: "2.3 Digital Marketing",
+        items: [
+          { label: "Search Engine Optimization (SEO)", href: "/services#seo" },
+          { label: "Social Media Marketing (SMM)", href: "/services#smm" },
+          { label: "Pay-Per-Click Advertising (PPC)", href: "/services#ppc" },
+          { label: "Performance Optimization", href: "/services#performance" },
+        ],
+      },
+      {
+        title: "2.4 Data Solutions",
+        items: [
+          { label: "Data Strategy Consulting", href: "/services#data-strategy" },
+          { label: "Data Processing Solutions", href: "/services#data-processing" },
+          { label: "Data Governance Solutions", href: "/services#data-governance" },
+          { label: "Data Storage & Quality Management", href: "/services#data-storage" },
+          { label: "Data Analytics & Visualization", href: "/services#data-analytics" },
+          { label: "Cloud Data Migration & Power BI", href: "/services#power-bi" },
+        ],
+      },
+      {
+        title: "2.5 AI & Emerging Technologies",
+        items: [
+          { label: "Custom AI Development", href: "/services#custom-ai" },
+          { label: "AI Consulting & Strategy", href: "/services#ai-consulting" },
+          { label: "AI Business Intelligence", href: "/services#ai-bi" },
+          { label: "Large Language Model (LLM) Solutions", href: "/services#llm" },
+          { label: "AI-Powered Customer Experience", href: "/services#ai-cx" },
+          { label: "Agentic AI Solutions", href: "/services#agentic-ai" },
+          { label: "Blockchain Development", href: "/services#blockchain" },
+        ],
+      },
     ],
   },
   {
-    label: "Solutions",
-    href: "/solutions",
-    children: [
-      { label: "Startup & Founder MVP Launch", href: "/solutions#mvp" },
-      { label: "Enterprise Systems Architecture", href: "/solutions#enterprise" },
-      { label: "Multi-Tenant Cloud Portals", href: "/solutions#multi-tenant" },
-      { label: "API Integrations & Microservices", href: "/solutions#api" },
+    key: "industries",
+    label: "Industries",
+    href: "/industries",
+    isMega: true,
+    categories: [
+      {
+        title: "Finance & Enterprise",
+        items: [
+          { label: "Banking & Payments", href: "/industries#banking" },
+          { label: "Finance & Wealth Tech", href: "/industries#finance" },
+          { label: "Mortgage & Lending", href: "/industries#mortgage" },
+          { label: "Insurance & Legal Tech", href: "/industries#insurance" },
+          { label: "Consulting & Corporate", href: "/industries#consulting" },
+        ],
+      },
+      {
+        title: "Consumer & Commerce",
+        items: [
+          { label: "Retail & E-commerce", href: "/industries#retail" },
+          { label: "FMCG & Consumer Goods", href: "/industries#fmcg" },
+          { label: "Food & Beverage", href: "/industries#food-beverage" },
+          { label: "Travel & Hospitality", href: "/industries#travel" },
+          { label: "Media & Entertainment", href: "/industries#media" },
+          { label: "Sports & Gaming", href: "/industries#sports" },
+        ],
+      },
+      {
+        title: "Healthcare & Essential",
+        items: [
+          { label: "Healthcare & Life Sciences", href: "/industries#healthcare" },
+          { label: "E-learning & Education", href: "/industries#education" },
+          { label: "Real Estate & PropTech", href: "/industries#real-estate" },
+          { label: "Logistics & Supply Chain", href: "/industries#logistics" },
+          { label: "Automotive & Aviation", href: "/industries#automotive" },
+          { label: "Energy, Utilities & Oil/Gas", href: "/industries#energy" },
+        ],
+      },
     ],
   },
   {
-    label: "Engineering Stack",
-    href: "/services#stack",
-    children: [
-      { label: "Next.js & React Frameworks", href: "/services#stack" },
-      { label: "Node.js, Python & Go Backends", href: "/services#stack" },
-      { label: "PostgreSQL & Vector Databases", href: "/services#stack" },
-      { label: "AWS & Kubernetes DevOps", href: "/services#stack" },
+    key: "technologies",
+    label: "Technologies",
+    href: "/technologies",
+    isMega: true,
+    categories: [
+      {
+        title: "Mobile App Technologies",
+        items: [
+          { label: "iOS Development (Swift)", href: "/technologies#ios" },
+          { label: "Android Development (Kotlin)", href: "/technologies#android" },
+          { label: "React Native", href: "/technologies#react-native" },
+          { label: "Flutter Cross-Platform", href: "/technologies#flutter" },
+        ],
+      },
+      {
+        title: "Custom & Full-Stack",
+        items: [
+          { label: "MERN & MEAN Stack", href: "/technologies#mern" },
+          { label: "React.js & Next.js Full-Stack", href: "/technologies#nextjs" },
+          { label: "Node.js, Python & .NET", href: "/technologies#python" },
+          { label: "PHP, Laravel & Angular", href: "/technologies#laravel" },
+          { label: "Java Full-Stack & Spring", href: "/technologies#java" },
+        ],
+      },
+      {
+        title: "CMS, E-com & CRM",
+        items: [
+          { label: "Shopify Development", href: "/technologies#shopify" },
+          { label: "WordPress & Custom CMS", href: "/technologies#wordpress" },
+          { label: "HubSpot CMS & Solutions", href: "/technologies#hubspot-cms" },
+          { label: "Salesforce Platform", href: "/technologies#salesforce" },
+          { label: "Zoho Business Suite", href: "/technologies#zoho" },
+        ],
+      },
     ],
   },
   {
-    label: "Why Webnatixx",
-    href: "/about",
-    children: [
-      { label: "100% Code & IP Ownership", href: "/about#ownership" },
-      { label: "Fixed-Price Milestone Delivery", href: "/about#milestones" },
-      { label: "Zero Vendor Lock-in", href: "/about#freedom" },
-      { label: "Global 24/7 Timezone Coverage", href: "/about#coverage" },
+    key: "resources",
+    label: "Industry Insights",
+    href: "/resources",
+    isMega: false,
+    items: [
+      { label: "Blog & Technical Articles", href: "/resources/blog" },
+      { label: "Technology Insights", href: "/resources/insights" },
+      { label: "Industry News & Trends", href: "/resources/news" },
+      { label: "Case Studies & Success Stories", href: "/work" },
+      { label: "Whitepapers & Reports", href: "/resources/whitepapers" },
+      { label: "Guides & Developer Resources", href: "/resources/guides" },
     ],
   },
   {
-    label: "Our Process",
-    href: "/about#process",
-    children: [
-      { label: "Phase 1: Architecture & Scoping", href: "/about#process" },
-      { label: "Phase 2: Sprint Engineering", href: "/about#process" },
-      { label: "Phase 3: QA & Security Audit", href: "/about#process" },
-      { label: "Phase 4: Launch & Handover", href: "/about#process" },
-    ],
-  },
-  {
-    label: "Selected Work",
-    href: "/work",
-    children: [
-      { label: "Fintech SaaS Platform", href: "/work" },
-      { label: "Enterprise Logistics Portal", href: "/work" },
-      { label: "AI Customer Agent Suite", href: "/work" },
-    ],
-  },
-  {
+    key: "company",
     label: "Company",
     href: "/about",
-    children: [
-      { label: "About Webnatixx Studio", href: "/about" },
-      { label: "Engineering Collective", href: "/about#team" },
-      { label: "Careers", href: "/about#careers" },
-      { label: "Contact Us", href: "/contact" },
+    isMega: false,
+    items: [
+      { label: "About Us", href: "/about" },
+      { label: "Our Team & Leadership", href: "/about#team" },
+      { label: "Our Expertise", href: "/about#expertise" },
+      { label: "Our Development Process", href: "/about#process" },
+      { label: "Careers & Openings", href: "/about#careers" },
+      { label: "Strategic Partnerships", href: "/about#partnerships" },
     ],
   },
 ];
 
-function NavDropdown({ item }: { item: (typeof NAV_ITEMS)[0] }) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <li
-      className="relative group shrink-0"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button className="relative flex items-center gap-0.5 rounded-md px-2.5 py-2 text-[13px] font-semibold transition-colors hover:text-[#008974] text-gray-800 whitespace-nowrap">
-        <span>{item.label}</span>
-        <ChevronDown
-          size={12}
-          className={cn(
-            "transition-transform duration-200 text-gray-400 mt-0.5",
-            open && "rotate-180 text-[#008974]"
-          )}
-        />
-      </button>
-
-      <AnimatePresence>
-        {open && item.children && (
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 6 }}
-            transition={{ duration: 0.15 }}
-            className="absolute left-0 top-full z-50 mt-1 min-w-[240px] rounded-xl border border-gray-100 bg-white p-2 shadow-xl"
-          >
-            {item.children.map((child) => (
-              <Link
-                key={child.href}
-                href={child.href}
-                className="block rounded-lg px-3 py-2 text-xs font-medium text-gray-600 transition-colors hover:bg-teal-50 hover:text-[#008974]"
-              >
-                {child.label}
-              </Link>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </li>
-  );
-}
-
 export function Navbar() {
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white shadow-[0_1px_0_0_rgba(0,0,0,0.06)]">
+    <header 
+      className="sticky top-0 z-40 w-full bg-white shadow-[0_1px_0_0_rgba(0,0,0,0.06)]"
+      onMouseLeave={() => setActiveMenu(null)}
+    >
       
       {/* ── 1. Top Green Utility Bar ── */}
       <div className="hidden bg-[#0a3532] text-xs text-white/90 lg:block">
@@ -192,16 +257,16 @@ export function Navbar() {
                 className="flex items-center gap-1.5 transition-colors hover:text-white text-gray-200"
               >
                 <Calendar size={13} className="text-[#2dd4bf]" />
-                Book 20-min Call
+                Schedule a Consultation
               </Link>
 
-              {/* Start Project Pill */}
+              {/* Request a Quote Pill */}
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-1.5 bg-white text-[#0a3532] font-bold text-[11px] px-3.5 py-1 rounded-full shadow-sm hover:bg-gray-100 transition-colors ml-1"
               >
                 <Rocket size={12} className="text-[#008974]" />
-                Start Your Project
+                Request a Quote
               </Link>
             </div>
           </div>
@@ -214,10 +279,10 @@ export function Navbar() {
             <span>·</span>
             <span>APAC</span>
             <span>·</span>
-            <span>Singapore</span>
+            <span>Middle East</span>
             <span className="text-white/30">|</span>
             <span className="flex items-center gap-1 cursor-pointer hover:text-white">
-              <Globe size={11} /> EN ▾
+              <Globe size={11} /> Global Delivery
             </span>
           </div>
 
@@ -225,7 +290,7 @@ export function Navbar() {
       </div>
 
       {/* ── 2. Main White Navigation Bar ── */}
-      <div className="mx-auto flex h-20 max-w-[1480px] items-center justify-between gap-0 px-3 sm:px-6">
+      <div className="relative mx-auto flex h-20 max-w-[1480px] items-center justify-between gap-0 px-3 sm:px-6">
         
         {/* Brand Logo with exact official Webnatix logo */}
         <Link href="/" className="group flex items-center gap-3 shrink-0" aria-label="Webnatixx Technologies — Home">
@@ -239,7 +304,7 @@ export function Navbar() {
               WebNatixx <span className="text-[#008974] font-medium text-xs">Technologies</span>
             </span>
             <span className="text-[9.5px] uppercase font-bold tracking-widest text-slate-400">
-              Software Engineering Studio
+              IT Consulting &amp; Technology Solutions
             </span>
           </div>
         </Link>
@@ -247,20 +312,41 @@ export function Navbar() {
         {/* Desktop Nav Items */}
         <nav className="hidden flex-1 items-center justify-center xl:flex">
           <ul className="flex items-center gap-1">
-            {NAV_ITEMS.map((item) => (
-              <NavDropdown key={item.label} item={item} />
-            ))}
+            {HEADER_NAV_DATA.map((item) => {
+              const isOpen = activeMenu === item.key;
+              return (
+                <li
+                  key={item.key}
+                  className="relative"
+                  onMouseEnter={() => setActiveMenu(item.key)}
+                >
+                  <button className={cn(
+                    "relative flex items-center gap-1 rounded-md px-3 py-2 text-[13.5px] font-semibold transition-colors hover:text-[#008974] whitespace-nowrap",
+                    isOpen ? "text-[#008974]" : "text-gray-800"
+                  )}>
+                    <span>{item.label}</span>
+                    <ChevronDown
+                      size={13}
+                      className={cn(
+                        "transition-transform duration-200 mt-0.5 text-gray-400",
+                        isOpen && "rotate-180 text-[#008974]"
+                      )}
+                    />
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
         {/* Right Contact Button */}
-        <div className="hidden sm:flex items-center shrink-0">
+        <div className="hidden sm:flex items-center gap-3 shrink-0">
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 rounded-full bg-[#008974] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#008974]/20 hover:bg-[#007361] hover:shadow-lg transition-all active:scale-95"
           >
             <Headphones size={15} />
-            Start Project
+            Request a Quote
           </Link>
         </div>
 
@@ -272,9 +358,194 @@ export function Navbar() {
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
+
       </div>
 
-      {/* Mobile Drawer */}
+      {/* ── 3. Desktop Hover Mega-Menus (Rendered conditionally below navbar) ── */}
+      <AnimatePresence>
+        {activeMenu && (
+          <motion.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.16 }}
+            className="absolute left-0 right-0 top-full z-50 w-full border-t border-gray-100 bg-white shadow-2xl"
+            onMouseEnter={() => setActiveMenu(activeMenu)}
+            onMouseLeave={() => setActiveMenu(null)}
+          >
+            <div className="mx-auto max-w-[1480px] px-6 py-8">
+              
+              {/* MEGA MENU: SERVICES (5 Columns) */}
+              {activeMenu === "services" && (
+                <div>
+                  <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-3">
+                    <span className="text-xs font-bold uppercase tracking-widest text-teal-800">
+                      Explore Full Technology &amp; Engineering Services
+                    </span>
+                    <Link 
+                      href="/services" 
+                      onClick={() => setActiveMenu(null)}
+                      className="text-xs font-semibold text-[#008974] hover:underline flex items-center gap-1"
+                    >
+                      View All Services Overview <ArrowRight size={13} />
+                    </Link>
+                  </div>
+
+                  <div className="grid grid-cols-5 gap-6">
+                    {HEADER_NAV_DATA[0].categories?.map((cat, idx) => (
+                      <div key={idx} className="space-y-3">
+                        <div className="text-xs font-extrabold text-gray-900 border-b border-teal-100 pb-1.5 text-teal-900">
+                          {cat.title}
+                        </div>
+                        <ul className="space-y-1.5">
+                          {cat.items.map((sub, sIdx) => (
+                            <li key={sIdx}>
+                              <Link
+                                href={sub.href}
+                                onClick={() => setActiveMenu(null)}
+                                className="block text-[12px] font-medium text-gray-600 hover:text-[#008974] transition-colors py-0.5 leading-snug hover:translate-x-0.5 transform duration-150"
+                              >
+                                {sub.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* MEGA MENU: INDUSTRIES (3 Columns) */}
+              {activeMenu === "industries" && (
+                <div>
+                  <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-3">
+                    <span className="text-xs font-bold uppercase tracking-widest text-teal-800">
+                      Domain Expertise Across Regulated &amp; High-Growth Sectors
+                    </span>
+                    <Link 
+                      href="/industries" 
+                      onClick={() => setActiveMenu(null)}
+                      className="text-xs font-semibold text-[#008974] hover:underline flex items-center gap-1"
+                    >
+                      Explore All Industries <ArrowRight size={13} />
+                    </Link>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-8">
+                    {HEADER_NAV_DATA[1].categories?.map((cat, idx) => (
+                      <div key={idx} className="space-y-3">
+                        <div className="text-xs font-extrabold text-gray-900 border-b border-teal-100 pb-1.5 text-teal-900">
+                          {cat.title}
+                        </div>
+                        <ul className="space-y-2">
+                          {cat.items.map((sub, sIdx) => (
+                            <li key={sIdx}>
+                              <Link
+                                href={sub.href}
+                                onClick={() => setActiveMenu(null)}
+                                className="block text-[12.5px] font-medium text-gray-600 hover:text-[#008974] transition-colors hover:translate-x-0.5 transform duration-150"
+                              >
+                                {sub.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* MEGA MENU: TECHNOLOGIES (3 Columns) */}
+              {activeMenu === "technologies" && (
+                <div>
+                  <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-3">
+                    <span className="text-xs font-bold uppercase tracking-widest text-teal-800">
+                      Modern Full-Stack, Mobile, Cloud &amp; Enterprise Platforms
+                    </span>
+                    <Link 
+                      href="/technologies" 
+                      onClick={() => setActiveMenu(null)}
+                      className="text-xs font-semibold text-[#008974] hover:underline flex items-center gap-1"
+                    >
+                      View Full Technology Matrix <ArrowRight size={13} />
+                    </Link>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-8">
+                    {HEADER_NAV_DATA[2].categories?.map((cat, idx) => (
+                      <div key={idx} className="space-y-3">
+                        <div className="text-xs font-extrabold text-gray-900 border-b border-teal-100 pb-1.5 text-teal-900">
+                          {cat.title}
+                        </div>
+                        <ul className="space-y-2">
+                          {cat.items.map((sub, sIdx) => (
+                            <li key={sIdx}>
+                              <Link
+                                href={sub.href}
+                                onClick={() => setActiveMenu(null)}
+                                className="block text-[12.5px] font-medium text-gray-600 hover:text-[#008974] transition-colors hover:translate-x-0.5 transform duration-150"
+                              >
+                                {sub.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* STANDARD DROPDOWN: INDUSTRY INSIGHTS */}
+              {activeMenu === "resources" && (
+                <div className="max-w-md mx-auto">
+                  <div className="text-xs font-bold uppercase tracking-widest text-teal-800 mb-3 pb-1 border-b border-gray-100">
+                    5. Industry Insights &amp; Resources
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    {HEADER_NAV_DATA[3].items?.map((item, idx) => (
+                      <Link
+                        key={idx}
+                        href={item.href}
+                        onClick={() => setActiveMenu(null)}
+                        className="rounded-lg p-2.5 text-xs font-medium text-gray-700 hover:bg-teal-50 hover:text-[#008974] transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* STANDARD DROPDOWN: COMPANY */}
+              {activeMenu === "company" && (
+                <div className="max-w-md mx-auto">
+                  <div className="text-xs font-bold uppercase tracking-widest text-teal-800 mb-3 pb-1 border-b border-gray-100">
+                    6. Company &amp; Engineering Collective
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    {HEADER_NAV_DATA[4].items?.map((item, idx) => (
+                      <Link
+                        key={idx}
+                        href={item.href}
+                        onClick={() => setActiveMenu(null)}
+                        className="rounded-lg p-2.5 text-xs font-medium text-gray-700 hover:bg-teal-50 hover:text-[#008974] transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── 4. Mobile Drawer ── */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -283,20 +554,43 @@ export function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="border-b border-gray-200 bg-white px-6 py-6 shadow-2xl xl:hidden overflow-hidden max-h-[85vh] overflow-y-auto"
           >
-            <div className="flex flex-col gap-2">
-              {NAV_ITEMS.map((item) => (
-                <div key={item.label} className="border-b border-gray-100 pb-2">
+            <div className="flex flex-col gap-3">
+              {HEADER_NAV_DATA.map((item) => (
+                <div key={item.key} className="border-b border-gray-100 pb-2">
                   <div className="text-sm font-bold text-gray-900 py-1">{item.label}</div>
-                  {item.children && (
+                  
+                  {item.categories && (
+                    <div className="pl-2 space-y-2 pt-1">
+                      {item.categories.map((c, cIdx) => (
+                        <div key={cIdx}>
+                          <div className="text-[11px] font-bold text-teal-800 uppercase">{c.title}</div>
+                          <div className="pl-2 space-y-1">
+                            {c.items.map((sub, sIdx) => (
+                              <Link
+                                key={sIdx}
+                                href={sub.href}
+                                onClick={() => setMobileOpen(false)}
+                                className="block text-xs text-gray-600 hover:text-[#008974] py-0.5"
+                              >
+                                {sub.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {item.items && (
                     <div className="pl-3 space-y-1 pt-1">
-                      {item.children.map((c) => (
+                      {item.items.map((sub, sIdx) => (
                         <Link
-                          key={c.href}
-                          href={c.href}
+                          key={sIdx}
+                          href={sub.href}
                           onClick={() => setMobileOpen(false)}
-                          className="block text-xs text-gray-600 hover:text-[#008974] py-1"
+                          className="block text-xs text-gray-600 hover:text-[#008974] py-0.5"
                         >
-                          {c.label}
+                          {sub.label}
                         </Link>
                       ))}
                     </div>
@@ -309,7 +603,7 @@ export function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center justify-center gap-2 w-full rounded-full bg-[#008974] py-3 text-sm font-bold text-white shadow-md"
                 >
-                  <Headphones size={16} /> Contact Us
+                  <Headphones size={16} /> Request a Quote
                 </Link>
               </div>
             </div>
