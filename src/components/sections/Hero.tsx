@@ -133,7 +133,7 @@ export function Hero() {
               width={817} 
               height={483} 
               className="w-full h-auto object-contain relative z-10 drop-shadow-2xl" 
-              src="/assets/home/hero/hero-image.webp"
+              src="/assets/home/hero/hero-image.png"
             />
           </div>
         </div>
