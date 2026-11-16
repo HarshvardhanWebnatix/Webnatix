@@ -1,3 +1,5 @@
+import { HeroVisualType } from "@/components/templates/HeroVisuals";
+
 export interface InnerPageFeatureCard {
   title: string;
   description: string;
@@ -12,6 +14,7 @@ export interface InnerPageData {
   title: string;
   description: string;
   badges: string[];
+  visualType?: HeroVisualType;
   
   heroVisual: {
     tag: string;
@@ -76,6 +79,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
   "full-stack-development": {
     slug: "full-stack-development",
     category: "OUR SERVICES",
+    visualType: "api-flow",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "Services", href: "/services" },
@@ -207,6 +211,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
   "sportsbook-platform": {
     slug: "sportsbook-platform",
     category: "IGAMING & SPORTSBOOK PLATFORMS",
+    visualType: "sportsbook-engine",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "iGaming", href: "/services" },
@@ -332,6 +337,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
   "casino-game-development": {
     slug: "casino-game-development",
     category: "IGAMING PLATFORMS & GAME STUDIOS",
+    visualType: "casino-crash",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "Services", href: "/services" },
@@ -457,6 +463,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
   "website-development": {
     slug: "website-development",
     category: "OUR SERVICES",
+    visualType: "lighthouse-speed",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "Services", href: "/services" },
@@ -558,6 +565,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
   "mobile-app-development": {
     slug: "mobile-app-development",
     category: "OUR SERVICES",
+    visualType: "mobile-showcase",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "Services", href: "/services" },
@@ -690,9 +698,25 @@ export function getInnerPageData(rawSlug: string): InnerPageData {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 
+  let dynamicVisualType: HeroVisualType = "api-flow";
+  if (normalizedSlug.includes("sport") || normalizedSlug.includes("betting")) {
+    dynamicVisualType = "sportsbook-engine";
+  } else if (normalizedSlug.includes("casino") || normalizedSlug.includes("game")) {
+    dynamicVisualType = "casino-crash";
+  } else if (normalizedSlug.includes("web") || normalizedSlug.includes("seo") || normalizedSlug.includes("speed")) {
+    dynamicVisualType = "lighthouse-speed";
+  } else if (normalizedSlug.includes("mobile") || normalizedSlug.includes("app")) {
+    dynamicVisualType = "mobile-showcase";
+  } else if (normalizedSlug.includes("ai") || normalizedSlug.includes("ml") || normalizedSlug.includes("llm") || normalizedSlug.includes("data")) {
+    dynamicVisualType = "ai-neural";
+  } else if (normalizedSlug.includes("cloud") || normalizedSlug.includes("devops") || normalizedSlug.includes("crm")) {
+    dynamicVisualType = "cloud-cluster";
+  }
+
   return {
     slug: normalizedSlug,
     category: "OUR SERVICES & SOLUTIONS",
+    visualType: dynamicVisualType,
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "Services", href: "/services" },

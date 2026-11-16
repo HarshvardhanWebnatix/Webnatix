@@ -25,6 +25,7 @@ import {
   Check,
 } from "lucide-react";
 import { InnerPageData } from "@/data/inner-pages";
+import { HeroVisualRenderer } from "./HeroVisuals";
 
 interface InnerPageTemplateProps {
   data: InnerPageData;
@@ -51,27 +52,6 @@ export function InnerPageTemplate({ data }: InnerPageTemplateProps) {
       setIsSubmitting(false);
       setIsSubmitted(true);
     }, 900);
-  };
-
-  // Center visual icon selector
-  const renderCenterIcon = () => {
-    const size = 36;
-    switch (data.heroVisual.centerIcon) {
-      case "trophy":
-        return <Trophy size={size} className="text-amber-400" />;
-      case "gamepad":
-        return <Gamepad2 size={size} className="text-purple-400" />;
-      case "code":
-        return <Code2 size={size} className="text-blue-400" />;
-      case "cpu":
-        return <Cpu size={size} className="text-cyan-400" />;
-      case "server":
-        return <Server size={size} className="text-emerald-400" />;
-      case "layers":
-        return <Layers size={size} className="text-indigo-400" />;
-      default:
-        return <ShieldCheck size={size} className="text-[#e52320]" />;
-    }
   };
 
   const scrollToForm = () => {
@@ -171,87 +151,9 @@ export function InnerPageTemplate({ data }: InnerPageTemplateProps) {
 
             </div>
 
-            {/* Right Visual Column (Animated Interactive Tech Visual Card) */}
+            {/* Right Visual Column (Unique Bespoke Interactive Visual for each page) */}
             <div className="lg:col-span-5 flex justify-center">
-              
-              {/* Floating Container with Smooth Float & Scale Keyframe Animations */}
-              <div className="w-full max-w-[500px] animate-float-slow">
-                
-                {/* Glowing Outer Card with Neon Accent Halo */}
-                <div className="relative rounded-3xl border border-slate-800 bg-[#090e1a] p-7 shadow-2xl overflow-hidden animate-pulse-scale">
-                  
-                  {/* Neon Glow Aura behind Central Icon */}
-                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                    <div className="w-48 h-48 rounded-full bg-[#e52320]/20 blur-3xl animate-glow-pulse" />
-                  </div>
-
-                  {/* Card Header */}
-                  <div className="relative z-10 flex items-center justify-between pb-6 border-b border-slate-800/80">
-                    <div className="inline-flex items-center gap-1.5 rounded-full border border-red-500/30 bg-red-950/40 px-3 py-1 text-[11px] font-bold text-red-400">
-                      <Zap size={11} className="text-red-400 animate-pulse" />
-                      <span>{data.heroVisual.tag}</span>
-                    </div>
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                      {data.heroVisual.sla}
-                    </span>
-                  </div>
-
-                  {/* Card Center: Illuminated Core with Nodes */}
-                  <div className="relative z-10 py-10 flex flex-col items-center justify-center">
-                    
-                    {/* 4 Connected Floating Corner Nodes */}
-                    <div className="w-full grid grid-cols-2 gap-4 mb-4">
-                      {/* Top Left Node */}
-                      <div className="flex items-center gap-2 text-[11.5px] font-semibold text-slate-300 bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-2">
-                        <span className="h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_8px_#fbbf24]" />
-                        <span className="truncate">{data.heroVisual.nodes[0]?.label || "Architecture"}</span>
-                      </div>
-                      {/* Top Right Node */}
-                      <div className="flex items-center gap-2 text-[11.5px] font-semibold text-slate-300 bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-2 justify-end">
-                        <span className="h-2 w-2 rounded-full bg-red-500 shadow-[0_0_8px_#ef4444]" />
-                        <span className="truncate">{data.heroVisual.nodes[1]?.label || "Security"}</span>
-                      </div>
-                    </div>
-
-                    {/* Central Illuminated Node Shield */}
-                    <div className="relative my-4 flex items-center justify-center">
-                      <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-red-500/50 shadow-[0_0_35px_rgba(229,35,32,0.35)] flex flex-col items-center justify-center transition-transform hover:scale-110 duration-300">
-                        {renderCenterIcon()}
-                      </div>
-                      {/* Concentric Radar Ring */}
-                      <div className="absolute inset-0 rounded-2xl border border-red-500/20 scale-125 animate-ping pointer-events-none" />
-                    </div>
-
-                    {/* Bottom 2 Connected Corner Nodes */}
-                    <div className="w-full grid grid-cols-2 gap-4 mt-4">
-                      {/* Bottom Left Node */}
-                      <div className="flex items-center gap-2 text-[11.5px] font-semibold text-slate-300 bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-2">
-                        <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
-                        <span className="truncate">{data.heroVisual.nodes[2]?.label || "Performance"}</span>
-                      </div>
-                      {/* Bottom Right Node */}
-                      <div className="flex items-center gap-2 text-[11.5px] font-semibold text-slate-300 bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-2 justify-end">
-                        <span className="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_8px_#60a5fa]" />
-                        <span className="truncate">{data.heroVisual.nodes[3]?.label || "Integration"}</span>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  {/* Card Footer */}
-                  <div className="relative z-10 pt-5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 font-semibold">
-                    <div className="flex items-center gap-1.5 text-slate-300">
-                      <CheckCircle2 size={13} className="text-red-400" />
-                      <span>{data.heroVisual.bottomLeft}</span>
-                    </div>
-                    <span className="text-red-400 uppercase tracking-wide">
-                      {data.heroVisual.bottomRight}
-                    </span>
-                  </div>
-
-                </div>
-              </div>
-
+              <HeroVisualRenderer type={data.visualType} title={data.title} />
             </div>
 
           </div>
