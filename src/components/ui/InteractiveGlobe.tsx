@@ -55,8 +55,10 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
   const rotationVelocity = useRef({ x: 0, y: 0 });
   const autoRotate = useRef(true);
   const targetRotation = useRef<{ x: number; y: number } | null>(null);
-  const zoomDistance = useRef(5.0);
-  const targetZoomDistance = useRef(5.0);
+
+  // Perfectly proportioned camera distance with generous margin so Earth is NEVER clipped
+  const zoomDistance = useRef(6.2);
+  const targetZoomDistance = useRef(6.2);
 
   // Rotation Euler values
   const currentRotation = useRef({ x: 0.15, y: -Math.PI * 0.8 });
@@ -88,7 +90,7 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
 
     // ── 1. Three.js Scene Setup ──
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
     camera.position.z = zoomDistance.current;
 
     const renderer = new THREE.WebGLRenderer({
@@ -118,7 +120,8 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
     earthMap.colorSpace = THREE.SRGBColorSpace;
 
     // ── Earth Core Sphere (Photorealistic NASA Blue Marble) ──
-    const earthRadius = 1.85;
+    // Scaled to 1.45 so with distance 6.2 and FOV 42, the sphere has ~33% padding and never clips
+    const earthRadius = 1.45;
     const earthGeometry = new THREE.SphereGeometry(earthRadius, 64, 64);
     const earthMaterial = new THREE.MeshPhongMaterial({
       map: earthMap,
@@ -153,11 +156,11 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
     const atmosphereFragmentShader = `
       varying vec3 vNormal;
       void main() {
-        float intensity = pow(0.6 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.2);
+        float intensity = pow(0.62 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.2);
         gl_FragColor = vec4(0.25, 0.55, 1.0, 1.0) * intensity;
       }
     `;
-    const atmosphereGeometry = new THREE.SphereGeometry(earthRadius * 1.12, 64, 64);
+    const atmosphereGeometry = new THREE.SphereGeometry(earthRadius * 1.10, 64, 64);
     const atmosphereMaterial = new THREE.ShaderMaterial({
       vertexShader: atmosphereVertexShader,
       fragmentShader: atmosphereFragmentShader,
@@ -176,10 +179,10 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
       localPos: THREE.Vector3;
     }[] = [];
 
-    const pinGeometry = new THREE.SphereGeometry(0.038, 16, 16);
+    const pinGeometry = new THREE.SphereGeometry(0.032, 16, 16);
     const pinMaterial = new THREE.MeshBasicMaterial({ color: 0xff3344 });
 
-    const beaconGeometry = new THREE.RingGeometry(0.02, 0.07, 32);
+    const beaconGeometry = new THREE.RingGeometry(0.018, 0.055, 32);
     const beaconMaterial = new THREE.MeshBasicMaterial({
       color: 0x0066cc,
       side: THREE.DoubleSide,
@@ -225,7 +228,8 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
     const handleResize = () => {
       if (!container || !renderer) return;
       const width = container.clientWidth;
-      const height = container.clientHeight || width;
+      const height = container.clientHeight;
+      if (width === 0 || height === 0) return;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
@@ -248,7 +252,7 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
       // Pulse beacon rings
       markerMeshes.forEach((item, idx) => {
         const pulse = (Math.sin(elapsedTime * 3.5 + idx * 0.8) + 1) / 2;
-        const scale = 0.8 + pulse * 1.6;
+        const scale = 0.8 + pulse * 1.5;
         item.beacon.scale.set(scale, scale, 1);
         (item.beacon.material as THREE.MeshBasicMaterial).opacity = Math.max(0.1, 0.9 - pulse * 0.8);
       });
@@ -403,7 +407,7 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     e.preventDefault();
     const zoomDelta = e.deltaY * 0.0025;
-    targetZoomDistance.current = Math.max(3.6, Math.min(6.5, targetZoomDistance.current + zoomDelta));
+    targetZoomDistance.current = Math.max(4.8, Math.min(7.5, targetZoomDistance.current + zoomDelta));
   };
 
   return (
@@ -419,16 +423,11 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerLeave={handlePointerUp}
-        className="w-full h-full cursor-grab active:cursor-grabbing touch-none relative z-10"
-        style={{
-          aspectRatio: "1",
-          maxWidth: "100%",
-          maxHeight: "100%",
-        }}
+        className="w-full h-full cursor-grab active:cursor-grabbing touch-none block relative z-10"
       />
 
       {/* ── Interactive 2D Screen Overlays for Strategic Hubs ── */}
-      <div className="absolute inset-0 pointer-events-none z-20">
+      <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden">
         {projectedMarkers.map((marker, idx) => {
           if (!marker.visible) return null;
           const isSelected = selectedCity === marker.city;
@@ -439,7 +438,7 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
               className="absolute -translate-x-1/2 -translate-y-full transition-opacity duration-200 pointer-events-auto cursor-pointer"
               style={{
                 left: `${marker.x}px`,
-                top: `${marker.y - 12}px`,
+                top: `${marker.y - 10}px`,
               }}
               onClick={() => onSelectCity?.(marker.city)}
             >

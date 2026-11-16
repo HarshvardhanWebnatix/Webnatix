@@ -82,21 +82,21 @@ export function GlobalPresence() {
           </div>
 
           {/* ── Right Column: Interactive 3D Earth Globe (6 cols) ── */}
-          <div className="lg:col-span-6 space-y-5">
+          <div className="lg:col-span-6 space-y-4">
             
             {/* 3D Globe Card Container */}
-            <div className="relative rounded-3xl border border-blue-100/90 bg-white p-6 sm:p-8 shadow-xl overflow-hidden flex flex-col items-center justify-center min-h-[480px] lg:min-h-[520px]">
+            <div className="relative rounded-3xl border border-slate-200/90 bg-gradient-to-b from-white via-white to-blue-50/20 p-4 sm:p-6 shadow-xl overflow-hidden flex flex-col items-center justify-center min-h-[500px] sm:min-h-[530px] lg:min-h-[560px]">
               
               {/* Floating Top Badge */}
-              <div className="absolute top-5 right-5 z-20 rounded-full border border-slate-200/80 bg-white/95 px-3.5 py-1.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+              <div className="absolute top-4 right-4 sm:top-5 sm:right-5 z-20 rounded-full border border-slate-200/80 bg-white/95 px-3.5 py-1.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-[11px] font-bold text-slate-700 tracking-wide uppercase">
                   Global Presence · 6 Strategic Hubs
                 </span>
               </div>
 
-              {/* Interactive 3D Globe Canvas with Shaded Ocean & Detailed Continents */}
-              <div className="w-full max-w-[440px] aspect-square relative z-10 flex items-center justify-center">
+              {/* Interactive 3D Globe Canvas */}
+              <div className="w-full h-[410px] sm:h-[450px] lg:h-[480px] relative z-10 flex items-center justify-center">
                 <InteractiveGlobe
                   selectedCity={selectedCity}
                   onSelectCity={setSelectedCity}
@@ -104,7 +104,7 @@ export function GlobalPresence() {
               </div>
 
               {/* Bottom Interactive Control Hint */}
-              <div className="absolute bottom-4 z-20 inline-flex items-center gap-2 rounded-full border border-slate-200/70 bg-white/90 px-3.5 py-1 text-[11px] font-semibold text-slate-500 shadow-xs backdrop-blur-xs">
+              <div className="absolute bottom-3.5 z-20 inline-flex items-center gap-2 rounded-full border border-slate-200/70 bg-white/90 px-3.5 py-1 text-[11px] font-semibold text-slate-500 shadow-xs backdrop-blur-xs">
                 <span>🖱️ Click &amp; drag to rotate 360° · Scroll to zoom</span>
               </div>
 
