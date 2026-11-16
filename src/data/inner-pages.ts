@@ -663,7 +663,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
   },
 };
 
-// ─── SMART FALLBACK GENERATOR FOR ANY OTHER SLUG ──────────────────
+// ─── SMART FALLBACK GENERATOR FOR ANY SERVICE SLUG ──────────────────
 export function getInnerPageData(rawSlug: string): InnerPageData {
   const normalizedSlug = rawSlug
     .toLowerCase()
@@ -678,39 +678,72 @@ export function getInnerPageData(rawSlug: string): InnerPageData {
     return INNER_PAGES_DATA[normalizedSlug];
   }
 
-  // Check partial matches (e.g. "web" -> "website-development", "mobile" -> "mobile-app-development")
-  if (normalizedSlug.includes("web") || normalizedSlug === "website") {
-    return INNER_PAGES_DATA["website-development"];
-  }
-  if (normalizedSlug.includes("mobile") || normalizedSlug === "app") {
-    return INNER_PAGES_DATA["mobile-app-development"];
-  }
-  if (normalizedSlug.includes("sport") || normalizedSlug.includes("betting")) {
-    return INNER_PAGES_DATA["sportsbook-platform"];
-  }
-  if (normalizedSlug.includes("casino") || normalizedSlug.includes("game")) {
-    return INNER_PAGES_DATA["casino-game-development"];
-  }
+  // Check direct aliases
+  if (normalizedSlug === "web") return INNER_PAGES_DATA["website-development"];
+  if (normalizedSlug === "mobile") return INNER_PAGES_DATA["mobile-app-development"];
+  if (normalizedSlug === "software") return INNER_PAGES_DATA["full-stack-development"];
+  if (normalizedSlug === "game") return INNER_PAGES_DATA["casino-game-development"];
 
-  // Otherwise, dynamically construct a professional enterprise page from the slug name
+  // Dynamically construct professional enterprise page
   const formattedTitle = normalizedSlug
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 
+  // 1-to-1 unique visual and animation mapping for every single service
   let dynamicVisualType: HeroVisualType = "api-flow";
-  if (normalizedSlug.includes("sport") || normalizedSlug.includes("betting")) {
-    dynamicVisualType = "sportsbook-engine";
-  } else if (normalizedSlug.includes("casino") || normalizedSlug.includes("game")) {
-    dynamicVisualType = "casino-crash";
-  } else if (normalizedSlug.includes("web") || normalizedSlug.includes("seo") || normalizedSlug.includes("speed")) {
+  if (normalizedSlug.includes("ecommerce") || normalizedSlug.includes("shop")) {
+    dynamicVisualType = "ecommerce-cart";
+  } else if (normalizedSlug.includes("api") || normalizedSlug.includes("microservice")) {
+    dynamicVisualType = "api-latency";
+  } else if (normalizedSlug.includes("integration") || normalizedSlug.includes("software-integration")) {
+    dynamicVisualType = "software-integration";
+  } else if (normalizedSlug.includes("salesforce")) {
+    dynamicVisualType = "salesforce-cloud";
+  } else if (normalizedSlug.includes("hubspot")) {
+    dynamicVisualType = "hubspot-funnel";
+  } else if (normalizedSlug.includes("zoho")) {
+    dynamicVisualType = "zoho-suite";
+  } else if (normalizedSlug.includes("crm")) {
+    dynamicVisualType = "crm-kanban";
+  } else if (normalizedSlug.includes("cloud") || normalizedSlug.includes("devops")) {
+    dynamicVisualType = "cloud-cluster";
+  } else if (normalizedSlug.includes("seo") || normalizedSlug.includes("search-engine")) {
+    dynamicVisualType = "seo-ranking";
+  } else if (normalizedSlug.includes("smm") || normalizedSlug.includes("social-media")) {
+    dynamicVisualType = "smm-feed";
+  } else if (normalizedSlug.includes("ppc") || normalizedSlug.includes("pay-per-click")) {
+    dynamicVisualType = "ppc-auction";
+  } else if (normalizedSlug.includes("performance") || normalizedSlug.includes("speed")) {
+    dynamicVisualType = "speed-benchmark";
+  } else if (normalizedSlug.includes("data-strategy") || normalizedSlug.includes("data-governance")) {
+    dynamicVisualType = "data-strategy";
+  } else if (normalizedSlug.includes("data-processing") || normalizedSlug.includes("data-storage")) {
+    dynamicVisualType = "data-processing";
+  } else if (normalizedSlug.includes("data-analytics") || normalizedSlug.includes("visualization")) {
+    dynamicVisualType = "data-analytics";
+  } else if (normalizedSlug.includes("cloud-data") || normalizedSlug.includes("migration") || normalizedSlug.includes("power-bi")) {
+    dynamicVisualType = "data-migration";
+  } else if (normalizedSlug.includes("custom-ai") || normalizedSlug.includes("ai-consulting")) {
+    dynamicVisualType = "custom-ai-weights";
+  } else if (normalizedSlug.includes("ai-business") || normalizedSlug.includes("ai-bi")) {
+    dynamicVisualType = "ai-bi-matrix";
+  } else if (normalizedSlug.includes("llm") || normalizedSlug.includes("ai-customer") || normalizedSlug.includes("ai-cx")) {
+    dynamicVisualType = "llm-rag";
+  } else if (normalizedSlug.includes("agentic") || normalizedSlug.includes("agent")) {
+    dynamicVisualType = "agentic-swarm";
+  } else if (normalizedSlug.includes("blockchain")) {
+    dynamicVisualType = "blockchain-ledger";
+  } else if (normalizedSlug.includes("ai") || normalizedSlug.includes("machine-learning")) {
+    dynamicVisualType = "ai-neural";
+  } else if (normalizedSlug.includes("web") || normalizedSlug.includes("website")) {
     dynamicVisualType = "lighthouse-speed";
   } else if (normalizedSlug.includes("mobile") || normalizedSlug.includes("app")) {
     dynamicVisualType = "mobile-showcase";
-  } else if (normalizedSlug.includes("ai") || normalizedSlug.includes("ml") || normalizedSlug.includes("llm") || normalizedSlug.includes("data")) {
-    dynamicVisualType = "ai-neural";
-  } else if (normalizedSlug.includes("cloud") || normalizedSlug.includes("devops") || normalizedSlug.includes("crm")) {
-    dynamicVisualType = "cloud-cluster";
+  } else if (normalizedSlug.includes("casino") || normalizedSlug.includes("game")) {
+    dynamicVisualType = "casino-crash";
+  } else if (normalizedSlug.includes("sport") || normalizedSlug.includes("betting")) {
+    dynamicVisualType = "sportsbook-engine";
   }
 
   return {
