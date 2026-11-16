@@ -632,23 +632,42 @@ export function Navbar() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-6 gap-3">
-                      {[
-                        { name: "Next.js", sub: "React Framework" },
-                        { name: "AWS Cloud", sub: "Cloud Infrastructure" },
-                        { name: "Google Cloud", sub: "Compute & AI" },
-                        { name: "PostgreSQL", sub: "Enterprise Data" },
-                        { name: "Docker & K8s", sub: "Containerization" },
-                        { name: "OpenAI", sub: "AI Models & LLM" },
-                      ].map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="rounded-xl border border-slate-100 bg-slate-50/70 p-2 text-center hover:bg-white hover:border-[#0066cc]/30 hover:shadow-sm transition-all"
-                        >
-                          <div className="text-xs font-bold text-slate-800">{item.name}</div>
-                          <div className="text-[9.5px] text-slate-400">{item.sub}</div>
-                        </div>
-                      ))}
+                    {/* Infinite Smooth Right-to-Left Marquee */}
+                    <div className="relative overflow-hidden w-full py-1">
+                      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-white to-transparent" />
+                      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-white to-transparent" />
+                      <div className="animate-marquee-rtl flex items-center gap-3">
+                        {[
+                          { name: "Next.js 16", sub: "React App Router" },
+                          { name: "AWS Cloud", sub: "Cloud Infrastructure" },
+                          { name: "Google Cloud", sub: "Compute & Vertex AI" },
+                          { name: "PostgreSQL", sub: "Enterprise Data" },
+                          { name: "Docker & K8s", sub: "Containerization" },
+                          { name: "OpenAI", sub: "AI Models & LLM" },
+                          { name: "Supabase", sub: "Realtime Backend" },
+                          { name: "TypeScript", sub: "Type-Safe Architecture" },
+                          // Duplicated for seamless loop
+                          { name: "Next.js 16", sub: "React App Router" },
+                          { name: "AWS Cloud", sub: "Cloud Infrastructure" },
+                          { name: "Google Cloud", sub: "Compute & Vertex AI" },
+                          { name: "PostgreSQL", sub: "Enterprise Data" },
+                          { name: "Docker & K8s", sub: "Containerization" },
+                          { name: "OpenAI", sub: "AI Models & LLM" },
+                          { name: "Supabase", sub: "Realtime Backend" },
+                          { name: "TypeScript", sub: "Type-Safe Architecture" },
+                        ].map((item, idx) => (
+                          <div
+                            key={idx}
+                            className="rounded-xl border border-slate-100 bg-slate-50/80 px-3.5 py-1.5 flex items-center gap-2 whitespace-nowrap hover:bg-white hover:border-[#0066cc]/40 hover:shadow-xs transition-all cursor-default"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#0066cc] shrink-0" />
+                            <span className="text-xs font-bold text-slate-800">{item.name}</span>
+                            <span className="text-[10px] text-slate-400 font-medium pl-1 border-l border-slate-200">
+                              {item.sub}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
@@ -1125,12 +1144,52 @@ export function Navbar() {
                         <span>CLOUD NATIVE DEPLOYMENTS &amp; PARTNERSHIPS</span>
                       </div>
                     </div>
-                    <div className="grid grid-cols-6 gap-3">
-                      {["AWS Partner", "Google Cloud", "Vercel Enterprise", "Cloudflare Edge", "Kubernetes", "Supabase"].map((badge, idx) => (
-                        <div key={idx} className="rounded-xl border border-slate-100 bg-slate-50/70 p-2 text-center text-xs font-bold text-slate-700">
-                          {badge}
-                        </div>
-                      ))}
+                    
+                    {/* Infinite Smooth Right-to-Left Marquee */}
+                    <div className="relative overflow-hidden w-full py-1">
+                      {/* Left & Right gradient edge fades */}
+                      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-white to-transparent" />
+                      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-white to-transparent" />
+                      <div className="animate-marquee-rtl flex items-center gap-3">
+                        {[
+                          { name: "AWS Partner", detail: "Cloud Infrastructure" },
+                          { name: "Google Cloud", detail: "BigQuery & Vertex AI" },
+                          { name: "Microsoft Azure", detail: "Enterprise Cloud" },
+                          { name: "Vercel Enterprise", detail: "Edge & Next.js" },
+                          { name: "Cloudflare Edge", detail: "Zero Trust & CDN" },
+                          { name: "Kubernetes (K8s)", detail: "Microservices" },
+                          { name: "Docker", detail: "Containerization" },
+                          { name: "Supabase", detail: "Postgres & Realtime" },
+                          { name: "OpenAI", detail: "Enterprise LLM" },
+                          { name: "Terraform", detail: "Infra as Code" },
+                          { name: "Datadog", detail: "Telemetry & APM" },
+                          { name: "Snowflake", detail: "Data Cloud" },
+                          // Duplicate array for seamless infinite looping
+                          { name: "AWS Partner", detail: "Cloud Infrastructure" },
+                          { name: "Google Cloud", detail: "BigQuery & Vertex AI" },
+                          { name: "Microsoft Azure", detail: "Enterprise Cloud" },
+                          { name: "Vercel Enterprise", detail: "Edge & Next.js" },
+                          { name: "Cloudflare Edge", detail: "Zero Trust & CDN" },
+                          { name: "Kubernetes (K8s)", detail: "Microservices" },
+                          { name: "Docker", detail: "Containerization" },
+                          { name: "Supabase", detail: "Postgres & Realtime" },
+                          { name: "OpenAI", detail: "Enterprise LLM" },
+                          { name: "Terraform", detail: "Infra as Code" },
+                          { name: "Datadog", detail: "Telemetry & APM" },
+                          { name: "Snowflake", detail: "Data Cloud" },
+                        ].map((badge, idx) => (
+                          <div
+                            key={idx}
+                            className="rounded-xl border border-slate-100 bg-slate-50/80 px-3.5 py-1.5 flex items-center gap-2 whitespace-nowrap shadow-2xs hover:bg-white hover:border-[#0066cc]/40 hover:shadow-xs transition-all cursor-default"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                            <span className="text-xs font-bold text-slate-800">{badge.name}</span>
+                            <span className="text-[10px] text-slate-400 font-medium pl-1 border-l border-slate-200">
+                              {badge.detail}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 

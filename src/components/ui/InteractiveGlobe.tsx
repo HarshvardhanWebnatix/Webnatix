@@ -1,12 +1,12 @@
 "use client";
 
-import createGlobe from "cobe";
 import { useEffect, useRef, useState, useCallback } from "react";
+import * as THREE from "three";
 
-interface OfficeLocation {
+export interface OfficeLocation {
   city: string;
   region: string;
-  coords: [number, number]; // [lat, long]
+  coords: [number, number]; // [lat, lon]
 }
 
 export const GLOBAL_OFFICES: OfficeLocation[] = [
@@ -24,189 +24,443 @@ interface InteractiveGlobeProps {
   onSelectCity?: (city: string) => void;
 }
 
+// Convert geographic lat/lon to 3D Cartesian coordinates on sphere
+function latLongToVector3(lat: number, lon: number, radius: number): THREE.Vector3 {
+  const phi = (90 - lat) * (Math.PI / 180);
+  const theta = (lon + 180) * (Math.PI / 180);
+  const x = -radius * Math.cos(theta) * Math.sin(phi);
+  const y = radius * Math.cos(phi);
+  const z = radius * Math.sin(theta) * Math.sin(phi);
+  return new THREE.Vector3(x, y, z);
+}
+
 export function InteractiveGlobe({ className, selectedCity, onSelectCity }: InteractiveGlobeProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const pointerInteracting = useRef<number | null>(null);
-  const pointerInteractionMovement = useRef(0);
-  const pointerYInteracting = useRef<number | null>(null);
-  const pointerYMovement = useRef(0.2);
 
-  // Target angles for smooth flying to selected city
-  const targetPhi = useRef<number | null>(null);
-  const targetTheta = useRef<number | null>(null);
+  // Screen-projected positions for 2D UI markers/tooltips
+  const [projectedMarkers, setProjectedMarkers] = useState<
+    Array<{
+      city: string;
+      region: string;
+      x: number;
+      y: number;
+      visible: boolean;
+    }>
+  >([]);
 
-  const [zoom, setZoom] = useState(1);
-  const zoomRef = useRef(1);
-  zoomRef.current = zoom;
+  // Interaction refs
+  const isDragging = useRef(false);
+  const previousMousePosition = useRef({ x: 0, y: 0 });
+  const rotationVelocity = useRef({ x: 0, y: 0 });
+  const autoRotate = useRef(true);
+  const targetRotation = useRef<{ x: number; y: number } | null>(null);
+  const zoomDistance = useRef(5.0);
+  const targetZoomDistance = useRef(5.0);
 
-  // Function to fly to location
-  const flyTo = useCallback((lat: number, long: number) => {
-    // Convert lat/long to phi & theta
-    // long to phi: long = 0 is prime meridian
-    const phi = -((long * Math.PI) / 180) + Math.PI * 0.7;
-    const theta = (lat * Math.PI) / 180 * 0.5;
-    targetPhi.current = phi;
-    targetTheta.current = Math.max(-0.4, Math.min(0.6, theta));
+  // Rotation Euler values
+  const currentRotation = useRef({ x: 0.15, y: -Math.PI * 0.8 });
+
+  // Fly to office location
+  const flyToCity = useCallback((city: string) => {
+    const office = GLOBAL_OFFICES.find((o) => o.city === city);
+    if (!office) return;
+    const [lat, lon] = office.coords;
+    // Calculate Euler angles that bring (lat, lon) directly to the front center
+    const targetY = -((lon + 90) * Math.PI) / 180;
+    const targetX = -((lat * 0.65) * Math.PI) / 180;
+
+    targetRotation.current = { x: targetX, y: targetY };
+    autoRotate.current = false;
   }, []);
 
-  // When selectedCity changes from parent, fly to it
+  // Watch for external selectedCity change
   useEffect(() => {
     if (selectedCity) {
-      const office = GLOBAL_OFFICES.find((o) => o.city === selectedCity);
-      if (office) {
-        flyTo(office.coords[0], office.coords[1]);
-      }
+      flyToCity(selectedCity);
     }
-  }, [selectedCity, flyTo]);
+  }, [selectedCity, flyToCity]);
 
   useEffect(() => {
-    let phi = 0;
-    let theta = 0.2;
-    let width = 0;
+    const container = containerRef.current;
+    const canvas = canvasRef.current;
+    if (!container || !canvas) return;
 
-    const currentCanvas = canvasRef.current;
-    if (!currentCanvas) return;
+    // ── 1. Three.js Scene Setup ──
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+    camera.position.z = zoomDistance.current;
 
-    const onResize = () => {
-      if (currentCanvas) {
-        width = currentCanvas.offsetWidth;
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: "high-performance",
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    // ── 2. Realistic Earth Group ──
+    const earthGroup = new THREE.Group();
+    scene.add(earthGroup);
+
+    // Initial orientation
+    earthGroup.rotation.order = "YXZ";
+    earthGroup.rotation.x = currentRotation.current.x;
+    earthGroup.rotation.y = currentRotation.current.y;
+
+    // Texture Loader
+    const textureLoader = new THREE.TextureLoader();
+    const earthMap = textureLoader.load("/assets/earth/earth_day.jpg");
+    const earthSpecular = textureLoader.load("/assets/earth/earth_specular.jpg");
+    const earthClouds = textureLoader.load("/assets/earth/earth_clouds.png");
+
+    earthMap.colorSpace = THREE.SRGBColorSpace;
+
+    // ── Earth Core Sphere (Photorealistic NASA Blue Marble) ──
+    const earthRadius = 1.85;
+    const earthGeometry = new THREE.SphereGeometry(earthRadius, 64, 64);
+    const earthMaterial = new THREE.MeshPhongMaterial({
+      map: earthMap,
+      specularMap: earthSpecular,
+      specular: new THREE.Color(0x3a6088),
+      shininess: 18,
+      bumpScale: 0.05,
+    });
+    const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+    earthGroup.add(earthMesh);
+
+    // ── Drifting Cloud Sphere ──
+    const cloudGeometry = new THREE.SphereGeometry(earthRadius * 1.012, 64, 64);
+    const cloudMaterial = new THREE.MeshLambertMaterial({
+      map: earthClouds,
+      transparent: true,
+      opacity: 0.38,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+    const cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
+    earthGroup.add(cloudMesh);
+
+    // ── Ethereal Atmospheric Limb Glow ──
+    const atmosphereVertexShader = `
+      varying vec3 vNormal;
+      void main() {
+        vNormal = normalize(normalMatrix * normal);
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
       }
-    };
-    window.addEventListener("resize", onResize);
-    onResize();
+    `;
+    const atmosphereFragmentShader = `
+      varying vec3 vNormal;
+      void main() {
+        float intensity = pow(0.6 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.2);
+        gl_FragColor = vec4(0.25, 0.55, 1.0, 1.0) * intensity;
+      }
+    `;
+    const atmosphereGeometry = new THREE.SphereGeometry(earthRadius * 1.12, 64, 64);
+    const atmosphereMaterial = new THREE.ShaderMaterial({
+      vertexShader: atmosphereVertexShader,
+      fragmentShader: atmosphereFragmentShader,
+      blending: THREE.AdditiveBlending,
+      side: THREE.BackSide,
+      transparent: true,
+    });
+    const atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+    scene.add(atmosphereMesh);
 
-    const globe = createGlobe(currentCanvas, {
-      devicePixelRatio: typeof window !== "undefined" ? Math.min(window.devicePixelRatio, 2) : 2,
-      width: width * 2,
-      height: width * 2,
-      phi: 0,
-      theta: 0.2,
-      dark: 0,
-      diffuse: 1.35,
-      mapSamples: 20000,
-      mapBrightness: 2.2,
-      // Rich contrast navy blue for continents so they stand out clearly against the ocean
-      baseColor: [0.12, 0.26, 0.48],
-      // Glowing red-orange for strategic office pins
-      markerColor: [0.92, 0.2, 0.2],
-      // Atmospheric ice glow around edges
-      glowColor: [0.82, 0.9, 1],
-      markers: GLOBAL_OFFICES.map((office) => ({
-        location: office.coords,
-        size: office.city.includes("India") || office.city === "San Francisco" ? 0.09 : 0.07,
-      })),
+    // ── 3. Strategic Office 3D Markers & Pulsing Radar Beacons ──
+    const markerMeshes: {
+      beacon: THREE.Mesh;
+      pin: THREE.Mesh;
+      office: OfficeLocation;
+      localPos: THREE.Vector3;
+    }[] = [];
+
+    const pinGeometry = new THREE.SphereGeometry(0.038, 16, 16);
+    const pinMaterial = new THREE.MeshBasicMaterial({ color: 0xff3344 });
+
+    const beaconGeometry = new THREE.RingGeometry(0.02, 0.07, 32);
+    const beaconMaterial = new THREE.MeshBasicMaterial({
+      color: 0x0066cc,
+      side: THREE.DoubleSide,
+      transparent: true,
+      opacity: 0.85,
     });
 
+    GLOBAL_OFFICES.forEach((office) => {
+      const pos = latLongToVector3(office.coords[0], office.coords[1], earthRadius * 1.002);
+      
+      // Office Pin Head
+      const pin = new THREE.Mesh(pinGeometry, pinMaterial);
+      pin.position.copy(pos);
+      earthGroup.add(pin);
+
+      // Radar Beacon Ring (Oriented along normal vector)
+      const beacon = new THREE.Mesh(beaconGeometry, beaconMaterial.clone());
+      beacon.position.copy(pos.clone().multiplyScalar(1.001));
+      beacon.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), pos.clone().normalize());
+      earthGroup.add(beacon);
+
+      markerMeshes.push({
+        beacon,
+        pin,
+        office,
+        localPos: pos,
+      });
+    });
+
+    // ── 4. Lighting ──
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.6);
+    scene.add(ambientLight);
+
+    const sunLight = new THREE.DirectionalLight(0xffffff, 2.2);
+    sunLight.position.set(5, 3, 5);
+    scene.add(sunLight);
+
+    const fillLight = new THREE.DirectionalLight(0x88bbff, 0.8);
+    fillLight.position.set(-5, -2, -3);
+    scene.add(fillLight);
+
+    // ── 5. Responsive Resize ──
+    const handleResize = () => {
+      if (!container || !renderer) return;
+      const width = container.clientWidth;
+      const height = container.clientHeight || width;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    };
+    handleResize();
+    const resizeObserver = new ResizeObserver(handleResize);
+    resizeObserver.observe(container);
+
+    // ── 6. Animation Loop ──
     let rafId: number;
+    let clock = new THREE.Clock();
+
     const animate = () => {
-      // If user is dragging with mouse/pointer
-      if (pointerInteracting.current !== null) {
-        phi = pointerInteractionMovement.current;
-        theta = pointerYMovement.current;
-        targetPhi.current = null;
-        targetTheta.current = null;
-      } else if (targetPhi.current !== null && targetTheta.current !== null) {
-        // Smoothly interpolate towards target location
-        const dPhi = (targetPhi.current - phi);
-        const dTheta = (targetTheta.current - theta);
-        phi += dPhi * 0.05;
-        theta += dTheta * 0.05;
-        pointerInteractionMovement.current = phi;
-        pointerYMovement.current = theta;
+      const delta = clock.getDelta();
+      const elapsedTime = clock.getElapsedTime();
 
-        // If close enough, release target and resume gentle auto-spin
-        if (Math.abs(dPhi) < 0.01 && Math.abs(dTheta) < 0.01) {
-          targetPhi.current = null;
-          targetTheta.current = null;
-        }
-      } else {
-        // Gentle auto-rotation when idle
-        phi += 0.0035;
-        pointerInteractionMovement.current = phi;
-      }
+      // Independent cloud drift
+      cloudMesh.rotation.y += 0.00045;
 
-      globe.update({
-        phi,
-        theta,
-        width: width * 2 * zoomRef.current,
-        height: width * 2 * zoomRef.current,
+      // Pulse beacon rings
+      markerMeshes.forEach((item, idx) => {
+        const pulse = (Math.sin(elapsedTime * 3.5 + idx * 0.8) + 1) / 2;
+        const scale = 0.8 + pulse * 1.6;
+        item.beacon.scale.set(scale, scale, 1);
+        (item.beacon.material as THREE.MeshBasicMaterial).opacity = Math.max(0.1, 0.9 - pulse * 0.8);
       });
 
+      // Target fly-to animation with smooth damping
+      if (targetRotation.current) {
+        // Find shortest angular path for Y rotation
+        let diffY = (targetRotation.current.y - currentRotation.current.y) % (Math.PI * 2);
+        if (diffY > Math.PI) diffY -= Math.PI * 2;
+        if (diffY < -Math.PI) diffY += Math.PI * 2;
+
+        const diffX = targetRotation.current.x - currentRotation.current.x;
+
+        currentRotation.current.y += diffY * 0.08;
+        currentRotation.current.x += diffX * 0.08;
+
+        if (Math.abs(diffY) < 0.001 && Math.abs(diffX) < 0.001) {
+          targetRotation.current = null;
+          // Resume slow auto-rotation after 4 seconds
+          setTimeout(() => {
+            if (!isDragging.current && !targetRotation.current) {
+              autoRotate.current = true;
+            }
+          }, 3500);
+        }
+      } else if (isDragging.current) {
+        // Dragging is applied directly in event listeners
+      } else {
+        // Inertia damping
+        currentRotation.current.y += rotationVelocity.current.y;
+        currentRotation.current.x += rotationVelocity.current.x;
+        rotationVelocity.current.y *= 0.93;
+        rotationVelocity.current.x *= 0.93;
+
+        // Gentle auto rotation when idle
+        if (autoRotate.current) {
+          currentRotation.current.y += 0.0014;
+        }
+      }
+
+      // Clamp vertical tilt so Earth doesn't flip upside down
+      currentRotation.current.x = Math.max(-0.85, Math.min(0.85, currentRotation.current.x));
+
+      // Apply rotations
+      earthGroup.rotation.x = currentRotation.current.x;
+      earthGroup.rotation.y = currentRotation.current.y;
+
+      // Smooth camera zoom
+      zoomDistance.current += (targetZoomDistance.current - zoomDistance.current) * 0.1;
+      camera.position.z = zoomDistance.current;
+
+      // ── Project 3D office markers to 2D screen positions ──
+      const rect = container.getBoundingClientRect();
+      const newProjected: typeof projectedMarkers = [];
+
+      markerMeshes.forEach((item) => {
+        // Compute world position
+        const worldPos = item.localPos.clone();
+        worldPos.applyMatrix4(earthGroup.matrixWorld);
+
+        // Check if marker is on the hemisphere facing the camera
+        const normal = worldPos.clone().normalize();
+        const camDir = camera.position.clone().normalize();
+        const isFacing = normal.dot(camDir) > 0.15;
+
+        // Project to NDC (-1 to 1)
+        const screenPos = worldPos.clone().project(camera);
+        const x = (screenPos.x * 0.5 + 0.5) * rect.width;
+        const y = (-(screenPos.y * 0.5) + 0.5) * rect.height;
+
+        newProjected.push({
+          city: item.office.city,
+          region: item.office.region,
+          x,
+          y,
+          visible: isFacing,
+        });
+      });
+
+      setProjectedMarkers(newProjected);
+
+      // Render Three.js frame
+      renderer.render(scene, camera);
       rafId = requestAnimationFrame(animate);
     };
 
     rafId = requestAnimationFrame(animate);
 
+    // ── Cleanup ──
     return () => {
       cancelAnimationFrame(rafId);
-      window.removeEventListener("resize", onResize);
-      globe.destroy();
+      resizeObserver.disconnect();
+      earthGeometry.dispose();
+      earthMaterial.dispose();
+      cloudGeometry.dispose();
+      cloudMaterial.dispose();
+      atmosphereGeometry.dispose();
+      atmosphereMaterial.dispose();
+      pinGeometry.dispose();
+      pinMaterial.dispose();
+      beaconGeometry.dispose();
+      beaconMaterial.dispose();
+      earthMap.dispose();
+      earthSpecular.dispose();
+      earthClouds.dispose();
+      renderer.dispose();
     };
   }, []);
 
+  // ── Mouse & Touch Drag Handlers ──
   const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    pointerInteracting.current = e.clientX - pointerInteractionMovement.current;
-    pointerYInteracting.current = e.clientY - pointerYMovement.current * 400;
-    targetPhi.current = null;
-    targetTheta.current = null;
+    isDragging.current = true;
+    autoRotate.current = false;
+    targetRotation.current = null;
+    previousMousePosition.current = { x: e.clientX, y: e.clientY };
+    rotationVelocity.current = { x: 0, y: 0 };
     if (canvasRef.current) {
       canvasRef.current.style.cursor = "grabbing";
     }
   };
 
+  const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!isDragging.current) return;
+    const deltaX = e.clientX - previousMousePosition.current.x;
+    const deltaY = e.clientY - previousMousePosition.current.y;
+
+    const rotSpeed = 0.005;
+    currentRotation.current.y += deltaX * rotSpeed;
+    currentRotation.current.x += deltaY * rotSpeed;
+
+    rotationVelocity.current = {
+      x: deltaY * rotSpeed,
+      y: deltaX * rotSpeed,
+    };
+
+    previousMousePosition.current = { x: e.clientX, y: e.clientY };
+  };
+
   const handlePointerUp = () => {
-    pointerInteracting.current = null;
-    pointerYInteracting.current = null;
+    isDragging.current = false;
     if (canvasRef.current) {
       canvasRef.current.style.cursor = "grab";
     }
+    // Resume auto-rotation after a short pause if no momentum
+    setTimeout(() => {
+      if (!isDragging.current && !targetRotation.current) {
+        autoRotate.current = true;
+      }
+    }, 4000);
   };
 
-  const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (pointerInteracting.current !== null) {
-      const deltaX = e.clientX - pointerInteracting.current;
-      pointerInteractionMovement.current = deltaX * 0.006;
-    }
-    if (pointerYInteracting.current !== null) {
-      const deltaY = e.clientY - pointerYInteracting.current;
-      pointerYMovement.current = Math.max(-0.55, Math.min(0.65, deltaY / 400));
-    }
-  };
-
-  const handleWheel = (e: React.WheelEvent<HTMLCanvasElement>) => {
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     e.preventDefault();
-    setZoom((prev) => Math.max(0.85, Math.min(1.4, prev - e.deltaY * 0.001)));
+    const zoomDelta = e.deltaY * 0.0025;
+    targetZoomDistance.current = Math.max(3.6, Math.min(6.5, targetZoomDistance.current + zoomDelta));
   };
 
   return (
-    <div className={`relative flex items-center justify-center overflow-hidden w-full h-full ${className || ""}`}>
-      
-      {/* ── 3D Ocean Shaded Spherical Backdrop ── */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div
-          className="w-[78%] h-[78%] rounded-full shadow-[inset_0_0_50px_rgba(0,102,204,0.18),0_12px_36px_rgba(0,102,204,0.12)] border border-blue-200/70"
-          style={{
-            background: "radial-gradient(circle at 35% 30%, #ffffff 0%, #f0f7ff 55%, #d9ebff 100%)",
-          }}
-        />
-      </div>
-
-      {/* ── WebGL 3D Continents & Interactive Layer ── */}
+    <div
+      ref={containerRef}
+      onWheel={handleWheel}
+      className={`relative flex items-center justify-center overflow-hidden w-full h-full select-none ${className || ""}`}
+    >
+      {/* ── Three.js WebGL Canvas ── */}
       <canvas
         ref={canvasRef}
         onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        onPointerOut={handlePointerUp}
         onPointerMove={handlePointerMove}
-        onWheel={handleWheel}
-        className="w-full h-full cursor-grab active:cursor-grabbing touch-none select-none relative z-10"
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerUp}
+        className="w-full h-full cursor-grab active:cursor-grabbing touch-none relative z-10"
         style={{
-          width: "100%",
-          height: "100%",
-          maxWidth: "100%",
           aspectRatio: "1",
+          maxWidth: "100%",
+          maxHeight: "100%",
         }}
       />
+
+      {/* ── Interactive 2D Screen Overlays for Strategic Hubs ── */}
+      <div className="absolute inset-0 pointer-events-none z-20">
+        {projectedMarkers.map((marker, idx) => {
+          if (!marker.visible) return null;
+          const isSelected = selectedCity === marker.city;
+
+          return (
+            <div
+              key={idx}
+              className="absolute -translate-x-1/2 -translate-y-full transition-opacity duration-200 pointer-events-auto cursor-pointer"
+              style={{
+                left: `${marker.x}px`,
+                top: `${marker.y - 12}px`,
+              }}
+              onClick={() => onSelectCity?.(marker.city)}
+            >
+              <div
+                className={`group flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold shadow-md transition-all ${
+                  isSelected
+                    ? "bg-[#0066cc] text-white ring-2 ring-blue-300 scale-105"
+                    : "bg-white/95 text-slate-800 border border-slate-200/90 hover:bg-[#0066cc] hover:text-white"
+                }`}
+              >
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${
+                    isSelected ? "bg-white animate-ping" : "bg-red-500"
+                  }`}
+                />
+                <span className="whitespace-nowrap">{marker.city}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -76,3 +76,25 @@ html.lenis, html.lenis body {
   background: #bfdbfe;
   color: #1e3a8a;
 }
+
+/* ─── Infinite Smooth Right-to-Left Marquee ──────────────────── */
+@keyframes marquee-scroll-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-rtl {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll-rtl 28s linear infinite;
+}
+
+.animate-marquee-rtl:hover {
+  animation-play-state: paused;
+}
+
