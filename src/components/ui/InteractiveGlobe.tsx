@@ -56,9 +56,9 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
   const autoRotate = useRef(true);
   const targetRotation = useRef<{ x: number; y: number } | null>(null);
 
-  // Perfectly proportioned camera distance with generous margin so Earth is NEVER clipped
-  const zoomDistance = useRef(6.2);
-  const targetZoomDistance = useRef(6.2);
+  // Generous camera distance scaled for enlarged globe
+  const zoomDistance = useRef(5.4);
+  const targetZoomDistance = useRef(5.4);
 
   // Rotation Euler values
   const currentRotation = useRef({ x: 0.15, y: -Math.PI * 0.8 });
@@ -120,8 +120,8 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
     earthMap.colorSpace = THREE.SRGBColorSpace;
 
     // ── Earth Core Sphere (Photorealistic NASA Blue Marble) ──
-    // Scaled to 1.45 so with distance 6.2 and FOV 42, the sphere has ~33% padding and never clips
-    const earthRadius = 1.45;
+    // Scaled to 1.75 for maximum prominent scale across card height and width
+    const earthRadius = 1.75;
     const earthGeometry = new THREE.SphereGeometry(earthRadius, 64, 64);
     const earthMaterial = new THREE.MeshPhongMaterial({
       map: earthMap,
@@ -160,7 +160,7 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
         gl_FragColor = vec4(0.25, 0.55, 1.0, 1.0) * intensity;
       }
     `;
-    const atmosphereGeometry = new THREE.SphereGeometry(earthRadius * 1.10, 64, 64);
+    const atmosphereGeometry = new THREE.SphereGeometry(earthRadius * 1.08, 64, 64);
     const atmosphereMaterial = new THREE.ShaderMaterial({
       vertexShader: atmosphereVertexShader,
       fragmentShader: atmosphereFragmentShader,
@@ -179,10 +179,10 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
       localPos: THREE.Vector3;
     }[] = [];
 
-    const pinGeometry = new THREE.SphereGeometry(0.032, 16, 16);
+    const pinGeometry = new THREE.SphereGeometry(0.038, 16, 16);
     const pinMaterial = new THREE.MeshBasicMaterial({ color: 0xff3344 });
 
-    const beaconGeometry = new THREE.RingGeometry(0.018, 0.055, 32);
+    const beaconGeometry = new THREE.RingGeometry(0.022, 0.065, 32);
     const beaconMaterial = new THREE.MeshBasicMaterial({
       color: 0x0066cc,
       side: THREE.DoubleSide,
@@ -407,7 +407,7 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     e.preventDefault();
     const zoomDelta = e.deltaY * 0.0025;
-    targetZoomDistance.current = Math.max(4.8, Math.min(7.5, targetZoomDistance.current + zoomDelta));
+    targetZoomDistance.current = Math.max(4.4, Math.min(6.8, targetZoomDistance.current + zoomDelta));
   };
 
   return (
