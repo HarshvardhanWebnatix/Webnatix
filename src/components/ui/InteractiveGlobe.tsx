@@ -95,41 +95,50 @@ export function InteractiveGlobe({ className, selectedCity, onSelectCity }: Inte
         location: office.coords,
         size: office.city.includes("India") || office.city === "San Francisco" ? 0.09 : 0.07,
       })),
-      onRender: (state) => {
-        // If user is dragging with mouse/pointer
-        if (pointerInteracting.current !== null) {
-          phi = pointerInteractionMovement.current;
-          theta = pointerYMovement.current;
-          targetPhi.current = null;
-          targetTheta.current = null;
-        } else if (targetPhi.current !== null && targetTheta.current !== null) {
-          // Smoothly interpolate towards target location
-          const dPhi = (targetPhi.current - phi);
-          const dTheta = (targetTheta.current - theta);
-          phi += dPhi * 0.05;
-          theta += dTheta * 0.05;
-          pointerInteractionMovement.current = phi;
-          pointerYMovement.current = theta;
-
-          // If close enough, release target and resume gentle auto-spin
-          if (Math.abs(dPhi) < 0.01 && Math.abs(dTheta) < 0.01) {
-            targetPhi.current = null;
-            targetTheta.current = null;
-          }
-        } else {
-          // Gentle auto-rotation when idle
-          phi += 0.0035;
-          pointerInteractionMovement.current = phi;
-        }
-
-        state.phi = phi;
-        state.theta = theta;
-        state.width = width * 2 * zoomRef.current;
-        state.height = width * 2 * zoomRef.current;
-      },
     });
 
+    let rafId: number;
+    const animate = () => {
+      // If user is dragging with mouse/pointer
+      if (pointerInteracting.current !== null) {
+        phi = pointerInteractionMovement.current;
+        theta = pointerYMovement.current;
+        targetPhi.current = null;
+        targetTheta.current = null;
+      } else if (targetPhi.current !== null && targetTheta.current !== null) {
+        // Smoothly interpolate towards target location
+        const dPhi = (targetPhi.current - phi);
+        const dTheta = (targetTheta.current - theta);
+        phi += dPhi * 0.05;
+        theta += dTheta * 0.05;
+        pointerInteractionMovement.current = phi;
+        pointerYMovement.current = theta;
+
+        // If close enough, release target and resume gentle auto-spin
+        if (Math.abs(dPhi) < 0.01 && Math.abs(dTheta) < 0.01) {
+          targetPhi.current = null;
+          targetTheta.current = null;
+        }
+      } else {
+        // Gentle auto-rotation when idle
+        phi += 0.0035;
+        pointerInteractionMovement.current = phi;
+      }
+
+      globe.update({
+        phi,
+        theta,
+        width: width * 2 * zoomRef.current,
+        height: width * 2 * zoomRef.current,
+      });
+
+      rafId = requestAnimationFrame(animate);
+    };
+
+    rafId = requestAnimationFrame(animate);
+
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener("resize", onResize);
       globe.destroy();
     };
