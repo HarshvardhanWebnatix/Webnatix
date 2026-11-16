@@ -56,8 +56,8 @@ const footerSections = [
     links: [
       { label: "Book 20-min Call", href: "/contact" },
       { label: "info@webnatix.com", href: "mailto:info@webnatix.com" },
-      { label: "+91 8619478769", href: "tel:+918619478769" },
-      { label: "WhatsApp Support", href: "https://wa.me/918619478769" },
+      { label: "+91 9252052623", href: "tel:+919252052623" },
+      { label: "WhatsApp Support", href: "https://wa.me/919252052623" },
     ],
   },
 ];

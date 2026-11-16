@@ -39,7 +39,7 @@ export function CTABanner() {
             className="inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-[#0d223f] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#122e54] transition-all"
           >
             <MessageCircle size={18} className="text-[#25D366]" />
-            WhatsApp (+91 8619478769)
+            WhatsApp (+91 9252052623)
           </a>
 
           <a

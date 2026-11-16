@@ -5,8 +5,8 @@ export const SITE_CONFIG = {
   description:
     "Global software engineering studio designing and building high-performance websites, SaaS platforms, portals, dashboards, mobile apps, and AI platforms for ambitious businesses worldwide.",
   email: "info@webnatix.com",
-  phone: "+91 8619478769",
-  whatsapp: "https://wa.me/918619478769",
+  phone: "+91 9252052623",
+  whatsapp: "https://wa.me/919252052623",
   telegram: "https://t.me/webnatix",
   meetingUrl: "/contact",
   address: "Global Studio · US · APAC · Europe",
