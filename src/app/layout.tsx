@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
-  keywords: ["software engineering studio", "SaaS development", "Next.js", "AI automation", "mobile apps", "Webnatixx Technologies", "custom software"],
+  keywords: ["software engineering studio", "SaaS development", "Next.js", "AI automation", "mobile apps", "Webnatix Technologies", "custom software"],
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
   openGraph: {

@@ -8,7 +8,7 @@ export function CTABanner() {
   return (
     <section className="py-20 bg-[#0a192f] text-white relative overflow-hidden">
       <div className="mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16 text-center relative z-10">
-        
+
         <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300 uppercase mb-6">
           Ready to Engineer Something Extraordinary?
         </div>
@@ -19,7 +19,7 @@ export function CTABanner() {
         </h2>
 
         <p className="text-base sm:text-lg text-blue-100/80 max-w-2xl mx-auto leading-relaxed mb-10">
-          Partner with Webnatixx Technologies to build software solutions that win markets, delight users, and drive long-term business growth.
+          Partner with Webnatix Technologies to build software solutions that win markets, delight users, and drive long-term business growth.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4">

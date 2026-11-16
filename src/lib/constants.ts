@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
-  name: "Webnatixx Technologies",
-  shortName: "Webnatixx",
+  name: "Webnatix Technologies",
+  shortName: "Webnatix",
   tagline: "We Build Digital Products That Move Businesses Forward",
   description:
     "Global software engineering studio designing and building high-performance websites, SaaS platforms, portals, dashboards, mobile apps, and AI platforms for ambitious businesses worldwide.",
@@ -20,7 +20,7 @@ export const SITE_CONFIG = {
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Selected Work", href: "/work" },
-  { label: "Why Webnatixx", href: "/about" },
+  { label: "Why Webnatix", href: "/about" },
   { label: "Our Process", href: "/about#process" },
   { label: "Engineering Stack", href: "/services#stack" },
   { label: "Contact", href: "/contact" },
@@ -89,18 +89,18 @@ export const TESTIMONIALS = [
     name: "Alex V.",
     role: "Founder, Fintech SaaS",
     content:
-      "Webnatixx delivered our complete multi-tenant platform 2 weeks ahead of schedule. The code quality, speed, and architectural clarity were exceptional.",
+      "Webnatix delivered our complete multi-tenant platform 2 weeks ahead of schedule. The code quality, speed, and architectural clarity were exceptional.",
   },
   {
     name: "David K.",
     role: "VP of Engineering, Logistics Network",
     content:
-      "Working with Webnatixx felt like having a senior Principal Engineering collective embedded right inside our company. Clean code, 100% IP handed over.",
+      "Working with Webnatix felt like having a senior Principal Engineering collective embedded right inside our company. Clean code, 100% IP handed over.",
   },
   {
     name: "Elena R.",
     role: "Co-Founder, AI Productivity Suite",
     content:
-      "From database schema to real-time agent workflows, they architected everything flawlessly. Highly recommend Webnatixx for any ambitious founder.",
+      "From database schema to real-time agent workflows, they architected everything flawlessly. Highly recommend Webnatix for any ambitious founder.",
   },
 ];

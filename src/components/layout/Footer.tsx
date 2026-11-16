@@ -42,7 +42,7 @@ const footerSections = [
     ],
   },
   {
-    title: "Why Webnatixx",
+    title: "Why Webnatix",
     links: [
       { label: "100% IP & Code Ownership", href: "/about#ownership" },
       { label: "Fixed-Price Delivery", href: "/about#milestones" },
@@ -66,28 +66,28 @@ export function Footer() {
   return (
     <footer className="bg-[#071322] text-slate-300 border-t border-[#0e223d]">
       <div className="mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16 py-16">
-        
+
         {/* Top footer row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-[#0e223d]">
-          
+
           {/* Brand info (2 cols) */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <img 
-                src="/assets/navbar/webnatix-logo.png" 
-                alt="Webnatixx Technologies" 
+              <img
+                src="/assets/navbar/webnatix-logo.png"
+                alt="Webnatix Technologies"
                 className="h-10 w-auto object-contain"
               />
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-white tracking-tight">
-                  WebNatixx <span className="text-[#38bdf8]">Technologies</span>
+                  Webnatix <span className="text-[#38bdf8]">Technologies</span>
                 </span>
                 <span className="text-[10px] text-blue-300 uppercase tracking-widest font-semibold">
                   Global Software Engineering Studio
                 </span>
               </div>
             </Link>
-            
+
             <p className="text-xs text-slate-400 leading-relaxed mb-6 max-w-sm">
               Global software engineering studio designing and building high-performance websites, SaaS platforms, portals, dashboards, mobile apps, and AI platforms for ambitious businesses.
             </p>
@@ -136,7 +136,7 @@ export function Footer() {
 
         {/* Bottom copyright row */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-4">
-          <p>© 2026 Webnatixx Technologies. All rights reserved.</p>
+          <p>© 2026 Webnatix Technologies. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span className="text-blue-300 flex items-center gap-1">
               <ShieldCheck size={12} /> Custom-built &amp; yours to own 100% IP.

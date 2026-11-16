@@ -2,16 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  X, 
-  CheckCircle2, 
-  Phone, 
-  Mail, 
-  MapPin, 
-  ShieldCheck, 
-  ChevronLeft, 
-  ChevronRight, 
-  Star, 
+import {
+  X,
+  CheckCircle2,
+  Phone,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  ChevronLeft,
+  ChevronRight,
+  Star,
   Paperclip,
   Lock,
   ArrowRight
@@ -21,7 +21,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 const testimonials = [
   {
     quote:
-      "Webnatixx delivered our complete multi-tenant SaaS platform 2 weeks ahead of schedule. Clear processes, technical precision, and rapid response times throughout.",
+      "Webnatix delivered our complete multi-tenant SaaS platform 2 weeks ahead of schedule. Clear processes, technical precision, and rapid response times throughout.",
     name: "James Okafor",
     role: "CTO, FinVault Technologies",
     rating: "5.0",
@@ -84,7 +84,7 @@ export function LeadCaptureModal() {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto">
-          
+
           {/* Backdrop blur overlay */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -102,7 +102,7 @@ export function LeadCaptureModal() {
             transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full max-w-4xl rounded-[28px] bg-[#f8faf9] p-5 sm:p-8 md:p-10 shadow-2xl border border-white z-10 my-auto"
           >
-            
+
             {/* Top Close Button (Royal Blue Accent) */}
             <button
               onClick={handleClose}
@@ -125,13 +125,13 @@ export function LeadCaptureModal() {
 
             {/* Split Content Body */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-              
+
               {/* ── Left Column: Trust & Social Proof (5 cols) ── */}
               <div className="lg:col-span-5 flex flex-col justify-between space-y-5">
-                
+
                 {/* Testimonial Card with Arrows */}
                 <div className="relative rounded-2xl bg-white p-5 border border-gray-100 shadow-sm">
-                  
+
                   {/* Previous / Next buttons */}
                   <button
                     onClick={prevTestimonial}
@@ -176,7 +176,7 @@ export function LeadCaptureModal() {
 
                 {/* Deliverables & Quick Contacts */}
                 <div className="grid grid-cols-2 gap-3 text-xs pt-1">
-                  
+
                   {/* Deliverables */}
                   <div>
                     <div className="text-[11px] font-bold text-gray-900 mb-2 uppercase tracking-wide">
@@ -251,7 +251,7 @@ export function LeadCaptureModal() {
               {/* ── Right Column: The Inquiry Form (7 cols) ── */}
               <div className="lg:col-span-7">
                 <div className="rounded-2xl bg-white p-5 sm:p-6 border border-gray-100 shadow-sm h-full flex flex-col justify-between">
-                  
+
                   {submitted ? (
                     <div className="py-12 flex flex-col items-center justify-center text-center">
                       <div className="h-14 w-14 rounded-full bg-blue-50 text-[#0066cc] flex items-center justify-center mb-4">
@@ -264,7 +264,7 @@ export function LeadCaptureModal() {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-3.5">
-                      
+
                       {/* Response Time Badge */}
                       <p className="text-xs text-gray-700 font-medium">
                         We respond promptly, typically{" "}

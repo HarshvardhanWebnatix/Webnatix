@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { 
-  ShieldCheck, 
-  Layers, 
-  Sparkles, 
-  Smartphone, 
-  Globe2, 
-  Mail, 
-  MessageCircle, 
-  Send 
+import {
+  ShieldCheck,
+  Layers,
+  Sparkles,
+  Smartphone,
+  Globe2,
+  Mail,
+  MessageCircle,
+  Send
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 
@@ -44,13 +44,13 @@ const highlights = [
 export function Hero() {
   return (
     <section className="relative w-full overflow-hidden bg-[#FAFAF9]">
-      
+
       {/* ── Main Hero Row (Full bleed split with generous padding) ── */}
       <div className="relative z-10 flex flex-col lg:flex-row items-center min-h-[580px] px-4 sm:px-8 lg:px-12 xl:px-16 py-12 lg:py-6 gap-8 lg:gap-8 max-w-[1780px] mx-auto">
-        
+
         {/* ── Left Column (46% width) ── */}
         <div className="w-full lg:w-[46%] shrink-0 lg:py-16 text-left">
-          
+
           {/* Badge Pill */}
           <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 mb-5 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#e52320] shrink-0 animate-pulse" />
@@ -123,12 +123,12 @@ export function Hero() {
         {/* ── Right Column (54% width) with the Official WebP Image ── */}
         <div className="w-full lg:w-[54%] flex items-center justify-center lg:justify-end px-2 sm:px-4 lg:px-0 pb-8 lg:pb-0 lg:self-stretch">
           <div className="relative w-full max-w-[920px]">
-            <img 
-              alt="Webnatixx Technologies Platform Console" 
-              title="Webnatixx Technologies Platform Console" 
-              width={817} 
-              height={483} 
-              className="w-full h-auto object-contain relative z-10 drop-shadow-xl" 
+            <img
+              alt="Webnatix Technologies Platform Console"
+              title="Webnatix Technologies Platform Console"
+              width={817}
+              height={483}
+              className="w-full h-auto object-contain relative z-10 drop-shadow-xl"
               src="/assets/home/hero/hero-image.png"
             />
           </div>
@@ -142,7 +142,7 @@ export function Hero() {
           {highlights.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div 
+              <div
                 key={idx}
                 className="flex-1 min-w-[50%] lg:min-w-0 relative flex items-center gap-3 px-5 py-[18px] border-r border-white/10 last:border-r-0 cursor-default group overflow-hidden transition-colors hover:bg-[#0f2f57]"
               >
