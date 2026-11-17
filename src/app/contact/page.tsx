@@ -450,11 +450,11 @@ export default function ContactUsPage() {
                       <MapPin size={18} />
                     </div>
                     <div>
-                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">CORPORATE OFFICE</div>
+                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">CORPORATE HEADQUARTERS</div>
                       <div className="text-sm font-bold text-slate-900">
-                        Plot No 13, Kalyan City, Rampura Road, Patrakar Extension, Mansarovar, Jaipur, Rajasthan 302020
+                        WebNatix Technologies, Bengaluru, Karnataka, India
                       </div>
-                      <div className="text-[11px] text-slate-500 mt-0.5">Jaipur, India Tech Hub</div>
+                      <div className="text-[11px] text-slate-500 mt-0.5">India Technology Capital &amp; Global Delivery Hub</div>
                     </div>
                   </div>
                 </div>
@@ -596,9 +596,9 @@ export default function ContactUsPage() {
               <h3 className="text-xl font-black text-slate-900 mt-4">
                 India Tech Headquarters
               </h3>
-              <div className="text-xs font-bold text-slate-500 mt-0.5">Jaipur, Rajasthan</div>
+              <div className="text-xs font-bold text-slate-500 mt-0.5">Bengaluru, Karnataka</div>
               <p className="text-xs text-slate-600 leading-relaxed mt-3">
-                Plot No 13, Kalyan City, Rampura Road, Patrakar Extension, Mansarovar, Jaipur 302020
+                WebNatix Technologies, Bellandur Tech Corridor, Bengaluru, Karnataka, India
               </p>
             </div>
 
@@ -649,7 +649,7 @@ export default function ContactUsPage() {
               Visit Our Tech Headquarters
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm">
-              Located in the primary tech hub of Jaipur, India. Schedule an in-person meeting or connect virtually with our leadership team.
+              Located in the premier technology capital of Bengaluru, Karnataka, India. Schedule an in-person meeting or connect virtually with our leadership team.
             </p>
           </div>
 
@@ -671,9 +671,12 @@ export default function ContactUsPage() {
                 {/* Corporate Address */}
                 <div className="space-y-1">
                   <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">CORPORATE ADDRESS</div>
-                  <div className="text-sm font-bold text-slate-900">Webnatix Technologies</div>
+                  <div className="text-sm font-bold text-slate-900">WebNatix Technologies</div>
                   <p className="text-xs text-slate-600 leading-relaxed mt-1">
-                    Plot No 13, Kalyan City, Rampura Road, Patrakar Extension, Mansarovar, Jaipur, Rajasthan 302020, India
+                    Bengaluru, Karnataka, India
+                  </p>
+                  <p className="text-[11px] text-slate-400">
+                    Primary Technology Headquarters &amp; Global Delivery Center
                   </p>
                 </div>
 
@@ -717,7 +720,7 @@ export default function ContactUsPage() {
                 </a>
 
                 <a
-                  href="https://maps.google.com/?q=WebNatix+Technologies"
+                  href="https://maps.google.com/?q=WebNatix+Technologies+Bengaluru"
                   target="_blank"
                   rel="noreferrer"
                   className="w-full py-2.5 rounded-xl border border-slate-300 hover:border-[#0066cc] text-slate-700 hover:text-[#0066cc] font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
@@ -732,7 +735,7 @@ export default function ContactUsPage() {
             <div className="lg:col-span-8 rounded-3xl overflow-hidden border border-slate-200 shadow-md min-h-[420px] bg-slate-100 relative">
               <iframe
                 title="WebNatix Technologies Official Location Google Map"
-                src="https://maps.google.com/maps?q=WebNatix%20Technologies&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=WebNatix%20Technologies%20Bengaluru&t=&z=14&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: "420px" }}
