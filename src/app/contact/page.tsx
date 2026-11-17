@@ -690,29 +690,52 @@ export default function ContactUsPage() {
                   <div className="text-xs sm:text-sm font-bold text-slate-900">{SITE_CONFIG.phone}</div>
                   <div className="text-[11px] text-slate-500">{SITE_CONFIG.email}</div>
                 </div>
+
+                {/* Google Verified Status */}
+                <div className="p-3 rounded-xl bg-blue-50/70 border border-blue-100 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-[#0066cc]">Google Profile</span>
+                    <span className="flex items-center text-amber-400 text-xs font-bold">
+                      ★ 4.9 / 5
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-extrabold uppercase text-blue-700 bg-blue-100/60 px-2 py-0.5 rounded-full">
+                    Verified
+                  </span>
+                </div>
               </div>
 
-              <div className="pt-2">
+              <div className="pt-2 space-y-2">
                 <a
-                  href={`https://maps.google.com/?q=Plot+No+13+Kalyan+City+Mansarovar+Jaipur+Rajasthan+302020`}
+                  href="https://www.google.com/search?kgmid=%2Fg%2F11q9sswrkv&hl=en-IN&q=WebNatix%20Technologies&shem=epsd1%2Cesd2e%2Cltae%2Crimspwouoe%2Csdpie&shndl=30&source=sh%2Fx%2Floc%2Fosrp%2Fm5%2F1&kgs=fd297568d0ad3c85"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-2.5 rounded-xl border border-slate-300 hover:border-[#0066cc] text-slate-800 hover:text-[#0066cc] font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+                  className="w-full py-2.5 rounded-xl bg-[#0066cc] hover:bg-[#0052a3] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-blue-500/20 transition-all cursor-pointer"
                 >
-                  <span>Open in Google Maps</span>
+                  <span>View Official Google Business Listing</span>
                   <ExternalLink size={13} />
+                </a>
+
+                <a
+                  href="https://maps.google.com/?q=WebNatix+Technologies"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full py-2.5 rounded-xl border border-slate-300 hover:border-[#0066cc] text-slate-700 hover:text-[#0066cc] font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+                >
+                  <span>Get Driving Directions</span>
+                  <MapPin size={13} />
                 </a>
               </div>
             </div>
 
             {/* Right: Embedded Google Maps Iframe */}
-            <div className="lg:col-span-8 rounded-3xl overflow-hidden border border-slate-200 shadow-md min-h-[380px] bg-slate-100 relative">
+            <div className="lg:col-span-8 rounded-3xl overflow-hidden border border-slate-200 shadow-md min-h-[420px] bg-slate-100 relative">
               <iframe
-                title="Webnatix Technologies Headquarters Google Map"
-                src="https://maps.google.com/maps?q=Mansarovar,%20Jaipur,%20Rajasthan%20302020&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                title="WebNatix Technologies Official Location Google Map"
+                src="https://maps.google.com/maps?q=WebNatix%20Technologies&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
-                style={{ border: 0, minHeight: "380px" }}
+                style={{ border: 0, minHeight: "420px" }}
                 allowFullScreen={false}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
