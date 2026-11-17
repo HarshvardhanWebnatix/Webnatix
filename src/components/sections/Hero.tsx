@@ -53,7 +53,7 @@ export function Hero() {
 
           {/* Badge Pill */}
           <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 mb-5 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#00897b] shrink-0 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#0066cc] shrink-0 animate-pulse" />
             <span className="text-[11px] font-semibold tracking-widest text-blue-900 uppercase leading-none">
               24+ Years of Global Excellence · CMMI Level 3 Certified
             </span>

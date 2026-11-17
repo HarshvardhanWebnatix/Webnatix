@@ -31,53 +31,53 @@ interface WhyChooseTab {
 }
 
 const WHY_CHOOSE_TABS: WhyChooseTab[] = [
-  // ── TAB 1: PLATFORM EXCELLENCE ──
+  // ── TAB 1: ENTERPRISE EXCELLENCE ──
   {
     id: "software",
-    label: "Platform Excellence",
+    label: "Enterprise Excellence",
     icon: Layers,
-    overline: "UNMATCHED PLATFORM STANDARDS",
-    headlinePrefix: "iGaming & Tech",
+    overline: "24+ YEARS OF GLOBAL EXCELLENCE",
+    headlinePrefix: "Enterprise Digital",
     headlineHighlight: "Excellence",
     description:
-      "Building a globally competitive digital brand requires a foundation of security, scalability, and absolute operational freedom. We provide the infrastructure; you provide the vision.",
-    accentTag: "PLATFORM RELIABILITY",
+      "Building high-performance enterprise digital solutions requires proven engineering maturity, certified security, and absolute intellectual property control. We provide the technology engine; you lead your market.",
+    accentTag: "CMMI LEVEL 3 MATURITY",
     items: [
       {
         id: "p1",
-        title: "Ownership advantage",
+        title: "100% IP & Code Ownership",
         description:
-          "100% full platform ownership model giving you total control over your business.",
+          "Complete source code, intellectual property, and deployment assets belong entirely to you from day one with zero vendor lock-in.",
       },
       {
         id: "p2",
-        title: "No GGR",
+        title: "24+ Years & 27,000+ Projects",
         description:
-          "Maximize your profits with an absolute zero Gross Gaming Revenue share policy.",
+          "Founded in 2002, successfully delivering over 27,000 transformative web, mobile, cloud, and AI solutions worldwide.",
       },
       {
         id: "p3",
-        title: "Speed",
+        title: "1,200+ In-House Engineers",
         description:
-          "Rapid deployment frameworks ensure your turnkey business goes live in just 4–8 weeks.",
+          "No unvetted third-party outsourcing. Full-time certified architects, engineers, UI/UX designers, and QA specialists directly on payroll.",
       },
       {
         id: "p4",
-        title: "Tech strength",
+        title: "Global Capability Centre (GCC)",
         description:
-          "Enterprise-grade, highly scalable microservices architecture built to seamlessly handle peak concurrency.",
+          "State-of-the-art tech campus in Jaipur working seamlessly alongside client-facing hubs in London, Maryland, Melbourne, and Dubai.",
       },
       {
         id: "p5",
-        title: "Support",
+        title: "CMMI Level 3 & Agile Certified",
         description:
-          "Unwavering 24/7 technical and operational support delivered by seasoned industry veterans.",
+          "Standardized agile sprint cadences, peer code reviews, continuous regression testing, and ISO-aligned software engineering quality.",
       },
       {
         id: "p6",
-        title: "CMMI Level 3 Maturity",
+        title: "ISO 27001 & Cyber Essentials Plus",
         description:
-          "Standardized agile sprints, peer code reviews, continuous regression testing, and military-grade encryption built into every deploy.",
+          "Military-grade information security protocols, zero-trust infrastructure, and strict compliance standards safeguarding all client data.",
       },
     ],
   },
@@ -87,93 +87,93 @@ const WHY_CHOOSE_TABS: WhyChooseTab[] = [
     id: "delivery",
     label: "Delivery & Execution",
     icon: Clock,
-    overline: "DELIVERY & IMPLEMENTATION",
+    overline: "PRECISION & IMPLEMENTATION",
     headlinePrefix: "Trust in",
     headlineHighlight: "Execution",
     description:
-      "Great software is only as good as its implementation. We ensure a smooth transition with zero operational downtime, rigorous staff training, and a deployment strategy that fits your growth schedule.",
-    accentTag: "PLATFORM RELIABILITY",
+      "Great enterprise software is only as good as its execution. We ensure seamless agile sprints with zero operational downtime, tailored staff onboarding, and transparent project velocity.",
+    accentTag: "AGILE DELIVERY STANDARD",
     items: [
       {
         id: "d1",
-        title: "On-Time Deployment",
+        title: "On-Time Milestone Delivery",
         description:
-          "We adhere to strict timelines for setup and integration, ensuring your platform goes live exactly when planned without technical delays.",
+          "We adhere to strict sprint timelines and integration roadmaps, delivering releases with predictable velocity and zero unexpected lag.",
       },
       {
         id: "d2",
-        title: "Zero Downtime Updates",
+        title: "Zero Downtime Cloud Deployments",
         description:
-          "Updates and patches are deployed during off-hours to ensure your operations are never interrupted during peak player activity.",
+          "Continuous integration and continuous deployment (CI/CD) pipelines engineered for safe, zero-downtime production rollouts.",
       },
       {
         id: "d3",
-        title: "Dedicated Onboarding Specialists",
+        title: "Dedicated Project Managers & BAs",
         description:
-          "Our experts guide your team through hands-on training tailored to your specific platform workflow and back-office management.",
+          "Direct daily communication with dedicated scrum masters, technical business analysts, and lead solution architects assigned to your pod.",
       },
       {
         id: "d4",
-        title: "24/7 Operational Support",
+        title: "24/7 Global Technical Support",
         description:
-          "We provide round-the-clock support to resolve any critical issues instantly, ensuring your platform never stops performing.",
+          "Round-the-clock proactive monitoring and Tier-3 technical support spanning European, American, and APAC business hours.",
       },
       {
         id: "d5",
         title: "Post-Launch Performance Reviews",
         description:
-          "We don't vanish after launch. We conduct scheduled check-ins to optimize system performance and ensure you're utilizing the latest platform features.",
+          "We don't vanish after launch. We conduct scheduled telemetry reviews, load-testing audits, and continuous performance tuning.",
       },
     ],
   },
 
-  // ── TAB 3: CORE VALUES ──
+  // ── TAB 3: CORE ENGAGEMENT VALUES ──
   {
     id: "values",
-    label: "Core MetaBlock Values",
+    label: "Core Engagement Values",
     icon: ShieldCheck,
-    overline: "THE METABLOCK PROMISE",
+    overline: "THE WEBNATIX PROMISE",
     headlinePrefix: "Our",
     headlineHighlight: "Core Values",
     description:
-      "We are more than a vendor; we are your technology partner. Our business is built on integrity, transparency, and a relentless drive to see our clients succeed in the competitive market.",
-    accentTag: "PLATFORM RELIABILITY",
+      "We are more than a software development vendor; we are your long-term technology co-pilot. Our partnership is built on commercial integrity, complete transparency, and measurable ROI.",
+    accentTag: "CLIENT-CENTRIC INTEGRITY",
     items: [
       {
         id: "v1",
         title: "Transparency First",
         description:
-          "No hidden fees or locked features. We believe in clear pricing and honest communication about our platform's capabilities and roadmap.",
+          "No hidden maintenance surcharges or locked features. Clear transparent sprint estimates, timesheets, and real-time Jira visibility.",
       },
       {
         id: "v2",
-        title: "Operator-Centric Innovation",
+        title: "Client-Centric Innovation",
         description:
-          "Our roadmap is driven by feedback from real operators, ensuring we build features that solve actual operational challenges.",
+          "Our engineering roadmaps are driven by your business KPIs, user workflows, and measurable commercial value.",
       },
       {
         id: "v3",
-        title: "Long-Term Partnership",
+        title: "Flexible Engagement Models",
         description:
-          "We don't just sell software; we partner with your growth, scaling our solutions as your player base and market reach expand.",
+          "Choose from dedicated development pods, time & materials, staff augmentation, or fixed-scope turnkey delivery tailored to your budget.",
       },
       {
         id: "v4",
-        title: "Data Security & Player Privacy",
+        title: "Enterprise Data Security",
         description:
-          "We enforce enterprise-grade security protocols to protect your business data and player information from any external threats.",
+          "We enforce strict NDA protocols, SOC-2 compliant infrastructure, and encrypted communications safeguarding all client assets.",
       },
       {
         id: "v5",
-        title: "Compliance Focus",
+        title: "Multi-Cloud & Technology Agnostic",
         description:
-          "Our platform's compliance-first architecture helps your business meet regulatory demands while maintaining high operational efficiency.",
+          "Certified expertise across AWS, Azure, Google Cloud, Salesforce, Microsoft Fabric, and modern headless web architectures.",
       },
       {
         id: "v6",
-        title: "Continuous Improvement",
+        title: "Continuous Innovation & R&D",
         description:
-          "We are constantly learning and improving our software based on operator feedback and the latest industry trends.",
+          "Ongoing team upskilling in Agentic AI, LLM orchestration, microservices, and next-generation cloud architectures.",
       },
     ],
   },
@@ -181,19 +181,19 @@ const WHY_CHOOSE_TABS: WhyChooseTab[] = [
 
 export function Features() {
   const [activeTabId, setActiveTabId] = useState<"software" | "delivery" | "values">("software");
-  const [hoveredCardId, setHoveredCardId] = useState<string>("p4"); // Default active card
+  const [hoveredCardId, setHoveredCardId] = useState<string>("p1"); // Default active card
 
   const currentTab = WHY_CHOOSE_TABS.find((t) => t.id === activeTabId) || WHY_CHOOSE_TABS[0];
 
   return (
     <section className="relative py-20 sm:py-28 bg-[#fcfdfd] border-t border-slate-100">
       
-      {/* Background Subtle Tech Blueprint Grid */}
+      {/* Background Subtle Tech Blueprint Grid with Webnatix Brand Blue */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage:
-            "linear-gradient(#00897b 1px, transparent 1px), linear-gradient(to right, #00897b 1px, transparent 1px)",
+            "linear-gradient(#0066cc 1px, transparent 1px), linear-gradient(to right, #0066cc 1px, transparent 1px)",
           backgroundSize: "44px 44px",
         }}
       />
@@ -203,7 +203,7 @@ export function Features() {
         {/* ── 1. Top Section Header ── */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black tracking-tight text-slate-900">
-            WHY <span className="text-[#00897b]">CHOOSE US</span>
+            WHY <span className="text-[#0066cc]">CHOOSE US</span>
           </h2>
 
           {/* ── 2. Top Category Switcher Tabs ── */}
@@ -221,7 +221,7 @@ export function Features() {
                   }}
                   className={`relative flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${
                     isActive
-                      ? "bg-[#00897b] text-white shadow-md shadow-teal-700/20 border border-[#00897b]"
+                      ? "bg-[#0066cc] text-white shadow-md shadow-blue-700/20 border border-[#0066cc]"
                       : "border border-slate-200/90 bg-white/90 text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                   }`}
                 >
@@ -248,14 +248,14 @@ export function Features() {
                 className="space-y-4"
               >
                 {/* Overline Tag */}
-                <div className="text-[11px] font-black uppercase tracking-[0.2em] text-[#00897b]">
+                <div className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0066cc]">
                   {currentTab.overline}
                 </div>
 
                 {/* Main Headline */}
                 <h3 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-slate-900 tracking-tight leading-[1.12]">
                   {currentTab.headlinePrefix}{" "}
-                  <span className="text-[#00897b]">{currentTab.headlineHighlight}</span>
+                  <span className="text-[#0066cc]">{currentTab.headlineHighlight}</span>
                 </h3>
 
                 {/* Description Paragraph */}
@@ -263,9 +263,9 @@ export function Features() {
                   {currentTab.description}
                 </p>
 
-                {/* Subtitle Accent Line matching screenshot */}
+                {/* Subtitle Accent Line matching brand blue */}
                 <div className="pt-4 flex items-center gap-3">
-                  <span className="w-8 h-[2px] bg-[#00897b] rounded-full shrink-0" />
+                  <span className="w-8 h-[2px] bg-[#0066cc] rounded-full shrink-0" />
                   <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
                     {currentTab.accentTag}
                   </span>
@@ -276,7 +276,7 @@ export function Features() {
 
           {/* ── RIGHT COLUMN: SCROLLABLE CARDS (Scrolls independently while left is static) ── */}
           <div className="lg:col-span-7">
-            <div className="max-h-[580px] overflow-y-auto pr-2 sm:pr-3 space-y-4 scroll-smooth scrollbar-thin scrollbar-thumb-teal-600/20 scrollbar-track-slate-100 hover:scrollbar-thumb-teal-600/40">
+            <div className="max-h-[580px] overflow-y-auto pr-2 sm:pr-3 space-y-4 scroll-smooth scrollbar-thin scrollbar-thumb-blue-600/20 scrollbar-track-slate-100 hover:scrollbar-thumb-blue-600/40">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentTab.id}
@@ -296,16 +296,16 @@ export function Features() {
                         onClick={() => setHoveredCardId(card.id)}
                         className={`group rounded-2xl border p-5 sm:p-6 transition-all duration-300 flex items-start gap-4 cursor-pointer ${
                           isActive
-                            ? "border-[#00897b]/50 bg-white shadow-md shadow-teal-900/5 ring-1 ring-[#00897b]/25"
-                            : "border-slate-200/90 bg-white shadow-xs hover:border-[#00897b]/40 hover:shadow-sm"
+                            ? "border-[#0066cc]/50 bg-white shadow-md shadow-blue-900/5 ring-1 ring-[#0066cc]/25"
+                            : "border-slate-200/90 bg-white shadow-xs hover:border-[#0066cc]/40 hover:shadow-sm"
                         }`}
                       >
-                        {/* Circle Checkmark Icon */}
+                        {/* Circle Checkmark Icon with Brand Blue */}
                         <div
                           className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 ${
                             isActive
-                              ? "bg-[#00897b] text-white shadow-sm scale-105"
-                              : "bg-teal-50 border border-teal-200/70 text-[#00897b] group-hover:bg-[#00897b] group-hover:text-white"
+                              ? "bg-[#0066cc] text-white shadow-sm scale-105"
+                              : "bg-blue-50 border border-blue-200/70 text-[#0066cc] group-hover:bg-[#0066cc] group-hover:text-white"
                           }`}
                         >
                           <Check size={18} className="stroke-[2.8]" />
@@ -316,7 +316,7 @@ export function Features() {
                           <div className="flex items-center justify-between">
                             <h4
                               className={`text-base sm:text-[17px] font-bold transition-colors leading-snug ${
-                                isActive ? "text-[#00897b]" : "text-slate-900 group-hover:text-[#00897b]"
+                                isActive ? "text-[#0066cc]" : "text-slate-900 group-hover:text-[#0066cc]"
                               }`}
                             >
                               {card.title}
@@ -326,8 +326,8 @@ export function Features() {
                               size={16}
                               className={`transition-all duration-300 shrink-0 ml-2 ${
                                 isActive
-                                  ? "text-[#00897b] translate-x-1 opacity-100"
-                                  : "text-slate-300 opacity-60 group-hover:text-[#00897b] group-hover:opacity-100 group-hover:translate-x-1"
+                                  ? "text-[#0066cc] translate-x-1 opacity-100"
+                                  : "text-slate-300 opacity-60 group-hover:text-[#0066cc] group-hover:opacity-100 group-hover:translate-x-1"
                               }`}
                             />
                           </div>

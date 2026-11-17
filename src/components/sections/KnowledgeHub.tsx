@@ -12,7 +12,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Clock,
-  Sparkles,
 } from "lucide-react";
 
 interface HubCard {
@@ -21,7 +20,6 @@ interface HubCard {
   title: string;
   description: string;
   href?: string;
-  highlightWords?: string[];
 }
 
 interface HubTab {
@@ -38,31 +36,31 @@ const KNOWLEDGE_TABS: HubTab[] = [
     id: "blog",
     label: "Blog",
     icon: BookOpen,
-    buttonLabel: "View More Blog",
+    buttonLabel: "View More Blogs",
     cards: [
       {
         id: "b1",
-        date: "OCT 24, 2024",
-        title: "The Future of Decentralized iGaming",
+        date: "NOV 14, 2024",
+        title: "Generative AI & LLMs in Enterprise Workflows",
         description:
-          "How blockchain technology is solving the transparency gap in modern betting and enterprise software platforms.",
-        href: "/services",
+          "How Fortune 500 enterprises are moving from AI proof-of-concepts to secure, private on-premise RAG architectures.",
+        href: "/services/ai-machine-learning",
       },
       {
         id: "b2",
-        date: "OCT 15, 2024",
-        title: "Top 5 Marketing Strategies for 2025",
+        date: "OCT 28, 2024",
+        title: "Monolith to Microservices: A Modern Roadmap",
         description:
-          "Attracting high-value players and enterprise clients in heavily regulated markets through content, technical SEO, and conversion architecture.",
-        href: "/services",
+          "Practical architectural strategies for breaking legacy enterprise monoliths into resilient, event-driven cloud services.",
+        href: "/services/full-stack-development",
       },
       {
         id: "b3",
-        date: "SEP 28, 2024",
-        title: "Telegram Casinos: A New Frontier",
+        date: "OCT 10, 2024",
+        title: "Small Language Models (SLMs) vs Large LLMs",
         description:
-          "Why mobile-first operators and next-gen platforms are moving their entire tech stacks and mini-apps onto messaging ecosystems.",
-        href: "/services",
+          "Why domain-specialized lightweight models are cutting enterprise compute overhead by 70% while improving response accuracy.",
+        href: "/services/ai-machine-learning",
       },
     ],
   },
@@ -76,27 +74,27 @@ const KNOWLEDGE_TABS: HubTab[] = [
     cards: [
       {
         id: "n1",
-        date: "OCT 20, 2024",
-        title: "Brazillian Market Regulation Update",
+        date: "NOV 02, 2024",
+        title: "CMMI Level 3 & ISO 27001 Re-Certification",
         description:
-          "New federal laws regarding fixed-odds betting, KYC verification, and online casino operations are now live across LATAM.",
-        href: "/services",
+          "Dotsquares successfully completes rigorous international audits, validating our software quality and cybersecurity protocols.",
+        href: "/about",
       },
       {
         id: "n2",
-        date: "OCT 05, 2024",
-        title: "MetaBlock Enters Strategic Partnership",
+        date: "OCT 16, 2024",
+        title: "Global Capability Centre Expansion in Jaipur",
         description:
-          "Expanding our high-throughput engineering reach into global emerging markets alongside certified tier-1 compliance partners.",
-        href: "/services",
+          "Unveiling our upgraded state-of-the-art tech campus housing 1,200+ full-time engineers and specialized AI innovation labs.",
+        href: "/about",
       },
       {
         id: "n3",
-        date: "SEP 12, 2024",
-        title: "Global iGaming Summit: Recap",
+        date: "SEP 20, 2024",
+        title: "Forbes Technology Council Keynote on Digital Agility",
         description:
-          "Insights from the world's leading technical architects on AI-driven risk management, automated fraud detection, and player safety.",
-        href: "/services",
+          "Executive perspectives on sustainable engineering scaling, cloud economics, and building resilient distributed teams.",
+        href: "/about",
       },
     ],
   },
@@ -110,27 +108,27 @@ const KNOWLEDGE_TABS: HubTab[] = [
     cards: [
       {
         id: "a1",
-        date: "OCT 18, 2024",
-        title: "Scalable Microservices for High Traffic",
+        date: "OCT 24, 2024",
+        title: "Scalable Cloud Architecture for High-Traffic SaaS",
         description:
-          "A technical guide on building betting engines and transactional systems that handle 10k+ concurrent requests per second with sub-50ms latency.",
-        href: "/services",
+          "A technical guide on load-balancing, Redis caching tiers, and multi-region database replication for sub-50ms latency.",
+        href: "/services/devops-cloud",
       },
       {
         id: "a2",
-        date: "OCT 08, 2024",
-        title: "Optimizing Payment Gateways for Crypto",
+        date: "OCT 05, 2024",
+        title: "Integrating Microsoft Fabric with Enterprise Data Lakes",
         description:
-          "How the ownership model handles decentralized liquidity, multi-currency settlement rails, and automated compliance tracking.",
-        href: "/services",
+          "Eliminating enterprise data silos through Power BI, real-time analytics pipelines, and automated Azure DevOps governance.",
+        href: "/services/data-strategy",
       },
       {
         id: "a3",
-        date: "SEP 15, 2024",
-        title: "The Role of AI in Fraud Detection",
+        date: "SEP 18, 2024",
+        title: "The Role of AI in Fraud Detection & Risk Analysis",
         description:
-          "Leveraging machine learning models to identify syndicate betting patterns, anomalous liquidity withdrawals, and collusion in real time.",
-        href: "/services",
+          "Leveraging machine learning models to identify transaction anomalies, unauthorized access, and suspicious activity in real time.",
+        href: "/services/ai-machine-learning",
       },
     ],
   },
@@ -144,35 +142,35 @@ const KNOWLEDGE_TABS: HubTab[] = [
     cards: [
       {
         id: "c1",
-        date: "AUG 12, 2024",
-        title: "Crypto Casino Platform",
+        date: "NOV 08, 2024",
+        title: "17-Portal Enterprise Migration to Drupal 10",
         description:
-          "A next-gen decentralized crypto casino platform featuring lightning-fast transactions and real-time blockchain transparency.",
-        href: "/services",
+          "Centralizing a multinational industrial manufacturing group's global web infrastructure with multi-language and multi-region CMS capabilities.",
+        href: "/services/website-development",
       },
       {
         id: "c2",
-        date: "JUL 28, 2024",
-        title: "Global Sportsbook Platform",
+        date: "OCT 19, 2024",
+        title: "Multi-Brand Travel Platform Modernization",
         description:
-          "A scalable sportsbook solution with real-time odds and localized betting experiences for high concurrency.",
-        href: "/services",
+          "Scaling booking engine throughput for UK travel conglomerates with microservices, live API aggregators, and zero-downtime cutover.",
+        href: "/services/full-stack-development",
       },
       {
         id: "c3",
-        date: "JUN 15, 2024",
-        title: "Sweepstakes Casino (US Market)",
+        date: "SEP 12, 2024",
+        title: "FinTech Digital Banking & KYC Automation",
         description:
-          "A fully compliant sweepstakes-based casino platform tailored for regulated markets with gamified rewards.",
-        href: "/services",
+          "Engineering a compliant, high-security banking dashboard with biometric verification, automated credit scoring, and ISO 20022 messaging.",
+        href: "/services/full-stack-development",
       },
       {
         id: "c4",
-        date: "MAY 22, 2024",
-        title: "Mobile Betting App UX Revamp",
+        date: "AUG 26, 2024",
+        title: "Cloud Data Warehouse & Power BI Analytics Hub",
         description:
-          "Complete redesign of a legacy betting app into a modern, high-performance mobile experience with intuitive navigation.",
-        href: "/services",
+          "Unifying distributed ERP and CRM data streams into Microsoft Azure, delivering real-time executive visibility across 12 countries.",
+        href: "/services/data-strategy",
       },
     ],
   },
@@ -186,26 +184,26 @@ const KNOWLEDGE_TABS: HubTab[] = [
     cards: [
       {
         id: "ac1",
-        date: "OCT 22, 2024",
-        title: "iGaming 101: A Beginner's Guide",
+        date: "OCT 30, 2024",
+        title: "Enterprise Cloud Migration: The Step-by-Step Playbook",
         description:
-          "Master the essentials of the industry, from platform licensing and PAM workflows to PAM integrations and player lifecycle management.",
-        href: "/services",
+          "Master the 6 R's of cloud modernization, cost optimization frameworks, and zero-downtime workload cutover methodologies.",
+        href: "/services/devops-cloud",
       },
       {
         id: "ac2",
-        date: "OCT 12, 2024",
-        title: "Advanced Yield Optimization",
+        date: "OCT 14, 2024",
+        title: "Agile Scrum Mastery for Technical Leaders",
         description:
-          "A deep dive into mathematical models, RTP algorithms, and behavioral analytics for maximizing operator profitability and retention.",
+          "Best practices for sprint velocity forecasting, CI/CD pipeline automation, and running distributed cross-functional teams.",
         href: "/services",
       },
       {
         id: "ac3",
-        date: "SEP 30, 2024",
-        title: "AML Compliance Certification",
+        date: "SEP 25, 2024",
+        title: "Cybersecurity Compliance & OWASP Top 10 Standards",
         description:
-          "Ensure your platform meets international anti-money laundering standards, KYC verifications, and regulatory audit criteria.",
+          "Practical training for software engineers on vulnerability mitigation, container security, and regulatory audit compliance.",
         href: "/services",
       },
     ],
@@ -217,31 +215,31 @@ export function KnowledgeHub() {
   const currentTab = KNOWLEDGE_TABS.find((t) => t.id === activeTabId) || KNOWLEDGE_TABS[0];
 
   return (
-    <section className="relative py-24 sm:py-32 bg-[#041a1c] overflow-hidden text-white border-t border-teal-900/40">
+    <section className="relative py-24 sm:py-32 bg-[#06101e] overflow-hidden text-white border-t border-blue-900/40">
       
-      {/* Background Subtle Tech Blueprint Grid */}
+      {/* Background Subtle Tech Blueprint Grid matching Webnatix Brand Blue */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="pointer-events-none absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage:
-            "linear-gradient(#00dfa2 1px, transparent 1px), linear-gradient(90deg, #00dfa2 1px, transparent 1px)",
+            "linear-gradient(#0066cc 1px, transparent 1px), linear-gradient(90deg, #0066cc 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
 
       {/* Atmospheric Ambient Glow Orbs */}
-      <div className="pointer-events-none absolute top-0 right-0 w-[700px] h-[700px] bg-teal-500/8 blur-[150px] rounded-full" />
-      <div className="pointer-events-none absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-600/8 blur-[130px] rounded-full" />
+      <div className="pointer-events-none absolute top-0 right-0 w-[700px] h-[700px] bg-blue-600/10 blur-[150px] rounded-full" />
+      <div className="pointer-events-none absolute bottom-0 left-0 w-[600px] h-[600px] bg-sky-500/8 blur-[130px] rounded-full" />
 
       <div className="relative mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16 z-10">
         
         {/* ── 1. Section Header ── */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-black tracking-tight leading-tight">
-            Knowledge <span className="text-[#00dfa2]">Hub</span>
+            Knowledge <span className="text-[#38bdf8]">Hub</span>
           </h2>
-          <p className="mt-3.5 text-sm sm:text-base text-teal-100/70 leading-relaxed font-normal max-w-2xl mx-auto">
-            Stay ahead with expert insights, technical resources, and real-world case studies from the iGaming, Web3, and enterprise software ecosystem.
+          <p className="mt-3.5 text-sm sm:text-base text-blue-100/70 leading-relaxed font-normal max-w-2xl mx-auto">
+            Stay ahead with expert insights, technical resources, and enterprise case studies from the global software engineering, AI, and cloud ecosystem.
           </p>
 
           {/* ── 2. Top 5 Category Tabs ── */}
@@ -256,18 +254,18 @@ export function KnowledgeHub() {
                   onClick={() => setActiveTabId(tab.id)}
                   className={`relative flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
                     isActive
-                      ? "text-white shadow-md shadow-teal-500/25"
-                      : "text-teal-100/70 hover:text-white hover:bg-white/5"
+                      ? "text-white shadow-md shadow-blue-500/25"
+                      : "text-blue-100/70 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeKnowledgeHubTab"
-                      className="absolute inset-0 rounded-full bg-[#00a88f]"
+                      className="absolute inset-0 rounded-full bg-[#0066cc]"
                       transition={{ type: "spring", stiffness: 420, damping: 32 }}
                     />
                   )}
-                  <Icon size={14} className={`relative z-10 ${isActive ? "text-white" : "text-teal-300/80"}`} />
+                  <Icon size={14} className={`relative z-10 ${isActive ? "text-white" : "text-sky-300/80"}`} />
                   <span className="relative z-10">{tab.label}</span>
                 </button>
               );
@@ -275,7 +273,7 @@ export function KnowledgeHub() {
           </div>
         </div>
 
-        {/* ── 3. Cards Grid (3 Cards per Tab) ── */}
+        {/* ── 3. Cards Grid (3-4 Cards per Tab) ── */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentTab.id}
@@ -288,33 +286,33 @@ export function KnowledgeHub() {
             {currentTab.cards.map((card) => (
               <div
                 key={card.id}
-                className="group relative rounded-3xl border border-teal-900/50 bg-gradient-to-b from-[#0a2327]/80 via-[#061c1f]/85 to-[#041618]/95 backdrop-blur-md p-6 sm:p-7 shadow-xl shadow-black/40 hover:border-teal-400/50 hover:shadow-[0_20px_50px_rgba(0,168,143,0.18)] transition-all duration-400 flex flex-col justify-between hover:-translate-y-2"
+                className="group relative rounded-3xl border border-blue-900/50 bg-gradient-to-b from-[#0c203b]/80 via-[#08182d]/85 to-[#050f1e]/95 backdrop-blur-md p-6 sm:p-7 shadow-xl shadow-black/40 hover:border-sky-400/50 hover:shadow-[0_20px_50px_rgba(0,102,204,0.22)] transition-all duration-400 flex flex-col justify-between hover:-translate-y-2"
               >
                 <div>
                   {/* Top Date Badge */}
-                  <div className="inline-flex items-center gap-1.5 rounded-full bg-teal-950/70 border border-teal-500/30 px-3 py-1 text-[10.5px] font-bold text-teal-300 uppercase tracking-wider shadow-2xs group-hover:border-teal-400/50 transition-colors">
-                    <Clock size={11} className="text-teal-400" />
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-blue-950/80 border border-blue-500/30 px-3 py-1 text-[10.5px] font-bold text-sky-300 uppercase tracking-wider shadow-2xs group-hover:border-sky-400/50 transition-colors">
+                    <Clock size={11} className="text-sky-400" />
                     <span>{card.date}</span>
                   </div>
 
                   {/* Card Title */}
-                  <h3 className="text-xl sm:text-[22px] font-bold text-white group-hover:text-[#00dfa2] transition-colors leading-snug mt-4">
+                  <h3 className="text-xl sm:text-[22px] font-bold text-white group-hover:text-[#38bdf8] transition-colors leading-snug mt-4">
                     <Link href={card.href || "/services"} className="hover:underline">
                       {card.title}
                     </Link>
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-3 text-xs sm:text-[13.5px] text-teal-100/70 leading-relaxed font-normal">
+                  <p className="mt-3 text-xs sm:text-[13.5px] text-blue-100/70 leading-relaxed font-normal">
                     {card.description}
                   </p>
                 </div>
 
                 {/* Card Bottom Row: Read Story + Circle Icon Button */}
-                <div className="mt-7 pt-4 border-t border-teal-900/40 flex items-center justify-between text-xs font-bold">
+                <div className="mt-7 pt-4 border-t border-blue-900/40 flex items-center justify-between text-xs font-bold">
                   <Link
                     href={card.href || "/services"}
-                    className="inline-flex items-center gap-1.5 text-white/90 group-hover:text-[#00dfa2] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-white/90 group-hover:text-[#38bdf8] transition-colors"
                   >
                     <span>Read Story</span>
                     <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
@@ -323,7 +321,7 @@ export function KnowledgeHub() {
                   <Link
                     href={card.href || "/services"}
                     aria-label={`Read ${card.title}`}
-                    className="w-9 h-9 rounded-full bg-teal-950/60 border border-teal-500/40 text-teal-300 flex items-center justify-center shadow-xs group-hover:bg-[#00a88f] group-hover:text-white group-hover:border-[#00a88f] group-hover:scale-110 transition-all duration-300"
+                    className="w-9 h-9 rounded-full bg-blue-950/60 border border-blue-500/40 text-sky-300 flex items-center justify-center shadow-xs group-hover:bg-[#0066cc] group-hover:text-white group-hover:border-[#0066cc] group-hover:scale-110 transition-all duration-300"
                   >
                     <ArrowUpRight size={15} />
                   </Link>
@@ -337,7 +335,7 @@ export function KnowledgeHub() {
         <div className="mt-12 text-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 rounded-full border border-teal-500/40 bg-teal-950/50 hover:bg-[#00a88f] text-teal-300 hover:text-white hover:border-[#00a88f] px-7 py-3 text-xs font-bold transition-all duration-300 shadow-md shadow-black/30 hover:scale-105 active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-950/50 hover:bg-[#0066cc] text-sky-300 hover:text-white hover:border-[#0066cc] px-7 py-3 text-xs font-bold transition-all duration-300 shadow-md shadow-black/30 hover:scale-105 active:scale-95 cursor-pointer"
           >
             <span>{currentTab.buttonLabel}</span>
             <ArrowRight size={14} />

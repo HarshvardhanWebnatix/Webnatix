@@ -116,23 +116,23 @@ export function Testimonials() {
   };
 
   return (
-    <section className="relative py-24 sm:py-28 overflow-hidden bg-gradient-to-b from-[#eaf6f3] via-[#f3faf7] to-[#e8f6f2] border-t border-teal-100/70">
+    <section className="relative py-24 sm:py-28 overflow-hidden bg-gradient-to-b from-[#f0f6ff] via-[#f8fafc] to-[#eef4ff] border-t border-blue-100/70">
       {/* Background Soft Radiant Aura */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
-        <div className="w-[750px] h-[520px] rounded-full bg-teal-200/25 blur-3xl" />
+        <div className="w-[750px] h-[520px] rounded-full bg-blue-100/30 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16 text-center">
-        {/* Top Tag matching the reference screenshot */}
+        {/* Top Tag matching the brand palette */}
         <div className="inline-block mb-3">
-          <span className="text-[11px] sm:text-xs font-bold text-[#00897b] tracking-[0.25em] uppercase">
+          <span className="text-[11px] sm:text-xs font-bold text-[#0066cc] tracking-[0.25em] uppercase">
             TESTIMONIALS
           </span>
         </div>
 
-        {/* Section Headline matching screenshot */}
+        {/* Section Headline */}
         <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-slate-900 tracking-tight leading-tight mb-4">
-          What Our <span className="text-[#00897b]">Clients</span> Say
+          What Our <span className="text-[#0066cc]">Clients</span> Say
         </h2>
 
         {/* Subtitle */}
@@ -180,7 +180,7 @@ export function Testimonials() {
                 }}
                 className={`absolute w-[90vw] max-w-[420px] sm:max-w-[440px] h-[280px] sm:h-[290px] rounded-3xl bg-white p-7 sm:p-8 flex flex-col justify-between transition-shadow duration-300 ${
                   isCenter
-                    ? "shadow-[0_20px_60px_rgba(0,137,123,0.12)] border border-teal-100/90 cursor-grab active:cursor-grabbing"
+                    ? "shadow-[0_20px_60px_rgba(0,102,204,0.10)] border border-blue-100/90 cursor-grab active:cursor-grabbing"
                     : isVisible
                     ? "border border-slate-200/70 shadow-md cursor-pointer hover:opacity-70"
                     : "pointer-events-none"
@@ -190,7 +190,7 @@ export function Testimonials() {
                 <div>
                   <div
                     className={`transition-colors duration-300 mb-3 flex items-center ${
-                      isCenter ? "text-[#10b981]" : "text-teal-300/40"
+                      isCenter ? "text-[#0066cc]" : "text-blue-300/40"
                     }`}
                   >
                     <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
@@ -245,7 +245,7 @@ export function Testimonials() {
           {/* Previous Arrow Button */}
           <button
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full border border-teal-200/80 bg-white/95 text-slate-600 hover:text-teal-700 hover:border-teal-400 hover:shadow-md flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95"
+            className="w-10 h-10 rounded-full border border-blue-200/80 bg-white/95 text-slate-600 hover:text-[#0066cc] hover:border-blue-400 hover:shadow-md flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95"
             aria-label="Previous Testimonial"
           >
             <ChevronLeft size={18} />
@@ -261,8 +261,8 @@ export function Testimonials() {
                   onClick={() => setActiveIndex(i)}
                   className={`transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? "w-7 h-2.5 bg-[#00897b] rounded-full shadow-xs"
-                      : "w-2.5 h-2.5 bg-teal-200/70 hover:bg-teal-300 rounded-full"
+                      ? "w-7 h-2.5 bg-[#0066cc] rounded-full shadow-xs"
+                      : "w-2.5 h-2.5 bg-blue-200/70 hover:bg-blue-300 rounded-full"
                   }`}
                   aria-label={`Go to slide ${i + 1}`}
                 />
@@ -273,7 +273,7 @@ export function Testimonials() {
           {/* Next Arrow Button */}
           <button
             onClick={handleNext}
-            className="w-10 h-10 rounded-full border border-teal-200/80 bg-white/95 text-slate-600 hover:text-teal-700 hover:border-teal-400 hover:shadow-md flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95"
+            className="w-10 h-10 rounded-full border border-blue-200/80 bg-white/95 text-slate-600 hover:text-[#0066cc] hover:border-blue-400 hover:shadow-md flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95"
             aria-label="Next Testimonial"
           >
             <ChevronRight size={18} />

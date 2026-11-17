@@ -46,7 +46,7 @@ interface TabData {
   description: string;
   centerBadge: string;
   centerIcon: any;
-  theme: "light" | "dark" | "teal";
+  theme: "light" | "dark" | "blue";
   orbitRadius: number;
   items: OrbitItem[];
 }
@@ -183,7 +183,7 @@ const ARCHITECTURE_TABS: TabData[] = [
       "We build and deploy custom ML models, LLM-powered applications, and multi-cloud architectures across AWS, Microsoft Azure, and Google Cloud.",
     centerBadge: "FUTURE PROOF",
     centerIcon: Zap,
-    theme: "teal",
+    theme: "blue",
     orbitRadius: 215,
     items: [
       {
@@ -260,7 +260,7 @@ export function CircularArchitecture() {
       className={`py-24 relative overflow-hidden transition-colors duration-500 border-t ${
         isDark
           ? "bg-[#061019] text-white border-slate-800"
-          : "bg-gradient-to-b from-white via-emerald-50/20 to-white text-slate-900 border-slate-100"
+          : "bg-gradient-to-b from-white via-blue-50/20 to-white text-slate-900 border-slate-100"
       }`}
     >
       {/* Subtle Background Radial Aura */}
@@ -268,8 +268,8 @@ export function CircularArchitecture() {
         <div
           className={`w-[600px] h-[600px] rounded-full blur-3xl transition-opacity duration-700 ${
             isDark
-              ? "bg-emerald-500/10 opacity-70"
-              : "bg-teal-400/15 opacity-60"
+              ? "bg-blue-600/10 opacity-70"
+              : "bg-blue-400/15 opacity-60"
           }`}
         />
       </div>
@@ -290,7 +290,7 @@ export function CircularArchitecture() {
                 }}
                 className={`flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold transition-all cursor-pointer ${
                   isActive
-                    ? "bg-[#00897b] text-white shadow-sm scale-[1.02]"
+                    ? "bg-[#0066cc] text-white shadow-sm scale-[1.02]"
                     : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                 }`}
               >
@@ -308,8 +308,8 @@ export function CircularArchitecture() {
             <span
               className={`bg-clip-text text-transparent ${
                 isDark
-                  ? "bg-gradient-to-r from-teal-300 to-emerald-400"
-                  : "bg-gradient-to-r from-teal-600 to-emerald-600"
+                  ? "bg-gradient-to-r from-blue-300 to-sky-400"
+                  : "bg-gradient-to-r from-blue-600 to-[#0066cc]"
               }`}
             >
               {currentTab.highlight}
@@ -344,7 +344,7 @@ export function CircularArchitecture() {
               cy="0"
               r={currentTab.orbitRadius}
               fill="none"
-              stroke={isDark ? "rgba(16, 185, 129, 0.2)" : "rgba(0, 137, 123, 0.2)"}
+              stroke={isDark ? "rgba(56, 189, 248, 0.2)" : "rgba(0, 102, 204, 0.2)"}
               strokeWidth="1.5"
               strokeDasharray="6 6"
             />
@@ -354,13 +354,13 @@ export function CircularArchitecture() {
               cy="0"
               r={currentTab.orbitRadius * 0.55}
               fill="none"
-              stroke={isDark ? "rgba(16, 185, 129, 0.12)" : "rgba(0, 137, 123, 0.12)"}
+              stroke={isDark ? "rgba(56, 189, 248, 0.12)" : "rgba(0, 102, 204, 0.12)"}
               strokeWidth="1"
             />
             {/* Moving Pulsing Dot on Orbit */}
             <circle
               r="4"
-              fill={isDark ? "#34d399" : "#00897b"}
+              fill={isDark ? "#38bdf8" : "#0066cc"}
               transform={`rotate(${(angleOffset * 180) / Math.PI}) translate(${currentTab.orbitRadius}, 0)`}
             />
           </svg>
@@ -371,8 +371,8 @@ export function CircularArchitecture() {
             <div
               className={`w-28 h-28 sm:w-32 sm:h-32 rounded-full border-2 flex flex-col items-center justify-center p-3 text-center transition-all ${
                 isDark
-                  ? "border-teal-500/40 bg-slate-900 shadow-[0_0_50px_rgba(20,184,166,0.3)] text-teal-300"
-                  : "border-teal-400 bg-white shadow-[0_0_45px_rgba(0,137,123,0.22)] text-teal-700"
+                  ? "border-blue-500/40 bg-slate-900 shadow-[0_0_50px_rgba(0,102,204,0.3)] text-sky-300"
+                  : "border-blue-400 bg-white shadow-[0_0_45px_rgba(0,102,204,0.22)] text-[#0066cc]"
               }`}
             >
               <currentTab.centerIcon size={34} className="mb-1 animate-pulse" />
@@ -383,7 +383,7 @@ export function CircularArchitecture() {
             {/* Ethereal Outer Ring Wave */}
             <div
               className={`absolute inset-0 rounded-full scale-125 border pointer-events-none animate-ping ${
-                isDark ? "border-teal-400/20" : "border-teal-500/20"
+                isDark ? "border-blue-400/20" : "border-blue-500/20"
               }`}
             />
           </div>
@@ -415,21 +415,21 @@ export function CircularArchitecture() {
                 <div
                   className={`group relative rounded-2xl border p-3.5 sm:p-4 text-left transition-all duration-200 ${
                     isDark
-                      ? "border-slate-800 bg-[#0b1722]/95 text-slate-100 shadow-xl hover:border-teal-400 hover:shadow-teal-500/20 hover:scale-105"
-                      : "border-slate-200/90 bg-white/95 text-slate-900 shadow-lg hover:border-teal-500 hover:shadow-teal-500/15 hover:scale-105"
-                  } ${isTooltipOpen ? "ring-2 ring-teal-400 border-teal-400 scale-105" : ""}`}
+                      ? "border-slate-800 bg-[#0b1722]/95 text-slate-100 shadow-xl hover:border-sky-400 hover:shadow-blue-500/20 hover:scale-105"
+                      : "border-slate-200/90 bg-white/95 text-slate-900 shadow-lg hover:border-[#0066cc] hover:shadow-blue-500/15 hover:scale-105"
+                  } ${isTooltipOpen ? "ring-2 ring-sky-400 border-sky-400 scale-105" : ""}`}
                   style={{ width: "210px" }}
                 >
                   {/* Card Header Tag & Icon */}
                   <div className="flex items-center justify-between mb-2">
                     <span
                       className={`text-[9.5px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full ${
-                        isDark ? "bg-teal-950 text-teal-400" : "bg-teal-50 text-teal-700"
+                        isDark ? "bg-blue-950 text-sky-400" : "bg-blue-50 text-[#0066cc]"
                       }`}
                     >
                       {item.tag || "SYSTEM"}
                     </span>
-                    <Icon size={14} className={isDark ? "text-teal-400" : "text-teal-600"} />
+                    <Icon size={14} className={isDark ? "text-sky-400" : "text-[#0066cc]"} />
                   </div>
 
                   {/* Title */}
@@ -439,7 +439,7 @@ export function CircularArchitecture() {
 
                   {/* Optional Value or Mini Graphic */}
                   {item.value && (
-                    <div className="mt-2 text-base font-black text-teal-600">
+                    <div className="mt-2 text-base font-black text-[#0066cc]">
                       {item.value}
                     </div>
                   )}
@@ -447,19 +447,19 @@ export function CircularArchitecture() {
                   {/* Preview UI: Bar Graphic */}
                   {item.previewType === "bar" && (
                     <div className="mt-2.5 flex items-end gap-1 h-5 pt-1">
-                      <div className="w-2.5 h-2 bg-teal-400/60 rounded-xs" />
-                      <div className="w-2.5 h-3.5 bg-teal-500 rounded-xs" />
-                      <div className="w-2.5 h-4 bg-teal-600 rounded-xs" />
-                      <div className="w-2.5 h-3 bg-teal-400/80 rounded-xs" />
-                      <div className="w-2.5 h-5 bg-teal-500 rounded-xs" />
+                      <div className="w-2.5 h-2 bg-sky-400/60 rounded-xs" />
+                      <div className="w-2.5 h-3.5 bg-blue-500 rounded-xs" />
+                      <div className="w-2.5 h-4 bg-[#0066cc] rounded-xs" />
+                      <div className="w-2.5 h-3 bg-sky-400/80 rounded-xs" />
+                      <div className="w-2.5 h-5 bg-[#0066cc] rounded-xs" />
                     </div>
                   )}
 
                   {/* Preview UI: Line Graphic */}
                   {item.previewType === "line" && (
-                    <div className="mt-2.5 w-full h-3 border-b-2 border-teal-500/80 rounded-xs flex items-center justify-between px-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-teal-400" />
-                      <span className="w-1.5 h-1.5 rounded-full bg-teal-600" />
+                    <div className="mt-2.5 w-full h-3 border-b-2 border-blue-500/80 rounded-xs flex items-center justify-between px-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0066cc]" />
                     </div>
                   )}
 
@@ -467,7 +467,7 @@ export function CircularArchitecture() {
                   {item.previewType === "toggle" && (
                     <div className="mt-2 pt-1 flex items-center justify-between text-[10px] text-slate-400 font-semibold border-t border-slate-100 dark:border-slate-800">
                       <span>Rate Limit</span>
-                      <span className="text-emerald-500 font-bold">ACTIVE</span>
+                      <span className="text-[#0066cc] font-bold">ACTIVE</span>
                     </div>
                   )}
 
@@ -476,11 +476,11 @@ export function CircularArchitecture() {
                     <div
                       className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 rounded-2xl p-3.5 shadow-2xl text-xs z-50 pointer-events-none transition-all animate-pulse-scale ${
                         isDark
-                          ? "bg-slate-900 border border-teal-500/50 text-slate-200"
+                          ? "bg-slate-900 border border-blue-500/50 text-slate-200"
                           : "bg-slate-950 border border-slate-800 text-white"
                       }`}
                     >
-                      <div className="flex items-center gap-1.5 font-bold text-teal-400 mb-1">
+                      <div className="flex items-center gap-1.5 font-bold text-sky-400 mb-1">
                         <CheckCircle2 size={13} />
                         <span>{item.title}</span>
                       </div>
@@ -506,7 +506,7 @@ export function CircularArchitecture() {
         <div className="pt-8 flex flex-wrap items-center justify-center gap-4 relative z-10">
           <Link
             href="/services/full-stack-development"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#00897b] px-6 py-3 text-xs font-bold text-white shadow-lg shadow-teal-700/20 hover:bg-[#00796b] hover:shadow-xl hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#0066cc] px-6 py-3 text-xs font-bold text-white shadow-lg shadow-blue-700/20 hover:bg-[#0052a3] hover:shadow-xl hover:-translate-y-0.5 transition-all"
           >
             <span>View Architecture</span>
             <ArrowRight size={14} />
@@ -517,7 +517,7 @@ export function CircularArchitecture() {
             className={`inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-xs font-bold transition-all cursor-pointer ${
               isDark
                 ? "border-slate-700 bg-slate-800/80 text-white hover:bg-slate-800 hover:border-slate-600"
-                : "border-slate-200 bg-white text-slate-800 hover:border-teal-500 hover:text-teal-700 shadow-2xs"
+                : "border-slate-200 bg-white text-slate-800 hover:border-[#0066cc] hover:text-[#0066cc] shadow-2xs"
             }`}
           >
             <FileText size={14} />

@@ -126,7 +126,7 @@ export const HEADER_NAV_DATA = [
           { label: "Food & Beverage", href: "/industries#food-beverage" },
           { label: "Travel & Hospitality", href: "/industries#travel" },
           { label: "Media & Entertainment", href: "/industries#media" },
-          { label: "Sports & Gaming", href: "/industries#sports" },
+          { label: "Sports & Media", href: "/industries#sports" },
         ],
       },
       {
@@ -801,7 +801,7 @@ export function Navbar() {
                           { title: "FMCG & Consumer Goods", sub: "Direct-to-Consumer & Inventory", href: "/industries#fmcg" },
                           { title: "Food & Beverage", sub: "Ordering & Cloud Kitchen Ops", href: "/industries#food-beverage" },
                           { title: "Travel & Hospitality", sub: "Dynamic Booking & Itineraries", href: "/industries#travel" },
-                          { title: "Sports & Gaming", sub: "Real-time Telemetry & Engagement", href: "/industries#sports" },
+                          { title: "Sports & Media", sub: "Real-time Telemetry & Engagement", href: "/industries#sports" },
                         ].map((item, idx) => (
                           <Link
                             key={idx}
