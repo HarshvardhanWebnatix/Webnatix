@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Brain,
   Layers,
@@ -16,24 +15,23 @@ import {
   ShieldCheck,
   ArrowRight,
   CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
   Sparkles,
   PhoneCall,
   Zap,
+  Lock,
 } from "lucide-react";
 
 interface ServiceItem {
   id: string;
   number: string;
   title: string;
-  shortLabel: string;
   badge: string;
   slaBadge: string;
   image: string;
   href: string;
   icon: any;
-  accentColor: string;
+  glowColor: string;
+  isWide?: boolean;
   description: string;
   points: string[];
   techStack: string[];
@@ -44,13 +42,13 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "ai",
     number: "01",
     title: "AI & Machine Learning",
-    shortLabel: "AI & ML",
     badge: "CUSTOM LLMS & MLOPS",
     slaBadge: "ENTERPRISE RAG READY",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew10.png",
     href: "/services/ai-machine-learning",
     icon: Brain,
-    accentColor: "from-blue-600 to-indigo-600",
+    glowColor: "rgba(59, 130, 246, 0.35)",
+    isWide: true,
     description:
       "We build and deploy custom ML models, LLM-powered applications, and intelligent automation systems tailored to your data and business logic. From predictive analytics and NLP pipelines to computer vision and recommendation engines, we take AI beyond proof-of-concept into production.",
     points: [
@@ -65,20 +63,19 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "software",
     number: "02",
     title: "Custom Software Development",
-    shortLabel: "Software",
     badge: "FULL LIFECYCLE ENGINEERING",
-    slaBadge: "100% IP & CODE HANDOVER",
+    slaBadge: "100% IP HANDOVER",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew1.png",
     href: "/services/full-stack-development",
     icon: Layers,
-    accentColor: "from-indigo-600 to-cyan-600",
+    glowColor: "rgba(99, 102, 241, 0.35)",
     description:
-      "We build custom software from the ground up, tailored to how your business actually runs, not the other way around. Whether it's a standalone tool or an end-to-end platform, our teams handle the full build cycle, from scoping and architecture through to deployment and long-term support.",
+      "Custom software built from the ground up, tailored to how your business actually runs. End-to-end full build cycle from architecture to deployment and long-term SLA support.",
     points: [
-      "Event-Driven Microservices Architecture",
-      "High-Throughput Distributed Cloud Backends",
-      "Automated CI/CD Pipelines & Quality Assurance",
-      "CMMI Level 3 Maturity & SLA Guarantee",
+      "Event-Driven Microservices",
+      "Distributed Cloud Backends",
+      "Automated CI/CD Pipelines",
+      "CMMI Level 3 Maturity",
     ],
     techStack: ["Node.js", "Go", "Python", "Docker", "Kubernetes", "PostgreSQL"],
   },
@@ -86,83 +83,79 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "mobile",
     number: "03",
     title: "Mobile App Development",
-    shortLabel: "Mobile Apps",
     badge: "NATIVE & CROSS-PLATFORM",
     slaBadge: "60FPS NATIVE FEEL",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew2.png",
     href: "/services/mobile-app-development",
     icon: Smartphone,
-    accentColor: "from-sky-600 to-blue-600",
+    glowColor: "rgba(14, 165, 233, 0.35)",
     description:
-      "Native iOS and Android or cross-platform using React Native and Flutter, whichever fits your product and timeline. We handle UX architecture, back-end API integration, device testing, and store submission, building for performance and long-term maintainability.",
+      "Native iOS and Android or cross-platform using React Native and Flutter. We build for retention, speed, biometric security, and maintainability.",
     points: [
-      "Cross-Platform React Native & Flutter Engineering",
-      "Native Swift (iOS) & Kotlin (Android) Modules",
-      "Offline-First Data Sync & Biometric Security",
-      "App Store & Google Play Submission Support",
+      "React Native & Flutter",
+      "Native Swift & Kotlin",
+      "Offline Data Sync",
+      "App Store Submissions",
     ],
     techStack: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
   },
   {
     id: "web",
     number: "04",
-    title: "Web Development & Headless CMS",
-    shortLabel: "Web & CMS",
+    title: "Web & Headless CMS",
     badge: "SUB-SECOND EDGE DELIVERY",
     slaBadge: "95+ CORE WEB VITALS",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew3.png",
     href: "/services/website-development",
     icon: Layout,
-    accentColor: "from-blue-600 to-teal-600",
+    glowColor: "rgba(2, 132, 199, 0.35)",
     description:
-      "From headless CMS builds and React SPAs to enterprise Drupal and .NET platforms, we write clean, standards-compliant code with accessibility and Core Web Vitals baked in. Whether it's a CMS your marketing team can actually use or a high-traffic web app, we deliver reliability.",
+      "From headless CMS builds and Next.js SPAs to enterprise Drupal and .NET platforms. Clean, accessible code with sub-second Core Web Vitals baked in.",
     points: [
-      "Next.js 16 Server-Side Rendering (SSR) & Edge API",
-      "Headless CMS Architectures (Sanity, Strapi, Contentful)",
-      "95+ Google Core Web Vitals Performance",
-      "Responsive, Accessible Component Design Systems",
+      "Next.js 16 SSR & Edge",
+      "Headless CMS (Sanity, Strapi)",
+      "95+ Google Web Vitals",
+      "Accessible Design Systems",
     ],
-    techStack: ["Next.js", "React 19", "Tailwind CSS", "TypeScript", "Drupal", ".NET"],
+    techStack: ["Next.js", "React 19", "Tailwind CSS", "TypeScript", ".NET"],
   },
   {
     id: "ecommerce",
     number: "05",
     title: "E-Commerce Solutions",
-    shortLabel: "E-Commerce",
     badge: "HIGH-CONVERSION COMMERCE",
-    slaBadge: "MULTI-CURRENCY GATEWAYS",
+    slaBadge: "MULTI-CURRENCY",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew4.png",
     href: "/services/ecommerce-development",
     icon: ShoppingBag,
-    accentColor: "from-emerald-600 to-teal-600",
+    glowColor: "rgba(16, 185, 129, 0.35)",
     description:
-      "We build ecommerce platforms that convert, on Magento, BigCommerce, WooCommerce, Shopify Plus, or fully bespoke. From product catalogue structure and checkout flow to payment integration and post-purchase experience, we focus on the details that turn browsers into buyers.",
+      "High-converting ecommerce on Shopify Plus, Magento, WooCommerce, or bespoke. Frictionless checkout, real-time ERP inventory sync, and multi-currency payment rails.",
     points: [
-      "Shopify Plus Custom App & Theme Development",
-      "Enterprise Magento & BigCommerce Topologies",
-      "Automated Multi-Currency & Payment Gateways",
-      "Real-Time ERP & Warehouse Inventory Sync",
+      "Shopify Plus Custom Themes",
+      "Enterprise Magento Scaling",
+      "Automated Payment Gateways",
+      "Warehouse Inventory Sync",
     ],
-    techStack: ["Shopify Plus", "Magento", "BigCommerce", "WooCommerce", "Stripe"],
+    techStack: ["Shopify Plus", "Magento", "WooCommerce", "BigCommerce", "Stripe"],
   },
   {
     id: "cloud",
     number: "06",
     title: "Cloud Solutions & DevOps",
-    shortLabel: "Cloud & DevOps",
     badge: "MULTI-CLOUD RESILIENCE",
     slaBadge: "99.99% CLOUD UPTIME",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew5.png",
     href: "/services/cloud-solutions",
     icon: Cloud,
-    accentColor: "from-blue-600 to-indigo-600",
+    glowColor: "rgba(59, 130, 246, 0.35)",
     description:
-      "Moving to the cloud, scaling infrastructure, or getting more from what you already have, we handle the full picture. Our teams work across AWS, Azure, and Google Cloud to plan, migrate, and manage environments that stay stable, secure, and cost-effective as your business grows.",
+      "Migrate, scale, and optimize infrastructure across AWS, Azure, and Google Cloud. Resilient, auto-scaling environments that keep operational costs under control.",
     points: [
-      "AWS Select Tier & Microsoft Azure Architecture",
-      "Auto-Scaling Kubernetes Clusters & Dockerization",
-      "Terraform Infrastructure-as-Code (IaC)",
-      "24/7 Cloud Telemetry & Automated Backups",
+      "AWS & Azure Architecture",
+      "Kubernetes & Docker Clusters",
+      "Terraform IaC Automation",
+      "24/7 Cloud Telemetry",
     ],
     techStack: ["AWS", "Azure", "Google Cloud", "Terraform", "Kubernetes"],
   },
@@ -170,20 +163,19 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "crm",
     number: "07",
     title: "CRM Solutions",
-    shortLabel: "CRM Systems",
     badge: "WORKFLOW AUTOMATION",
     slaBadge: "SEAMLESS DATA SYNC",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew6.png",
     href: "/services/crm-solutions",
     icon: Users,
-    accentColor: "from-violet-600 to-purple-600",
+    glowColor: "rgba(139, 92, 246, 0.35)",
     description:
-      "We implement and customise Salesforce, Zoho, and HubSpot, and build bespoke CRM systems where packaged solutions don't match the complexity of your operations. Our engagements cover custom module development, workflow automation, and third-party integrations.",
+      "Salesforce, Zoho, and HubSpot implementations and bespoke CRM systems. Custom modules, automated pipelines, and seamless data cleansing from legacy platforms.",
     points: [
-      "Salesforce Custom Apex & Lightning Development",
-      "Zoho Authorized Partner Integration & Automation",
-      "HubSpot Marketing & Sales Hub Alignment",
-      "Legacy CRM Data Cleansing & Smooth Migration",
+      "Salesforce Apex & Lightning",
+      "Zoho Partner Integrations",
+      "HubSpot Funnel Alignment",
+      "Legacy CRM Data Cleansing",
     ],
     techStack: ["Salesforce", "Zoho CRM", "HubSpot", "Zapier", "REST APIs"],
   },
@@ -191,20 +183,19 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "api",
     number: "08",
     title: "API Dev & Integration",
-    shortLabel: "API Integration",
     badge: "SEAMLESS CONNECTIVITY",
     slaBadge: "SUB-50MS LATENCY",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew7.png",
     href: "/services/api-development",
     icon: Workflow,
-    accentColor: "from-cyan-600 to-blue-600",
+    glowColor: "rgba(6, 182, 212, 0.35)",
     description:
-      "We develop and integrate APIs that connect the systems you rely on so data moves freely between them. Whether it's a public-facing API or a complex web of internal integrations, we make sure the plumbing works reliably with sub-50ms latency.",
+      "High-throughput RESTful and GraphQL APIs connecting disparate enterprise systems. Microservices token handshakes, zero-trust security, and sub-50ms latency.",
     points: [
-      "High-Throughput RESTful & GraphQL APIs",
-      "Enterprise ERP & Legacy System Connectors",
-      "Microservices Token Handshakes & Zero-Trust Auth",
-      "Sub-50ms Global Response Latency SLA",
+      "RESTful & GraphQL Endpoints",
+      "Legacy System Connectors",
+      "Zero-Trust Token Auth",
+      "Sub-50ms Response SLAs",
     ],
     techStack: ["GraphQL", "REST", "gRPC", "Postman", "Swagger", "OAuth2"],
   },
@@ -212,20 +203,19 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "dataeng",
     number: "09",
     title: "Data Engineering",
-    shortLabel: "Data Stack",
     badge: "MODERN DATA STACK",
     slaBadge: "REAL-TIME STREAMING",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew8.png",
     href: "/services/data-strategy",
     icon: Database,
-    accentColor: "from-blue-600 to-cyan-600",
+    glowColor: "rgba(14, 165, 233, 0.35)",
     description:
-      "We build ETL/ELT pipelines, data warehouses on Snowflake, BigQuery, or Redshift, and real-time streaming architectures using Kafka and Spark. If your reporting is slow or inconsistent, we fix the underlying data infrastructure, not just the symptoms.",
+      "ETL/ELT pipelines, data warehouses on Snowflake, BigQuery, or Redshift, and real-time Kafka streaming architectures to make your reporting instant and reliable.",
     points: [
-      "Automated ETL/ELT Pipelines & Orchestration",
-      "Snowflake & Google BigQuery Data Warehousing",
-      "Real-Time Event Streaming with Apache Kafka",
-      "Interactive Power BI & Tableau Executive Dashboards",
+      "Automated ETL/ELT Pipelines",
+      "Snowflake & BigQuery Stack",
+      "Apache Kafka Event Streams",
+      "Power BI Executive Dashboards",
     ],
     techStack: ["Snowflake", "BigQuery", "Apache Kafka", "Spark", "Power BI"],
   },
@@ -233,321 +223,275 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "cybersecurity",
     number: "10",
     title: "Cybersecurity & Governance",
-    shortLabel: "Cybersecurity",
     badge: "ENTERPRISE SECURITY",
     slaBadge: "SOC 2 & ISO 27001",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew9.png",
     href: "/services/custom-software-integration",
     icon: ShieldCheck,
-    accentColor: "from-emerald-600 to-blue-600",
+    glowColor: "rgba(16, 185, 129, 0.35)",
+    isWide: true,
     description:
-      "We run penetration testing across web applications, APIs, and network infrastructure, and deliver remediation that's actionable. We also implement IAM, data encryption, vulnerability management, and SIEM monitoring with compliance across ISO 27001, GDPR, and SOC 2.",
+      "Web application penetration testing, API vulnerability assessments, IAM, end-to-end data encryption, and continuous 24/7 SIEM monitoring with strict compliance across ISO 27001, GDPR, and SOC 2 audits.",
     points: [
       "Comprehensive Web App & API Penetration Testing",
       "Zero-Trust Identity & Access Management (IAM)",
       "ISO 27001, GDPR, & SOC 2 Audit Readiness",
       "24/7 SIEM Infrastructure Monitoring & Defense",
     ],
-    techStack: ["Cloudflare", "Vault", "SonarQube", "WAF", "ISO 27001"],
+    techStack: ["Cloudflare", "HashiCorp Vault", "SonarQube", "WAF", "ISO 27001"],
   },
 ];
 
 export function Services() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const total = SERVICES_DATA.length;
-  const current = SERVICES_DATA[activeIndex];
-
-  const handleNext = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % total);
-  }, [total]);
-
-  const handlePrev = useCallback(() => {
-    setActiveIndex((prev) => (prev - 1 + total) % total);
-  }, [total]);
-
-  // Smooth automation: auto-advance every 6 seconds, pausing on hover/interaction
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      handleNext();
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [isPaused, handleNext]);
-
-  // Relative diff calculation for smooth 3D stage sliding
-  const getDiff = (idx: number) => {
-    let diff = idx - activeIndex;
-    if (diff > total / 2) diff -= total;
-    if (diff < -total / 2) diff += total;
-    return diff;
-  };
-
   return (
     <section className="relative py-24 sm:py-32 bg-white overflow-hidden border-t border-slate-100">
       
-      {/* Background Soft Ambient Light */}
+      {/* Background Soft Architectural Aura */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
-        <div className="w-[1000px] h-[650px] rounded-full bg-blue-50/70 blur-3xl opacity-80" />
+        <div className="w-[1100px] h-[700px] rounded-full bg-blue-50/60 blur-3xl opacity-75" />
       </div>
 
       <div className="relative mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16">
         
-        {/* ── Top Header ── */}
-        <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+        {/* ── Section Header ── */}
+        <div className="max-w-3xl mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/70 px-4 py-1.5 text-xs font-bold text-[#0066cc] uppercase tracking-wider mb-4 shadow-2xs">
             <Sparkles size={13} className="text-[#0066cc]" />
-            <span>Enterprise Engineering Capabilities</span>
+            <span>Enterprise Capability Stack</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-slate-900 tracking-tight leading-[1.16]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-slate-900 tracking-tight leading-[1.15]">
             Real Business Outcomes Powered by Custom Engineering &amp; AI
           </h2>
 
-          <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto">
-            Explore our 10 core capability practices below. Hover to pause or slide through the architecture deck.
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+            From modern cloud architectures and intelligent automation to bespoke full-stack platforms. Explore our 10 core capability practices below.
           </p>
         </div>
 
-        {/* ── Smooth Horizontal Scrubber / Progress Rails ── */}
-        {/* Sleek numbered timeline scrubber: shows real-time progress and allows 1-click jumps */}
-        <div className="mb-10 sm:mb-14 overflow-x-auto scrollbar-none pb-2">
-          <div className="flex items-center justify-center min-w-max mx-auto gap-2 sm:gap-3 p-1 rounded-2xl bg-slate-100/70 border border-slate-200/80 backdrop-blur-sm">
-            {SERVICES_DATA.map((service, idx) => {
-              const isActive = activeIndex === idx;
-              return (
-                <button
-                  key={service.id}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`group relative flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                    isActive
-                      ? "bg-white text-slate-900 shadow-sm shadow-slate-200/80"
-                      : "text-slate-500 hover:text-slate-900 hover:bg-white/60"
-                  }`}
-                >
-                  <span
-                    className={`font-mono text-[11px] transition-colors ${
-                      isActive ? "text-[#0066cc] font-black" : "text-slate-400 group-hover:text-slate-600"
-                    }`}
-                  >
-                    {service.number}
-                  </span>
-                  <span>{service.shortLabel}</span>
-
-                  {/* Animated Progress Bar under active scrubber button */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeScrubberIndicator"
-                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#0066cc] rounded-full overflow-hidden"
-                    >
-                      <motion.div
-                        initial={{ width: "0%" }}
-                        animate={{ width: isPaused ? "100%" : "100%" }}
-                        transition={{
-                          duration: isPaused ? 0 : 6,
-                          ease: "linear",
-                        }}
-                        className="h-full bg-blue-400"
-                      />
-                    </motion.div>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* ── 3D Interactive Animated Showcase Stage (Automated Carousel) ── */}
-        <div
-          className="relative mx-auto w-full max-w-[1240px] h-[520px] sm:h-[480px] lg:h-[450px] flex items-center justify-center overflow-hidden select-none"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setIsPaused(false)}
-        >
+        {/* ── 10-Service Bento Grid (Cool, Attractive & High-Converting) ── */}
+        {/* 3 Columns Grid with 2 Flagship Spotlight Cards (Row 1 & Row 4) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8">
           {SERVICES_DATA.map((service, idx) => {
-            const diff = getDiff(idx);
-            const isCenter = diff === 0;
-            const isVisible = Math.abs(diff) <= 1;
+            const Icon = service.icon;
+            const isWide = service.isWide;
 
             return (
-              <motion.div
+              <div
                 key={service.id}
-                animate={{
-                  x: `${diff * 105}%`,
-                  scale: isCenter ? 1 : 0.9,
-                  opacity: isCenter ? 1 : Math.abs(diff) === 1 ? 0.4 : 0,
-                  zIndex: isCenter ? 30 : Math.abs(diff) === 1 ? 15 : 0,
-                  rotateY: diff * -6,
-                }}
-                transition={{
-                  duration: 0.7,
-                  ease: [0.16, 1, 0.3, 1], // silky-smooth exponential easing
-                }}
-                onClick={() => {
-                  if (diff === -1) handlePrev();
-                  if (diff === 1) handleNext();
-                }}
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.2}
-                onDragEnd={(_, info) => {
-                  if (info.offset.x < -40) handleNext();
-                  else if (info.offset.x > 40) handlePrev();
-                }}
-                className={`absolute w-[94vw] max-w-[960px] rounded-3xl bg-white p-6 sm:p-8 lg:p-9 border border-slate-200/90 transition-shadow duration-300 ${
-                  isCenter
-                    ? "shadow-[0_25px_70px_rgba(0,102,204,0.12)] border-[#0066cc]/30 cursor-grab active:cursor-grabbing"
-                    : isVisible
-                    ? "shadow-md cursor-pointer hover:opacity-65"
-                    : "pointer-events-none"
+                className={`group relative rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-sm hover:shadow-2xl hover:border-[#0066cc]/40 transition-all duration-500 flex flex-col justify-between overflow-hidden ${
+                  isWide ? "lg:col-span-2 bg-gradient-to-br from-white via-blue-50/20 to-white" : ""
                 }`}
               >
-                {/* Inside the Active Card: Split 3D Visual Stage (Left) & Rich Agency Content (Right) */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
-                  
-                  {/* Left Column (5 cols): 3D Artwork Showcase Bay */}
-                  <div className="md:col-span-5 relative h-[220px] sm:h-[260px] rounded-2xl bg-gradient-to-br from-slate-50 via-blue-50/40 to-slate-100/70 border border-slate-100 flex items-center justify-center p-6 overflow-hidden">
-                    {/* Corner Number */}
-                    <div className="absolute top-3.5 left-4 flex items-center gap-1.5 text-xs font-mono font-black text-slate-400">
-                      <span>{service.number}</span>
-                      <span className="text-slate-300">/</span>
-                      <span className="text-slate-300">10</span>
+                {/* ── IF WIDE SPOTLIGHT CARD (AI & ML or Cybersecurity) ── */}
+                {isWide ? (
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center h-full">
+                    {/* Left: 3D Visual Stage with ambient colored radial glow */}
+                    <div className="md:col-span-5 relative h-[230px] sm:h-[260px] rounded-2xl bg-gradient-to-br from-slate-50 via-blue-50/40 to-slate-100/70 border border-slate-100 flex items-center justify-center p-6 overflow-hidden">
+                      {/* Number Watermark */}
+                      <span className="absolute top-3.5 left-4 text-xs font-mono font-black text-slate-400">
+                        {service.number}
+                      </span>
+
+                      {/* SLA Live Badge */}
+                      <div className="absolute top-3.5 right-4 inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-[9.5px] font-extrabold text-emerald-700 uppercase tracking-wider">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
+                        <span>{service.slaBadge}</span>
+                      </div>
+
+                      {/* Radial Colored Aura behind 3D render */}
+                      <div
+                        className="absolute w-36 h-36 rounded-full blur-2xl opacity-40 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none"
+                        style={{ backgroundColor: service.glowColor }}
+                      />
+
+                      {/* Continuous Gentle Floating 3D Artwork */}
+                      <motion.img
+                        src={service.image}
+                        alt={service.title}
+                        animate={{
+                          y: [0, -7, 0],
+                        }}
+                        transition={{
+                          duration: 4.2 + (idx % 3) * 0.4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="max-h-[175px] sm:max-h-[195px] w-auto object-contain drop-shadow-xl select-none group-hover:scale-108 group-hover:-translate-y-2 transition-transform duration-500"
+                        loading="lazy"
+                      />
+
+                      {/* Bottom Micro Tag */}
+                      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[10px] text-slate-400 font-semibold border-t border-slate-200/60 pt-2">
+                        <span>Flagship Architecture</span>
+                        <span className="text-[#0066cc] font-bold">CMMI Level 3</span>
+                      </div>
                     </div>
 
-                    {/* SLA Badge */}
-                    <div className="absolute top-3.5 right-4 inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-[9.5px] font-extrabold text-emerald-700 uppercase tracking-wider">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
-                      <span>{service.slaBadge}</span>
-                    </div>
+                    {/* Right: Rich Agency Data */}
+                    <div className="md:col-span-7 space-y-3.5 flex flex-col justify-between">
+                      <div>
+                        {/* Category Badge */}
+                        <div className="inline-flex items-center gap-1.5 rounded-full border border-blue-200/80 bg-blue-50/80 px-3 py-1 text-[10.5px] font-extrabold text-[#0066cc] uppercase tracking-wider mb-2">
+                          <Zap size={11} className="text-[#0066cc]" />
+                          <span>{service.badge}</span>
+                        </div>
 
-                    {/* Floating 3D Product Visual with gentle floating motion */}
-                    <motion.img
-                      src={service.image}
-                      alt={service.title}
-                      animate={{
-                        y: [0, -8, 0],
-                      }}
-                      transition={{
-                        duration: 4.5,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      className="max-h-[175px] sm:max-h-[200px] w-auto object-contain drop-shadow-xl select-none"
-                      loading="lazy"
-                    />
+                        {/* Title */}
+                        <h3 className="text-2xl sm:text-[26px] font-black text-slate-900 group-hover:text-[#0066cc] transition-colors leading-tight">
+                          <Link href={service.href} className="hover:underline flex items-center justify-between">
+                            <span>{service.title}</span>
+                            <ArrowRight size={18} className="text-slate-400 group-hover:text-[#0066cc] group-hover:translate-x-1.5 transition-all shrink-0 ml-2" />
+                          </Link>
+                        </h3>
 
-                    {/* Bottom Micro Tag */}
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[10px] text-slate-400 font-semibold border-t border-slate-200/60 pt-2">
-                      <span>Webnatix Engineering</span>
-                      <span className="text-[#0066cc] font-bold">CMMI Level 3</span>
+                        {/* Description */}
+                        <p className="mt-2 text-xs sm:text-[13.5px] text-slate-600 leading-relaxed font-normal">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      {/* 4 Deliverables Checkmarks */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                        {service.points.map((pt, pIdx) => (
+                          <div key={pIdx} className="flex items-start gap-2 text-xs text-slate-700">
+                            <CheckCircle2 size={13} className="text-emerald-500 shrink-0 mt-0.5" />
+                            <span className="leading-tight font-medium line-clamp-1">{pt}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Tech Stack Pills */}
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {service.techStack.map((tech, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="rounded-md border border-slate-200/80 bg-slate-50 px-2 py-0.5 text-[10.5px] font-semibold text-slate-600 group-hover:border-blue-200 transition-colors"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Links */}
+                      <div className="pt-2 flex items-center gap-4 text-xs font-bold">
+                        <Link
+                          href={service.href}
+                          className="inline-flex items-center gap-1.5 text-[#0066cc] hover:text-[#0052a3] transition-colors"
+                        >
+                          <span>Explore Architecture</span>
+                          <ArrowRight size={13} />
+                        </Link>
+                        <span className="text-slate-300">•</span>
+                        <Link
+                          href="/contact"
+                          className="text-slate-500 hover:text-slate-900 transition-colors"
+                        >
+                          Consult Architects
+                        </Link>
+                      </div>
                     </div>
                   </div>
+                ) : (
+                  /* ── STANDARD BENTO CARD (1 Column) ── */
+                  <div className="flex flex-col justify-between h-full space-y-5">
+                    {/* Top 3D Art Stage */}
+                    <div className="relative h-[190px] rounded-2xl bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-100/60 border border-slate-100 flex items-center justify-center p-4 overflow-hidden">
+                      {/* Number Watermark */}
+                      <span className="absolute top-3 left-3 text-xs font-mono font-black text-slate-400">
+                        {service.number}
+                      </span>
 
-                  {/* Right Column (7 cols): Data, Deliverables, Tech Stack & CTAs */}
-                  <div className="md:col-span-7 space-y-3.5">
-                    
-                    {/* Category Pill */}
-                    <div className="inline-flex items-center gap-1.5 rounded-full border border-blue-200/80 bg-blue-50/80 px-3 py-1 text-[10.5px] font-extrabold text-[#0066cc] uppercase tracking-wider">
-                      <Zap size={11} className="text-[#0066cc]" />
-                      <span>{service.badge}</span>
+                      {/* Icon Badge */}
+                      <div className="absolute top-3 right-3 w-7 h-7 rounded-lg bg-white/90 border border-slate-200/60 shadow-2xs flex items-center justify-center text-[#0066cc]">
+                        <Icon size={14} />
+                      </div>
+
+                      {/* Ambient Glow */}
+                      <div
+                        className="absolute w-28 h-28 rounded-full blur-2xl opacity-35 group-hover:opacity-75 transition-opacity duration-500 pointer-events-none"
+                        style={{ backgroundColor: service.glowColor }}
+                      />
+
+                      {/* Continuous Gentle Floating 3D Artwork */}
+                      <motion.img
+                        src={service.image}
+                        alt={service.title}
+                        animate={{
+                          y: [0, -6, 0],
+                        }}
+                        transition={{
+                          duration: 4.0 + (idx % 3) * 0.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="max-h-[145px] w-auto object-contain drop-shadow-md select-none group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-500"
+                        loading="lazy"
+                      />
                     </div>
 
-                    {/* Service Title */}
-                    <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-tight">
-                      <Link href={service.href} className="hover:text-[#0066cc] transition-colors">
-                        {service.title}
-                      </Link>
-                    </h3>
+                    {/* Middle: Content & Deliverables */}
+                    <div className="space-y-3">
+                      {/* Category Badge */}
+                      <div className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50/70 px-2.5 py-0.5 text-[9.5px] font-bold text-[#0066cc] uppercase tracking-wider">
+                        <span>{service.badge}</span>
+                      </div>
 
-                    {/* Description Paragraph */}
-                    <p className="text-xs sm:text-[13.5px] text-slate-600 leading-relaxed font-normal">
-                      {service.description}
-                    </p>
+                      {/* Title */}
+                      <h3 className="text-xl font-black text-slate-900 group-hover:text-[#0066cc] transition-colors leading-snug">
+                        <Link href={service.href} className="flex items-center justify-between hover:underline">
+                          <span>{service.title}</span>
+                          <ArrowRight size={16} className="text-slate-400 group-hover:text-[#0066cc] group-hover:translate-x-1 transition-all shrink-0 ml-1.5" />
+                        </Link>
+                      </h3>
 
-                    {/* 4 Deliverables with Green Checkmarks */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                      {service.points.map((pt, pIdx) => (
-                        <div key={pIdx} className="flex items-start gap-2 text-xs text-slate-700">
-                          <CheckCircle2 size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                          <span className="leading-tight font-medium">{pt}</span>
-                        </div>
-                      ))}
+                      {/* Description */}
+                      <p className="text-xs text-slate-600 leading-relaxed font-normal line-clamp-2">
+                        {service.description}
+                      </p>
+
+                      {/* Key Deliverables Checkmarks (2 key items) */}
+                      <div className="space-y-1.5 pt-1">
+                        {service.points.slice(0, 2).map((pt, pIdx) => (
+                          <div key={pIdx} className="flex items-start gap-1.5 text-[11.5px] text-slate-700">
+                            <CheckCircle2 size={13} className="text-emerald-500 shrink-0 mt-0.5" />
+                            <span className="leading-tight font-medium truncate">{pt}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Tech Stack Pills */}
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {service.techStack.slice(0, 4).map((tech, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="rounded-md border border-slate-200/80 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-600"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
-                    {/* Tech Stack Pills */}
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {service.techStack.map((tech, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="rounded-md border border-slate-200/80 bg-slate-50 px-2 py-0.5 text-[11px] font-semibold text-slate-600"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Bottom Action CTAs */}
-                    <div className="pt-2 flex flex-wrap items-center gap-3">
+                    {/* Bottom Action Footer */}
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                       <Link
                         href={service.href}
-                        className="inline-flex items-center gap-2 rounded-xl bg-[#0066cc] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0052a3] hover:shadow-lg transition-all"
+                        className="inline-flex items-center gap-1 font-bold text-[#0066cc] hover:text-[#0052a3] transition-colors"
                       >
-                        <span>Explore Full Architecture</span>
-                        <ArrowRight size={14} />
+                        <span>Explore Practice</span>
+                        <ArrowRight size={12} />
                       </Link>
 
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-slate-700 hover:border-[#0066cc] hover:text-[#0066cc] transition-all"
-                      >
-                        <span>Schedule Scoping Call</span>
-                      </Link>
+                      <span className="text-[11px] font-semibold text-slate-400">
+                        {service.slaBadge}
+                      </span>
                     </div>
-
                   </div>
-
-                </div>
-              </motion.div>
+                )}
+              </div>
             );
           })}
-        </div>
-
-        {/* ── Carousel Bottom Controls ── */}
-        <div className="mt-8 flex items-center justify-center gap-5 select-none">
-          {/* Previous Arrow Button */}
-          <button
-            onClick={handlePrev}
-            aria-label="Previous service"
-            className="w-11 h-11 rounded-full border border-slate-200/90 bg-white text-slate-700 flex items-center justify-center shadow-xs hover:border-[#0066cc] hover:text-[#0066cc] hover:shadow-md transition-all cursor-pointer"
-          >
-            <ChevronLeft size={19} />
-          </button>
-
-          {/* Dots Indicator */}
-          <div className="flex items-center gap-1.5">
-            {SERVICES_DATA.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveIndex(idx)}
-                aria-label={`Go to service ${idx + 1}`}
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  idx === activeIndex
-                    ? "w-8 h-2 bg-[#0066cc]"
-                    : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* Next Arrow Button */}
-          <button
-            onClick={handleNext}
-            aria-label="Next service"
-            className="w-11 h-11 rounded-full border border-slate-200/90 bg-white text-slate-700 flex items-center justify-center shadow-xs hover:border-[#0066cc] hover:text-[#0066cc] hover:shadow-md transition-all cursor-pointer"
-          >
-            <ChevronRight size={19} />
-          </button>
         </div>
 
         {/* ── Bottom Callout Banner ── */}
