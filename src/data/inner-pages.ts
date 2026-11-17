@@ -1,4 +1,7 @@
 import { HeroVisualType } from "@/components/templates/HeroVisuals";
+import crawledDataJson from "./dotsquares-crawled-data.json";
+
+const CRAWLED_PAGES_DATABASE = crawledDataJson as Record<string, InnerPageData>;
 
 export interface InnerPageFeatureCard {
   title: string;
@@ -673,16 +676,31 @@ export function getInnerPageData(rawSlug: string): InnerPageData {
     .replace(/#.*$/, "")
     .trim();
 
-  // If hardcoded data exists, return it
+  // 1. If hardcoded data exists, return it
   if (INNER_PAGES_DATA[normalizedSlug]) {
     return INNER_PAGES_DATA[normalizedSlug];
   }
 
-  // Check direct aliases
+  // 2. Check direct aliases
   if (normalizedSlug === "web") return INNER_PAGES_DATA["website-development"];
   if (normalizedSlug === "mobile") return INNER_PAGES_DATA["mobile-app-development"];
   if (normalizedSlug === "software") return INNER_PAGES_DATA["full-stack-development"];
   if (normalizedSlug === "game") return INNER_PAGES_DATA["casino-game-development"];
+
+  // 3. Check Crawled Dotsquares Database directly
+  if (CRAWLED_PAGES_DATABASE[normalizedSlug]) {
+    return CRAWLED_PAGES_DATABASE[normalizedSlug];
+  }
+
+  // 4. Check fuzzy slug matches in crawled data (e.g. python-development -> python)
+  const baseSlug = normalizedSlug
+    .replace(/-development$/, "")
+    .replace(/-solutions$/, "")
+    .replace(/-consulting$/, "")
+    .replace(/-services$/, "");
+  if (CRAWLED_PAGES_DATABASE[baseSlug]) {
+    return CRAWLED_PAGES_DATABASE[baseSlug];
+  }
 
   // Dynamically construct professional enterprise page
   const formattedTitle = normalizedSlug
