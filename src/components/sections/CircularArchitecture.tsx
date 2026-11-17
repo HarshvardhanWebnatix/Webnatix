@@ -227,12 +227,18 @@ export function CircularArchitecture() {
   const [angleOffset, setAngleOffset] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [activeTooltipId, setActiveTooltipId] = useState<string | null>("collusion");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const currentTab = ARCHITECTURE_TABS.find((t) => t.id === activeTabId) || ARCHITECTURE_TABS[0];
   const itemsCount = currentTab.items.length;
 
   // Continuous smooth circular rotation loop
   useEffect(() => {
+    if (!mounted) return;
     let rafId: number;
     let lastTime = performance.now();
 
@@ -250,7 +256,7 @@ export function CircularArchitecture() {
 
     rafId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafId);
-  }, [isPaused]);
+  }, [isPaused, mounted]);
 
   // Adjust theme variables
   const isDark = currentTab.theme === "dark";
@@ -390,10 +396,10 @@ export function CircularArchitecture() {
 
           {/* ── Circular Moving Content Cards ── */}
           {currentTab.items.map((item, idx) => {
-            // Compute orbital position on circle
-            const angle = (idx / itemsCount) * 2 * Math.PI + angleOffset;
-            const x = Math.cos(angle) * currentTab.orbitRadius;
-            const y = Math.sin(angle) * currentTab.orbitRadius;
+            // Compute orbital position on circle (deterministic before mount, animated after mount)
+            const angle = (idx / itemsCount) * 2 * Math.PI + (mounted ? angleOffset : 0);
+            const x = Number((Math.cos(angle) * currentTab.orbitRadius).toFixed(2));
+            const y = Number((Math.sin(angle) * currentTab.orbitRadius).toFixed(2));
 
             const isTooltipOpen = activeTooltipId === item.id;
             const Icon = item.icon;
@@ -401,6 +407,7 @@ export function CircularArchitecture() {
             return (
               <div
                 key={item.id}
+                suppressHydrationWarning
                 className="absolute z-20 transition-transform duration-75 ease-linear cursor-pointer"
                 style={{
                   transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
