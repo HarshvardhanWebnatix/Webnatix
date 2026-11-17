@@ -1,5 +1,5 @@
 import { HeroVisualType } from "@/components/templates/HeroVisuals";
-import crawledDataJson from "./dotsquares-crawled-data.json";
+import crawledDataJson from "./webnatix-crawled-data.json";
 
 const CRAWLED_PAGES_DATABASE = crawledDataJson as Record<string, InnerPageData>;
 
@@ -687,7 +687,7 @@ export function getInnerPageData(rawSlug: string): InnerPageData {
   if (normalizedSlug === "software") return INNER_PAGES_DATA["full-stack-development"];
   if (normalizedSlug === "game") return INNER_PAGES_DATA["casino-game-development"];
 
-  // 3. Check Crawled Dotsquares Database directly
+  // 3. Check Crawled webnatix Database directly
   if (CRAWLED_PAGES_DATABASE[normalizedSlug]) {
     return CRAWLED_PAGES_DATABASE[normalizedSlug];
   }

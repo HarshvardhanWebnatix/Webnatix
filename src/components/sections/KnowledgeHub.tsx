@@ -77,7 +77,7 @@ const KNOWLEDGE_TABS: HubTab[] = [
         date: "NOV 02, 2024",
         title: "CMMI Level 3 & ISO 27001 Re-Certification",
         description:
-          "Dotsquares successfully completes rigorous international audits, validating our software quality and cybersecurity protocols.",
+          "Webnatix successfully completes rigorous international audits, validating our software quality and cybersecurity protocols.",
         href: "/about",
       },
       {

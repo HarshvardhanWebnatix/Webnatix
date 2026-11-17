@@ -24,7 +24,7 @@ function parseRawFile(filename) {
   // Title
   const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
   let title = titleMatch ? cleanHtml(titleMatch[1]) : '';
-  title = title.replace(/\s*\|\s*Dotsquares.*$/i, '').trim();
+  title = title.replace(/\s*\|\s*webnatix.*$/i, '').trim();
 
   // Meta description
   const metaMatch = html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)["']/i) ||
@@ -197,7 +197,7 @@ for (const file of rawFiles) {
     overview: {
       heading: parsed.headings[0] || `Proven Excellence in ${displayTitle}`,
       paragraphs: parsed.paragraphs.length ? parsed.paragraphs : [
-        `Dotsquares is widely recognized for its excellence in ${displayTitle}, serving as the go-to partner for Fortune 500 companies, SMEs, and high-growth enterprises worldwide. Our capabilities include developing scalable applications, crafting efficient architectures, and utilizing advanced frameworks to foster innovation.`,
+        `webnatix is widely recognized for its excellence in ${displayTitle}, serving as the go-to partner for Fortune 500 companies, SMEs, and high-growth enterprises worldwide. Our capabilities include developing scalable applications, crafting efficient architectures, and utilizing advanced frameworks to foster innovation.`,
         `With over 24+ years in business and 27,000+ completed projects, our dedicated full-time developers and technical architects ensure seamless delivery across all time zones with zero operational downtime.`
       ],
       keyTakeaway: `Key Takeaway: Leverage 24+ years of engineering maturity with full source code ownership, flexible engagement models, and dedicated technical architects.`
@@ -255,6 +255,6 @@ for (const file of rawFiles) {
   };
 }
 
-const outPath = path.join('src', 'data', 'dotsquares-crawled-data.json');
+const outPath = path.join('src', 'data', 'webnatix-crawled-data.json');
 fs.writeFileSync(outPath, JSON.stringify(crawledDatabase, null, 2), 'utf8');
 console.log(`Successfully generated crawled data for ${Object.keys(crawledDatabase).length} pages into ${outPath}`);

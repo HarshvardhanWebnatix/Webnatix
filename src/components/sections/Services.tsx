@@ -41,7 +41,7 @@ const SERVICES_DATA: ServiceItem[] = [
     title: "AI & Machine Learning",
     badge: "CUSTOM LLMS & MLOPS",
     slaBadge: "ENTERPRISE RAG READY",
-    image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew10.png",
+    image: "/images/services/servicehomenew10.png",
     href: "/services/ai-machine-learning",
     icon: Brain,
     isWide: true,
@@ -61,7 +61,7 @@ const SERVICES_DATA: ServiceItem[] = [
     title: "Custom Software Development",
     badge: "FULL LIFECYCLE ENGINEERING",
     slaBadge: "100% IP HANDOVER",
-    image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew1.png",
+    image: "/images/services/servicehomenew1.png",
     href: "/services/full-stack-development",
     icon: Layers,
     description:
@@ -80,7 +80,7 @@ const SERVICES_DATA: ServiceItem[] = [
     title: "Mobile App Development",
     badge: "NATIVE & CROSS-PLATFORM",
     slaBadge: "60FPS NATIVE FEEL",
-    image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew2.png",
+    image: "/images/services/servicehomenew2.png",
     href: "/services/mobile-app-development",
     icon: Smartphone,
     description:
@@ -99,7 +99,7 @@ const SERVICES_DATA: ServiceItem[] = [
     title: "Web & Headless CMS",
     badge: "SUB-SECOND EDGE DELIVERY",
     slaBadge: "95+ CORE WEB VITALS",
-    image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew3.png",
+    image: "/images/services/servicehomenew3.png",
     href: "/services/website-development",
     icon: Layout,
     description:
@@ -118,7 +118,7 @@ const SERVICES_DATA: ServiceItem[] = [
     title: "E-Commerce Solutions",
     badge: "HIGH-CONVERSION COMMERCE",
     slaBadge: "MULTI-CURRENCY",
-    image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew4.png",
+    image: "/images/services/servicehomenew4.png",
     href: "/services/ecommerce-development",
     icon: ShoppingBag,
     description:
@@ -137,7 +137,7 @@ const SERVICES_DATA: ServiceItem[] = [
     title: "Cloud Solutions & DevOps",
     badge: "MULTI-CLOUD RESILIENCE",
     slaBadge: "99.99% CLOUD UPTIME",
-    image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew5.png",
+    image: "/images/services/servicehomenew5.png",
     href: "/services/cloud-solutions",
     icon: Cloud,
     description:
@@ -156,7 +156,7 @@ const SERVICES_DATA: ServiceItem[] = [
     title: "CRM Solutions",
     badge: "WORKFLOW AUTOMATION",
     slaBadge: "SEAMLESS DATA SYNC",
-    image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew6.png",
+    image: "/images/services/servicehomenew6.png",
     href: "/services/crm-solutions",
     icon: Users,
     description:
@@ -175,7 +175,7 @@ const SERVICES_DATA: ServiceItem[] = [
     title: "API Dev & Integration",
     badge: "SEAMLESS CONNECTIVITY",
     slaBadge: "SUB-50MS LATENCY",
-    image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew7.png",
+    image: "/images/services/servicehomenew7.png",
     href: "/services/api-development",
     icon: Workflow,
     description:
@@ -194,7 +194,7 @@ const SERVICES_DATA: ServiceItem[] = [
     title: "Data Engineering",
     badge: "MODERN DATA STACK",
     slaBadge: "REAL-TIME STREAMING",
-    image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew8.png",
+    image: "/images/services/servicehomenew8.png",
     href: "/services/data-strategy",
     icon: Database,
     description:
@@ -213,7 +213,7 @@ const SERVICES_DATA: ServiceItem[] = [
     title: "Cybersecurity & Governance",
     badge: "ENTERPRISE SECURITY",
     slaBadge: "SOC 2 & ISO 27001",
-    image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew9.png",
+    image: "/images/services/servicehomenew9.png",
     href: "/services/custom-software-integration",
     icon: ShieldCheck,
     isWide: true,
