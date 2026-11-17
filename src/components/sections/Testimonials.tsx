@@ -21,7 +21,7 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     role: "VP of Digital Engineering",
     company: "Avatier Corporation (USA)",
     content:
-      "Dotsquares delivered website performance optimization and headless CMS modernization that drastically improved our Core Web Vitals, reduced page latency by 65%, and accelerated our organic pipeline.",
+      "Webnatix delivered website performance optimization and headless CMS modernization that drastically improved our Core Web Vitals, reduced page latency by 65%, and accelerated our organic pipeline.",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&auto=format&fit=crop&q=80",
     stars: 5,
@@ -32,7 +32,7 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     role: "Head of Digital Operations",
     company: "Sunsoul Wellness (Australia)",
     content:
-      "By integrating intelligent CRM automation, Dotsquares streamlined our lead capture, personalized communication, and enabled our platform to scale effortlessly while deepening user trust.",
+      "By integrating intelligent CRM automation, Webnatix streamlined our lead capture, personalized communication, and enabled our platform to scale effortlessly while deepening user trust.",
     avatar:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&auto=format&fit=crop&q=80",
     stars: 5,
@@ -43,7 +43,7 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     role: "Director of Procurement Tech",
     company: "LHC Frameworks (UK)",
     content:
-      "Dotsquares replaced our manual, department-by-department policy process with a single secure intranet — where every policy is classified, version-controlled, and visible only to authorized users.",
+      "Webnatix replaced our manual, department-by-department policy process with a single secure intranet — where every policy is classified, version-controlled, and visible only to authorized users.",
     avatar:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&auto=format&fit=crop&q=80",
     stars: 5,
@@ -76,7 +76,7 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     role: "Founder & CTO",
     company: "Global Payment Rails",
     content:
-      "Dotsquares delivered our complete cloud architecture and API integration on schedule. CMMI Level 3 rigor, code clarity, and architectural transparency were exceptional from day one.",
+      "Webnatix delivered our complete cloud architecture and API integration on schedule. CMMI Level 3 rigor, code clarity, and architectural transparency were exceptional from day one.",
     avatar:
       "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&auto=format&fit=crop&q=80",
     stars: 5,

@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Dotsquares — Software, AI & Digital Transformation",
+  title: "About Webnatix — Software, AI & Digital Transformation",
   description:
-    "Learn about Dotsquares — 24+ years of global expertise, 1,200+ certified engineers, and 27,000+ completed projects worldwide.",
+    "Learn about Webnatix Technologies — global software engineering studio delivering scalable cloud platforms, mobile apps, and custom AI systems.",
 };
 
 export default function AboutPage() {
@@ -18,7 +18,7 @@ export default function AboutPage() {
         <Container size="lg">
           <div className="max-w-3xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
-              Who We Are · 24+ Years of Excellence
+              Who We Are · Engineering Excellence
             </p>
             <h1 className="mb-6 text-5xl font-bold leading-tight text-[var(--text-primary)] sm:text-6xl">
               Your Trusted Global
@@ -26,7 +26,7 @@ export default function AboutPage() {
               <GradientText>Technology Partner</GradientText>
             </h1>
             <p className="mb-8 max-w-xl text-lg leading-relaxed text-[var(--text-secondary)]">
-              Dotsquares works with businesses across the globe to design, develop, and manage high-quality digital solutions. With certified experts, 1,200+ technology professionals, and 27,000+ successful projects delivered, we help you build systems that are efficient, scalable, and ready for future growth.
+              Webnatix works with ambitious businesses across the globe to design, develop, and scale high-quality digital solutions. With certified engineers and proven delivery capabilities, we help you build systems that are efficient, scalable, and ready for future growth.
             </p>
             <Button variant="primary" href="/contact">
               Work With Us <ArrowRight size={16} />

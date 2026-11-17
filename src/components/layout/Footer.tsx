@@ -56,10 +56,9 @@ const footerSections = [
   {
     title: "Connect & Inquire",
     links: [
-      { label: "office@dotsquares.com", href: "mailto:office@dotsquares.com" },
-      { label: "UK: +44 1273 575190", href: "tel:+441273575190" },
-      { label: "US: +1 866 978 2220", href: "tel:+18669782220" },
-      { label: "AU: +61 3 9013 4567", href: "tel:+61390134567" },
+      { label: "info@webnatix.com", href: "mailto:info@webnatix.com" },
+      { label: "+91 9252052623", href: "tel:+919252052623" },
+      { label: "WhatsApp Support", href: "https://wa.me/919252052623" },
       { label: "Schedule Consultation", href: "/contact" },
     ],
   },
@@ -83,16 +82,16 @@ export function Footer() {
               />
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-white tracking-tight">
-                  Dotsquares <span className="text-[#38bdf8]">Technologies</span>
+                  Webnatix <span className="text-[#38bdf8]">Technologies</span>
                 </span>
                 <span className="text-[10px] text-blue-300 uppercase tracking-widest font-semibold">
-                  Software, AI &amp; Digital Transformation
+                  Global Software Engineering Studio
                 </span>
               </div>
             </Link>
 
             <p className="text-xs text-slate-400 leading-relaxed mb-6 max-w-sm">
-              Modern software development with AI, cloud, and data expertise. 24+ years of proven delivery, 1,200+ certified engineers, and 27,000+ completed projects worldwide.
+              Global software engineering studio designing and building high-performance websites, SaaS platforms, portals, dashboards, mobile apps, and AI platforms for ambitious businesses.
             </p>
 
             <div className="flex items-center gap-3">

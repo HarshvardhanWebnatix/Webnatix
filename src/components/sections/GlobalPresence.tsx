@@ -44,22 +44,22 @@ export function GlobalPresence() {
             {/* Top Tag Pill */}
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-[11px] font-bold text-[#0066cc] uppercase">
               <span className="h-1.5 w-5 rounded-full bg-[#0066cc]" />
-              <span>WHO WE ARE</span>
+              <span>ABOUT WEBNATIX</span>
             </div>
 
             {/* Main Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-slate-900 tracking-tight leading-[1.16]">
-              Your Trusted Global <br className="hidden sm:inline" />
-              <span className="text-[#0066cc]">Technology Partner</span>
+              Global Enterprise Software <br className="hidden sm:inline" />
+              <span className="text-[#0066cc]">Engineering &amp; Platform Studio</span>
             </h2>
 
             {/* Copy Paragraphs */}
             <p className="text-base text-slate-600 leading-relaxed">
-              Dotsquares works with businesses across the globe to design, develop, and manage high-quality digital solutions. With certified experts and proven delivery capabilities, we help you build systems that are efficient, scalable, and ready for future growth.
+              Webnatix Technologies is a global B2B digital engineering studio delivering secure, scalable, and compliance-ready software architectures for high-growth startups, SaaS enterprises, and global brands worldwide.
             </p>
 
             <p className="text-[14.5px] text-slate-500 leading-relaxed">
-              With over 24+ years of expertise in digital transformation, 1,200+ technology professionals, 15,000+ clients, and 27,000+ successful projects delivered globally, Dotsquares combines technical expertise, scalable delivery models, and industry-focused solutions.
+              From turnkey custom platforms and mobile applications to multi-tenant cloud ecosystems, Webnatix empowers businesses with 100% intellectual property ownership, zero vendor lock-in, and round-the-clock global engineering coverage across US, European, and APAC timezones.
             </p>
 
             {/* 3 Metric Cards */}

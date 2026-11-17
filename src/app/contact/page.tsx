@@ -6,8 +6,8 @@ import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact Dotsquares — Software & AI Solutions",
-  description: "Discuss your project with Dotsquares certified technical architects. We respond within 2-3 business hours confidentially.",
+  title: "Contact Webnatix — Software & AI Solutions",
+  description: "Discuss your project with Webnatix certified technical architects. We respond within 2-3 business hours confidentially.",
 };
 
 export default function ContactPage() {
@@ -35,10 +35,8 @@ export default function ContactPage() {
               <div className="space-y-4">
                 {[
                   { icon: Mail, label: "Email", value: SITE_CONFIG.email },
-                  { icon: Phone, label: "United Kingdom", value: "+44 1273 575190" },
-                  { icon: Phone, label: "United States (Toll Free)", value: "+1 866 978 2220" },
-                  { icon: Phone, label: "Australia", value: "+61 3 9013 4567" },
-                  { icon: MapPin, label: "Global Locations", value: SITE_CONFIG.address },
+                  { icon: Phone, label: "Phone", value: SITE_CONFIG.phone },
+                  { icon: MapPin, label: "Location", value: SITE_CONFIG.address },
                 ].map(({ icon: Icon, label, value }) => (
                   <div key={label} className="flex items-center gap-4">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-elevated)] text-[var(--accent)]">

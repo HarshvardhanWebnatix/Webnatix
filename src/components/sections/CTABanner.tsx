@@ -39,15 +39,17 @@ export function CTABanner() {
             className="inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-[#0d223f] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#122e54] transition-all"
           >
             <MessageCircle size={18} className="text-[#25D366]" />
-            WhatsApp (+44 1273 575190)
+            WhatsApp (+91 9252052623)
           </a>
 
           <a
-            href="tel:+441273575190"
+            href={SITE_CONFIG.telegram}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-[#0d223f] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#122e54] transition-all"
           >
             <Send size={16} className="text-[#38bdf8]" />
-            Call UK (+44 1273 575190)
+            Telegram
           </a>
         </div>
 

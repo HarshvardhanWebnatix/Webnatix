@@ -1,23 +1,19 @@
 export const SITE_CONFIG = {
-  name: "Dotsquares",
-  shortName: "Dotsquares",
+  name: "Webnatix Technologies",
+  shortName: "Webnatix",
   tagline: "Modern Software Development with AI, Cloud & Data Expertise",
   description:
-    "Partnered with Startups and Fortune 500 Companies to design, develop, and scale future-ready digital platforms. 24+ years of global technology expertise, 1,200+ certified engineers, and 27,000+ completed projects worldwide.",
-  email: "office@dotsquares.com",
-  phone: "+44 1273 575190",
-  tollFreeUS: "+1 866 978 2220",
-  phoneAU: "+61 3 9013 4567",
-  whatsapp: "https://wa.me/441273575190",
-  telegram: "https://t.me/dotsquares",
+    "Global software engineering studio designing and building high-performance websites, SaaS platforms, portals, dashboards, mobile apps, and AI platforms for ambitious businesses worldwide.",
+  email: "info@webnatix.com",
+  phone: "+91 9252052623",
+  whatsapp: "https://wa.me/919252052623",
+  telegram: "https://t.me/webnatix",
   meetingUrl: "/contact",
-  address: "London & Brighton (UK) · Texas & Maryland (USA) · Melbourne (AU) · Dubai (UAE) · Jaipur (India)",
-  gccAddress: "CP4-228, 229, Apparel Park, Mahal Road, Jagatpura, Jaipur, Rajasthan, India 302017",
-  ukAddress: "Unit 2, Albourne Court, Henfield Road, Albourne, West Sussex, BN6 9FF, United Kingdom",
+  address: "Global Studio · US · Europe · APAC · India",
   social: {
-    twitter: "https://twitter.com/dotsquares",
-    linkedin: "https://linkedin.com/company/dotsquares",
-    github: "https://github.com/dotsquares",
+    twitter: "https://twitter.com/webnatix",
+    linkedin: "https://linkedin.com/company/webnatix",
+    github: "https://github.com/webnatix",
   },
 };
 
@@ -125,13 +121,13 @@ export const TESTIMONIALS = [
     name: "Avatier Corporation",
     role: "Enterprise IT & Identity Management, USA",
     content:
-      "Dotsquares delivered website performance optimization and headless CMS modernization that drastically improved our Core Web Vitals, reduced page latency by 65%, and accelerated our organic pipeline.",
+      "Webnatix delivered website performance optimization and headless CMS modernization that drastically improved our Core Web Vitals, reduced page latency by 65%, and accelerated our organic pipeline.",
   },
   {
     name: "Sunsoul Wellness Platform",
     role: "Digital Health & Community, Australia",
     content:
-      "By integrating GoHighlevel CRM and intelligent automated workflows, Dotsquares streamlined our lead capture, personalized communication, and enabled our platform to scale effortlessly while deepening user trust.",
+      "By integrating GoHighlevel CRM and intelligent automated workflows, Webnatix streamlined our lead capture, personalized communication, and enabled our platform to scale effortlessly while deepening user trust.",
   },
   {
     name: "LHC Procurement Frameworks",
@@ -143,7 +139,7 @@ export const TESTIMONIALS = [
     name: "Getinge Medical Technologies",
     role: "Global Medical Devices, Sweden / Global",
     content:
-      "Dotsquares engineered our global task management system, cascading complex directives from global headquarters to local operating companies across Europe, the Americas, and Asia-Pacific.",
+      "Webnatix engineered our global task management system, cascading complex directives from global headquarters to local operating companies across Europe, the Americas, and Asia-Pacific.",
   },
   {
     name: "Australian Aged Care Group",

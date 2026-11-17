@@ -87,7 +87,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
     ],
     title: "Enterprise-Grade Full Stack Development Company",
     description:
-      "We are a full stack development company that focuses on getting results. Dotsquares can help you produce better software and speed up every part of your projects. Our end-to-end full stack development services cover everything. Our services speed up delivery, make things less complicated, add more features, and make sure that products may be built to be scalable and high-performance.",
+      "We are a full stack development company that focuses on getting results. Webnatix can help you produce better software and speed up every part of your projects. Our end-to-end full stack development services cover everything. Our services speed up delivery, make things less complicated, add more features, and make sure that products may be built to be scalable and high-performance.",
     badges: [
       "Secure & Private",
       "Production Ready",
@@ -130,7 +130,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
         {
           title: "Robust API & Microservices Engineering",
           description:
-            "Dotsquares is great at building powerful APIs that enable different software systems to communicate with one another. Our API development makes sure that data exchange is fast, scalable, and secure. This makes it simple to connect to services from other sectors.",
+            "Webnatix is great at building powerful APIs that enable different software systems to communicate with one another. Our API development makes sure that data exchange is fast, scalable, and secure. This makes it simple to connect to services from other sectors.",
           points: ["RESTful & GraphQL interfaces", "Zero-trust token authentication", "Sub-50ms latency SLAs"],
         },
         {
@@ -179,7 +179,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
       ],
     },
     whyChooseUs: {
-      heading: "Why Global Enterprises Choose Dotsquares",
+      heading: "Why Global Enterprises Choose Webnatix",
       items: [
         { title: "100% IP Transfer & Source Ownership", desc: "All repository code, assets, and infrastructure belong 100% to you. No hidden licensing or vendor lock-in.", stat: "100%" },
         { title: "Senior Engineers & Dedicated Architects", desc: "Work directly with seasoned senior full-stack architects with extensive enterprise track records.", stat: "8+ Yrs Avg" },
@@ -244,7 +244,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
     overview: {
       heading: "Enterprise Sportsbook Architecture Engineered for Maximum Margin",
       paragraphs: [
-        "Modern sports betting demands milliseconds precision, real-time live trading, and impenetrable security. Dotsquares designs custom sportsbook engines capable of processing tens of thousands of concurrent bet placements during high-stakes championship finals.",
+        "Modern sports betting demands milliseconds precision, real-time live trading, and impenetrable security. Webnatix designs custom sportsbook engines capable of processing tens of thousands of concurrent bet placements during high-stakes championship finals.",
         "From personalized bet-builders and instant cashout mechanics to automated risk mitigation algorithms, our platform ensures operators maximize gross gaming revenue (GGR) while preventing fraudulent exploitation.",
       ],
       keyTakeaway:
@@ -305,7 +305,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
       ],
     },
     whyChooseUs: {
-      heading: "The Dotsquares Sportsbook Advantage",
+      heading: "The Webnatix Sportsbook Advantage",
       items: [
         { title: "Sub-10ms Live Placement Speed", desc: "No bet lag or rejected slips during volatile odds movements.", stat: "<10ms" },
         { title: "100% Platform Ownership", desc: "Own your platform IP, database, and player liquidity without recurring revenue penalties.", stat: "100% IP" },
@@ -370,7 +370,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
     overview: {
       heading: "Custom Casino Games Engineered to Drive Retention and GGR",
       paragraphs: [
-        "Dotsquares develops state-of-the-art casino games that captivate players and maximize retention. Using lightweight WebGL and HTML5 rendering frameworks, our games load in under 2 seconds even over slow cellular connections while delivering breathtaking 60fps particle physics and audio effects.",
+        "Webnatix develops state-of-the-art casino games that captivate players and maximize retention. Using lightweight WebGL and HTML5 rendering frameworks, our games load in under 2 seconds even over slow cellular connections while delivering breathtaking 60fps particle physics and audio effects.",
         "Every game we build features certified Random Number Generator (RNG) mathematics, transparent Provably Fair cryptographic proofs, and seamless API connectivity to all major Remote Game Server (RGS) aggregators.",
       ],
       keyTakeaway:
@@ -471,7 +471,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
     ],
     title: "High-Performance Enterprise Website Development",
     description:
-      "Transforming digital presence into a measurable revenue engine. Dotsquares engineers ultra-fast, search-engine dominant websites and web portals powered by Next.js 16, headless architectures, and enterprise design systems that convert visitors into qualified enterprise clients.",
+      "Transforming digital presence into a measurable revenue engine. Webnatix engineers ultra-fast, search-engine dominant websites and web portals powered by Next.js 16, headless architectures, and enterprise design systems that convert visitors into qualified enterprise clients.",
     badges: [
       "99+ Google Lighthouse Score",
       "Next.js 16 & React 19",
@@ -497,7 +497,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
       heading: "Enterprise Web Applications Built for Velocity and Conversion",
       paragraphs: [
         "Your website is the primary commercial storefront of your business. Generic WordPress templates and bloated themes cost companies millions in lost search visibility, high bounce rates, and compromised security.",
-        "At Dotsquares, we build custom web platforms using production-grade Next.js, TypeScript, and modern headless CMS platforms. We guarantee 90+ Core Web Vitals scores, sub-second global page loads, and seamless CRM integrations.",
+        "At Webnatix, we build custom web platforms using production-grade Next.js, TypeScript, and modern headless CMS platforms. We guarantee 90+ Core Web Vitals scores, sub-second global page loads, and seamless CRM integrations.",
       ],
       keyTakeaway:
         "Key Takeaway: Upgrade from slow, vulnerable legacy websites to a high-speed, headless digital ecosystem that ranks at the top of search results and scales effortlessly under enterprise traffic.",
@@ -546,7 +546,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
       ],
     },
     whyChooseUs: {
-      heading: "The Dotsquares Web Engineering Standard",
+      heading: "The Webnatix Web Engineering Standard",
       items: [
         { title: "Sub-Second Load Times", desc: "Next.js edge caching ensures your pages load in under 800ms globally.", stat: "<800ms" },
         { title: "Flawless Core Web Vitals", desc: "All green Lighthouse scores across Performance, Accessibility, and SEO.", stat: "95+ Score" },
@@ -573,7 +573,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
     ],
     title: "Native & Cross-Platform Mobile App Development",
     description:
-      "Engineering intuitive, 60fps iOS and Android mobile applications that users love. Leveraging React Native and Flutter, Dotsquares builds scalable mobile ecosystems with offline sync, biometric security, and seamless cloud backends.",
+      "Engineering intuitive, 60fps iOS and Android mobile applications that users love. Leveraging React Native and Flutter, Webnatix builds scalable mobile ecosystems with offline sync, biometric security, and seamless cloud backends.",
     badges: [
       "iOS & Android Unified",
       "React Native & Flutter",
@@ -648,7 +648,7 @@ export const INNER_PAGES_DATA: Record<string, InnerPageData> = {
       ],
     },
     whyChooseUs: {
-      heading: "Why Build Your App With Dotsquares",
+      heading: "Why Build Your App With Webnatix",
       items: [
         { title: "One Codebase for iOS & Android", desc: "Save up to 40% on engineering budget with unified cross-platform technology.", stat: "50% Savings" },
         { title: "100% App Store Acceptance", desc: "Strict adherence to Apple HIG and Google Play compliance standards.", stat: "100% Approval" },
@@ -756,7 +756,7 @@ export function getInnerPageData(rawSlug: string): InnerPageData {
       { label: formattedTitle },
     ],
     title: `Enterprise ${formattedTitle} Solutions & Engineering`,
-    description: `Accelerate your digital capabilities with our production-grade ${formattedTitle} services. Dotsquares delivers custom architectures, modern engineering stacks, and full intellectual property ownership for ambitious enterprises.`,
+    description: `Accelerate your digital capabilities with our production-grade ${formattedTitle} services. Webnatix delivers custom architectures, modern engineering stacks, and full intellectual property ownership for ambitious enterprises.`,
     badges: [
       "Enterprise Ready",
       "High Performance",
@@ -784,7 +784,7 @@ export function getInnerPageData(rawSlug: string): InnerPageData {
         `Our specialized engineering team builds high-velocity ${formattedTitle} solutions tailored to your operational requirements. From architectural discovery to production deployment, we ensure predictable milestone delivery.`,
         `By leveraging cloud-native best practices and automated CI/CD verification, we enable your organization to scale with confidence, high security, and zero vendor lock-in.`,
       ],
-      keyTakeaway: `Key Takeaway: Dotsquares provides turn-key ${formattedTitle} with complete source code ownership, transparent milestone pricing, and dedicated senior engineering support.`,
+      keyTakeaway: `Key Takeaway: Webnatix provides turn-key ${formattedTitle} with complete source code ownership, transparent milestone pricing, and dedicated senior engineering support.`,
     },
     servicesGrid: {
       heading: `Key ${formattedTitle} Engineering Services`,
@@ -831,7 +831,7 @@ export function getInnerPageData(rawSlug: string): InnerPageData {
       ],
     },
     whyChooseUs: {
-      heading: "Why Choose Dotsquares",
+      heading: "Why Choose Webnatix",
       items: [
         { title: "100% IP Transfer", desc: "You own all code, repositories, and assets from day one.", stat: "100% IP" },
         { title: "Predictable Pricing", desc: "Fixed-price milestones with zero hidden fees or surprises.", stat: "Fixed Scope" },
