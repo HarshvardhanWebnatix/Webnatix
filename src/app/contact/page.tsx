@@ -100,7 +100,7 @@ export default function ContactUsPage() {
           className="pointer-events-none absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage:
-              "linear-gradient(#e52320 1px, transparent 1px), linear-gradient(to right, #0066cc 1px, transparent 1px)",
+              "linear-gradient(#0066cc 1px, transparent 1px), linear-gradient(to right, #0066cc 1px, transparent 1px)",
             backgroundSize: "44px 44px",
           }}
         />
@@ -112,8 +112,8 @@ export default function ContactUsPage() {
             <div className="lg:col-span-7 space-y-7 text-left">
               
               {/* Overline Tag */}
-              <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-1.5 shadow-xs">
-                <span className="text-[11px] font-extrabold tracking-wider text-[#e52320] uppercase font-mono">
+              <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 shadow-xs">
+                <span className="text-[11px] font-extrabold tracking-wider text-[#0066cc] uppercase font-mono">
                   # ENTERPRISE TECHNICAL SCOPING
                 </span>
               </div>
@@ -121,7 +121,7 @@ export default function ContactUsPage() {
               {/* Main Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.12] text-slate-900">
                 Let's Build Something <br />
-                <span className="text-[#e52320]">Extraordinary</span> Together
+                <span className="text-[#0066cc]">Extraordinary</span> Together
               </h1>
 
               {/* Subheadline */}
@@ -132,7 +132,7 @@ export default function ContactUsPage() {
               {/* 3 Horizontal Guarantee Items */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                  <div className="w-8 h-8 rounded-lg bg-red-50 border border-red-200/60 flex items-center justify-center text-[#e52320] mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200/60 flex items-center justify-center text-[#0066cc] mb-2">
                     <Clock size={16} />
                   </div>
                   <div className="text-sm font-bold text-slate-900 leading-tight">24h Fast Response</div>
@@ -142,7 +142,7 @@ export default function ContactUsPage() {
                 </div>
 
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                  <div className="w-8 h-8 rounded-lg bg-red-50 border border-red-200/60 flex items-center justify-center text-[#e52320] mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200/60 flex items-center justify-center text-[#0066cc] mb-2">
                     <ShieldCheck size={16} />
                   </div>
                   <div className="text-sm font-bold text-slate-900 leading-tight">Strict NDA Guard</div>
@@ -152,7 +152,7 @@ export default function ContactUsPage() {
                 </div>
 
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                  <div className="w-8 h-8 rounded-lg bg-red-50 border border-red-200/60 flex items-center justify-center text-[#e52320] mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200/60 flex items-center justify-center text-[#0066cc] mb-2">
                     <Globe2 size={16} />
                   </div>
                   <div className="text-sm font-bold text-slate-900 leading-tight">Global Delivery</div>
@@ -165,7 +165,7 @@ export default function ContactUsPage() {
               {/* Verified Platforms Social Proof */}
               <div className="pt-4 border-t border-slate-100">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">
-                  <ShieldCheck size={14} className="text-[#e52320]" />
+                  <ShieldCheck size={14} className="text-[#0066cc]" />
                   <span>RECOGNIZED &amp; VERIFIED BY TOP GLOBAL PLATFORMS</span>
                 </div>
 
@@ -178,7 +178,7 @@ export default function ContactUsPage() {
                   ].map((p, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-2xl border border-slate-200 bg-white text-center shadow-2xs hover:border-[#e52320]/40 transition-colors"
+                      className="p-3.5 rounded-2xl border border-slate-200 bg-white text-center shadow-2xs hover:border-[#0066cc]/40 transition-colors"
                     >
                       <div className="text-sm font-extrabold text-slate-900">{p.platform}</div>
                       <div className="flex items-center justify-center gap-0.5 my-1 text-amber-400">
@@ -199,12 +199,12 @@ export default function ContactUsPage() {
             <div className="lg:col-span-5">
               <div className="relative rounded-3xl border border-slate-200/90 bg-white p-7 sm:p-9 shadow-2xl overflow-hidden">
                 
-                {/* Red Gradient Top Border Line */}
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#e52320] via-rose-500 to-[#e52320]" />
+                {/* Royal Blue Gradient Top Border Line */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0066cc] via-sky-400 to-[#0066cc]" />
 
                 {/* Form Header */}
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-5">
-                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#e52320]">
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0066cc]">
                     FREE CONSULTATION
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-bold border border-emerald-200">
@@ -244,7 +244,7 @@ export default function ContactUsPage() {
                           protectNda: true,
                         });
                       }}
-                      className="mt-4 px-6 py-2 rounded-full border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-50"
+                      className="mt-4 px-6 py-2 rounded-full border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-50 cursor-pointer"
                     >
                       Send Another Message
                     </button>
@@ -263,7 +263,7 @@ export default function ContactUsPage() {
                         placeholder="John Smith"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:bg-white focus:border-[#e52320] focus:ring-2 focus:ring-red-500/10 outline-none transition-all placeholder:text-slate-400"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:bg-white focus:border-[#0066cc] focus:ring-2 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-400"
                       />
                     </div>
 
@@ -278,7 +278,7 @@ export default function ContactUsPage() {
                         placeholder="john@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:bg-white focus:border-[#e52320] focus:ring-2 focus:ring-red-500/10 outline-none transition-all placeholder:text-slate-400"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:bg-white focus:border-[#0066cc] focus:ring-2 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-400"
                       />
                     </div>
 
@@ -291,7 +291,7 @@ export default function ContactUsPage() {
                         <select
                           value={formData.countryCode}
                           onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                          className="px-3 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs font-bold text-slate-700 focus:border-[#e52320] outline-none"
+                          className="px-3 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs font-bold text-slate-700 focus:border-[#0066cc] outline-none"
                         >
                           <option value="+91">🇮🇳 +91</option>
                           <option value="+1">🇺🇸 +1</option>
@@ -306,7 +306,7 @@ export default function ContactUsPage() {
                           placeholder="92520 52623"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="flex-1 px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:bg-white focus:border-[#e52320] focus:ring-2 focus:ring-red-500/10 outline-none transition-all placeholder:text-slate-400"
+                          className="flex-1 px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:bg-white focus:border-[#0066cc] focus:ring-2 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-400"
                         />
                       </div>
                     </div>
@@ -322,7 +322,7 @@ export default function ContactUsPage() {
                         placeholder="Tell us about your project..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:bg-white focus:border-[#e52320] focus:ring-2 focus:ring-red-500/10 outline-none transition-all placeholder:text-slate-400 resize-none"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-900 focus:bg-white focus:border-[#0066cc] focus:ring-2 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-400 resize-none"
                       />
                     </div>
 
@@ -333,7 +333,7 @@ export default function ContactUsPage() {
                         id="nda-check"
                         checked={formData.protectNda}
                         onChange={(e) => setFormData({ ...formData, protectNda: e.target.checked })}
-                        className="w-4 h-4 rounded text-[#e52320] focus:ring-[#e52320] border-slate-300 cursor-pointer"
+                        className="w-4 h-4 rounded text-[#0066cc] focus:ring-[#0066cc] border-slate-300 cursor-pointer"
                       />
                       <label htmlFor="nda-check" className="text-xs text-slate-600 font-medium cursor-pointer">
                         Protect Under Mutual NDA
@@ -345,7 +345,7 @@ export default function ContactUsPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full py-3.5 rounded-xl bg-[#e52320] hover:bg-[#c91d1a] active:bg-[#b01815] text-white font-bold text-xs sm:text-sm shadow-lg shadow-red-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75"
+                        className="w-full py-3.5 rounded-xl bg-[#0066cc] hover:bg-[#0052a3] active:bg-[#004080] text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75"
                       >
                         <Send size={15} />
                         <span>{isSubmitting ? "Processing..." : "Send Message"}</span>
@@ -363,7 +363,7 @@ export default function ContactUsPage() {
                         <span>100% Confidential NDA</span>
                       </span>
                       <span className="flex items-center gap-1">
-                        <Zap size={12} className="text-[#e52320]" />
+                        <Zap size={12} className="text-[#0066cc]" />
                         <span>2-Hour Rapid Ingestion</span>
                       </span>
                     </div>
@@ -389,7 +389,7 @@ export default function ContactUsPage() {
             <div className="lg:col-span-6 space-y-6">
               
               <div>
-                <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#e52320] block mb-1">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0066cc] block mb-1">
                   DIRECT CHANNELS
                 </span>
                 <h2 className="text-3xl font-black text-slate-900 tracking-tight">
@@ -406,47 +406,47 @@ export default function ContactUsPage() {
                 {/* Email */}
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
-                  className="flex items-center justify-between p-4 rounded-2xl border border-slate-200 bg-white hover:border-[#e52320]/40 hover:shadow-md transition-all group"
+                  className="flex items-center justify-between p-4 rounded-2xl border border-slate-200 bg-white hover:border-[#0066cc]/40 hover:shadow-md transition-all group"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-red-50 text-[#e52320] flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0066cc] flex items-center justify-center shrink-0">
                       <Mail size={18} />
                     </div>
                     <div>
                       <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">EMAIL US</div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#e52320] transition-colors">
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#0066cc] transition-colors">
                         {SITE_CONFIG.email}
                       </div>
                       <div className="text-[11px] text-slate-500 mt-0.5">Expect a reply within 2 business hours</div>
                     </div>
                   </div>
-                  <ChevronRight size={16} className="text-slate-300 group-hover:text-[#e52320] group-hover:translate-x-0.5 transition-all" />
+                  <ChevronRight size={16} className="text-slate-300 group-hover:text-[#0066cc] group-hover:translate-x-0.5 transition-all" />
                 </a>
 
                 {/* Call or WhatsApp */}
                 <a
                   href={`tel:${SITE_CONFIG.phone}`}
-                  className="flex items-center justify-between p-4 rounded-2xl border border-slate-200 bg-white hover:border-[#e52320]/40 hover:shadow-md transition-all group"
+                  className="flex items-center justify-between p-4 rounded-2xl border border-slate-200 bg-white hover:border-[#0066cc]/40 hover:shadow-md transition-all group"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-red-50 text-[#e52320] flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0066cc] flex items-center justify-center shrink-0">
                       <Phone size={18} />
                     </div>
                     <div>
                       <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">CALL OR WHATSAPP</div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#e52320] transition-colors">
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#0066cc] transition-colors">
                         {SITE_CONFIG.phone}
                       </div>
                       <div className="text-[11px] text-slate-500 mt-0.5">Mon–Fri from 9am to 7pm IST</div>
                     </div>
                   </div>
-                  <ChevronRight size={16} className="text-slate-300 group-hover:text-[#e52320] group-hover:translate-x-0.5 transition-all" />
+                  <ChevronRight size={16} className="text-slate-300 group-hover:text-[#0066cc] group-hover:translate-x-0.5 transition-all" />
                 </a>
 
                 {/* Corporate Office */}
                 <div className="flex items-center justify-between p-4 rounded-2xl border border-slate-200 bg-white">
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-red-50 text-[#e52320] flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0066cc] flex items-center justify-center shrink-0">
                       <MapPin size={18} />
                     </div>
                     <div>
@@ -462,7 +462,7 @@ export default function ContactUsPage() {
                 {/* Operating Hours */}
                 <div className="flex items-center justify-between p-4 rounded-2xl border border-slate-200 bg-white">
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-red-50 text-[#e52320] flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0066cc] flex items-center justify-center shrink-0">
                       <Clock size={18} />
                     </div>
                     <div>
@@ -477,16 +477,16 @@ export default function ContactUsPage() {
 
               </div>
 
-              {/* Red Architecture Callout Banner */}
-              <div className="rounded-3xl bg-gradient-to-br from-[#c91d1a] to-[#800f0d] p-6 text-white shadow-xl space-y-3">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-rose-200 flex items-center gap-1.5">
-                  <Sparkles size={13} />
+              {/* Webnatix Midnight Navy Architecture Callout Banner */}
+              <div className="rounded-3xl bg-gradient-to-br from-[#0a192f] via-[#0b2545] to-[#0066cc] p-6 text-white shadow-xl space-y-3 border border-blue-500/20">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-cyan-300 flex items-center gap-1.5">
+                  <Sparkles size={13} className="text-cyan-400" />
                   <span>NEED IMMEDIATE GUIDANCE?</span>
                 </span>
                 <h3 className="text-xl font-black text-white">
                   Schedule an Architecture Call
                 </h3>
-                <p className="text-xs text-rose-100 leading-relaxed max-w-md">
+                <p className="text-xs text-slate-200 leading-relaxed max-w-md">
                   Speak directly with a Principal AI &amp; Full-Stack Architect to evaluate your technical feasibility.
                 </p>
                 <div className="pt-1">
@@ -494,8 +494,9 @@ export default function ContactUsPage() {
                     href={SITE_CONFIG.whatsapp}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-[#c91d1a] font-bold text-xs shadow-md hover:bg-rose-50 transition-all cursor-pointer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-[#0066cc] hover:bg-blue-50 font-bold text-xs shadow-md transition-all cursor-pointer"
                   >
+                    <MessageCircle size={14} className="text-[#25D366]" />
                     <span>Chat on WhatsApp</span>
                     <ArrowRight size={13} />
                   </a>
@@ -508,7 +509,7 @@ export default function ContactUsPage() {
             <div className="lg:col-span-6 space-y-6">
               
               <div>
-                <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#e52320] block mb-1">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0066cc] block mb-1">
                   OUR PROCESS
                 </span>
                 <h2 className="text-3xl font-black text-slate-900 tracking-tight">
@@ -545,10 +546,10 @@ export default function ContactUsPage() {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#e52320]/40 hover:shadow-md transition-all"
+                    className="p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#0066cc]/40 hover:shadow-md transition-all"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-red-50 border border-red-200 text-[#e52320] flex items-center justify-center font-black text-xs shrink-0 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-blue-50 border border-blue-200 text-[#0066cc] flex items-center justify-center font-black text-xs shrink-0 mt-0.5">
                         {item.step}
                       </div>
                       <div>
@@ -577,7 +578,7 @@ export default function ContactUsPage() {
         <div className="relative mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16 text-center">
           
           <div className="max-w-3xl mx-auto mb-14 space-y-2">
-            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#e52320] block">
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0066cc] block">
               GLOBAL PRESENCE
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
@@ -588,8 +589,8 @@ export default function ContactUsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             
             {/* Card 1: India HQ */}
-            <div className="p-7 rounded-3xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-[#e52320]/40 hover:shadow-xl transition-all">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#e52320] bg-red-50 px-2.5 py-1 rounded-full border border-red-200/60">
+            <div className="p-7 rounded-3xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-[#0066cc]/40 hover:shadow-xl transition-all">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#0066cc] bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200/60">
                 PRIMARY DEVELOPMENT CENTER
               </span>
               <h3 className="text-xl font-black text-slate-900 mt-4">
@@ -602,8 +603,8 @@ export default function ContactUsPage() {
             </div>
 
             {/* Card 2: North America */}
-            <div className="p-7 rounded-3xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-[#e52320]/40 hover:shadow-xl transition-all">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#e52320] bg-red-50 px-2.5 py-1 rounded-full border border-red-200/60">
+            <div className="p-7 rounded-3xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-[#0066cc]/40 hover:shadow-xl transition-all">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#0066cc] bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200/60">
                 CLIENT RELATIONS
               </span>
               <h3 className="text-xl font-black text-slate-900 mt-4">
@@ -616,8 +617,8 @@ export default function ContactUsPage() {
             </div>
 
             {/* Card 3: UK & EU */}
-            <div className="p-7 rounded-3xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-[#e52320]/40 hover:shadow-xl transition-all">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#e52320] bg-red-50 px-2.5 py-1 rounded-full border border-red-200/60">
+            <div className="p-7 rounded-3xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-[#0066cc]/40 hover:shadow-xl transition-all">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#0066cc] bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200/60">
                 EU OPERATIONS
               </span>
               <h3 className="text-xl font-black text-slate-900 mt-4">
@@ -641,7 +642,7 @@ export default function ContactUsPage() {
         <div className="relative mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16">
           
           <div className="max-w-3xl mb-12 space-y-2 text-left">
-            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#e52320] block">
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0066cc] block">
               WEBNATIX TECH LOCATION
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
@@ -659,7 +660,7 @@ export default function ContactUsPage() {
               <div className="space-y-5">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#0066cc] animate-pulse" />
                     <span className="text-xs font-bold text-slate-900 uppercase">WEBNATIX TECH HQ</span>
                   </div>
                   <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-bold border border-emerald-200">
@@ -696,7 +697,7 @@ export default function ContactUsPage() {
                   href={`https://maps.google.com/?q=Plot+No+13+Kalyan+City+Mansarovar+Jaipur+Rajasthan+302020`}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-2.5 rounded-xl border border-slate-300 hover:border-[#e52320] text-slate-800 hover:text-[#e52320] font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+                  className="w-full py-2.5 rounded-xl border border-slate-300 hover:border-[#0066cc] text-slate-800 hover:text-[#0066cc] font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
                 >
                   <span>Open in Google Maps</span>
                   <ExternalLink size={13} />
@@ -731,7 +732,7 @@ export default function ContactUsPage() {
         <div className="relative mx-auto max-w-4xl px-4 sm:px-8">
           
           <div className="mb-10 text-left">
-            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#e52320] block mb-1">
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0066cc] block mb-1">
               CLIENT REVIEWS
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
@@ -745,7 +746,7 @@ export default function ContactUsPage() {
             {/* Decorative Big Quote */}
             <Quote
               size={64}
-              className="absolute top-8 right-8 text-rose-200/60 pointer-events-none"
+              className="absolute top-8 right-8 text-blue-100/60 pointer-events-none"
             />
 
             {/* Stars */}
