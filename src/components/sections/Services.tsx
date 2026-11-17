@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -8,248 +8,187 @@ import {
   Layers,
   Smartphone,
   Layout,
-  Workflow,
   Cloud,
-  Users,
-  Database,
   ShieldCheck,
-  ArrowUpRight,
+  Database,
+  ArrowRight,
   Sparkles,
-  ShoppingBag,
+  Zap,
   CheckCircle2,
-  Code2,
+  Cpu,
+  Lock,
+  Globe,
+  Activity,
+  Server,
+  Terminal,
   ChevronRight,
+  TrendingUp,
+  FileCode2,
 } from "lucide-react";
 
-export interface ServiceItem {
+interface ServiceShowcase {
   id: string;
-  category: "all" | "ai" | "engineering" | "web-mobile" | "enterprise";
-  icon: any;
+  number: string;
   title: string;
-  badge: string;
-  href: string;
+  category: string;
+  tagline: string;
   description: string;
-  tags: string[];
+  href: string;
+  icon: any;
+  stats: { label: string; value: string };
+  deliverables: string[];
+  techStack: string[];
+  accentColor: string;
+  visualType: "ai" | "software" | "web" | "mobile" | "security" | "data";
 }
 
-const SERVICES_DATA: ServiceItem[] = [
+const SHOWCASE_SERVICES: ServiceShowcase[] = [
   {
-    id: "ai-machine-learning",
-    category: "ai",
-    icon: Brain,
+    id: "ai-ml",
+    number: "01",
     title: "AI & Machine Learning",
-    badge: "Custom LLMs",
+    category: "AUTONOMOUS INTELLIGENCE",
+    tagline: "Custom LLMs, Predictive Analytics & MLOps Pipelines",
+    description:
+      "We design and deploy proprietary machine learning architectures, domain-adapted LLMs, and autonomous agent workflows. From raw data ingestion to low-latency inference pipelines, we take AI from concept directly into enterprise production.",
     href: "/services/ai-machine-learning",
-    description:
-      "We build and deploy custom ML models, LLM-powered applications, and intelligent automation systems tailored to your data and business logic. From predictive analytics and NLP pipelines to computer vision and recommendation engines.",
-    tags: ["Custom LLMs", "Predictive Analytics", "NLP Pipelines", "MLOps"],
+    icon: Brain,
+    stats: { label: "Inference Latency", value: "< 24ms" },
+    deliverables: [
+      "Custom Fine-Tuned Large Language Models",
+      "Vector Search & Enterprise RAG Pipelines",
+      "Predictive Data Modeling & Computer Vision",
+      "Continuous MLOps Monitoring & Auto-Retraining",
+    ],
+    techStack: ["PyTorch", "OpenAI / Claude", "Pinecone", "LangChain", "Kubeflow"],
+    accentColor: "#0066cc",
+    visualType: "ai",
   },
   {
-    id: "software-development",
-    category: "engineering",
-    icon: Layers,
-    title: "Custom Software Development",
-    badge: "CMMI Level 3",
+    id: "custom-software",
+    number: "02",
+    title: "Custom Software Architecture",
+    category: "ENTERPRISE ENGINEERING",
+    tagline: "High-Throughput Microservices & Cloud Platforms",
+    description:
+      "Full-lifecycle software engineering designed to handle enterprise transaction volumes with zero downtime. We build resilient distributed architectures, event-driven backends, and multi-tenant systems engineered for infinite scalability.",
     href: "/services/full-stack-development",
-    description:
-      "We build custom software from the ground up, tailored to how your business actually runs. Scoping, architecture, full build cycle through to deployment and long-term SLA support.",
-    tags: ["Full Lifecycle", "Enterprise Architecture", "Microservices", "SLA Support"],
+    icon: Layers,
+    stats: { label: "System Uptime SLA", value: "99.99%" },
+    deliverables: [
+      "Event-Driven Microservices Architecture",
+      "High-Concurrency Distributed Backends",
+      "Automated CI/CD Pipelines & Testing Suites",
+      "100% Source Code & Intellectual Property Transfer",
+    ],
+    techStack: ["Node.js / Go", "Docker", "Kubernetes", "PostgreSQL", "Kafka"],
+    accentColor: "#00897b",
+    visualType: "software",
   },
   {
-    id: "mobile-app-development",
-    category: "web-mobile",
-    icon: Smartphone,
-    title: "Mobile App Development",
-    badge: "iOS & Android",
-    href: "/services/mobile-app-development",
+    id: "web-cms",
+    number: "03",
+    title: "Web Platforms & Headless CMS",
+    category: "NEXT-GEN WEB",
+    tagline: "Ultra-Fast Next.js 16 & Serverless Edge Deployments",
     description:
-      "Native iOS and Android or cross-platform using React Native and Flutter. We handle UX architecture, back-end API integration, device testing, and store submission with 60fps gesture-driven performance.",
-    tags: ["iOS & Android", "React Native", "Flutter", "API Integration"],
-  },
-  {
-    id: "web-development",
-    category: "web-mobile",
-    icon: Layout,
-    title: "Web Development & Headless CMS",
-    badge: "Core Web Vitals",
+      "From modern headless CMS ecosystems to high-converting web applications, we engineer code that dominates organic search, achieves 95+ Core Web Vitals, and delivers sub-second global page loads across all edge nodes.",
     href: "/services/website-development",
-    description:
-      "From headless CMS builds and React/Next.js applications to enterprise Drupal and .NET platforms. Clean, standards-compliant code with accessibility, sub-second latency, and Core Web Vitals baked in.",
-    tags: ["React & Next.js", "Headless CMS", "Enterprise .NET", "SEO Dominance"],
+    icon: Layout,
+    stats: { label: "Core Web Vitals", value: "99 / 100" },
+    deliverables: [
+      "Server-Side Rendered (SSR) Next.js 16 Web Apps",
+      "Headless CMS Architecture (Strapi, Sanity, Contentful)",
+      "Tailwind CSS v4 & Motion Design Systems",
+      "Sub-Second Global Edge Caching & CDN Optimization",
+    ],
+    techStack: ["Next.js", "React 19", "Tailwind CSS", "TypeScript", "Vercel Edge"],
+    accentColor: "#0284c7",
+    visualType: "web",
   },
   {
-    id: "ecommerce-development",
-    category: "enterprise",
-    icon: ShoppingBag,
-    title: "E-Commerce Solutions",
-    badge: "Shopify Plus",
-    href: "/services/ecommerce-development",
+    id: "mobile-apps",
+    number: "04",
+    title: "Mobile App Development",
+    category: "MOBILE ECOSYSTEMS",
+    tagline: "Native iOS/Android & Cross-Platform React Native",
     description:
-      "Ecommerce platforms that convert on Magento, BigCommerce, WooCommerce, Shopify Plus, or fully bespoke. Product catalogue structure, checkout flow, automated inventory sync, and payment gateways.",
-    tags: ["Shopify Plus", "Magento", "BigCommerce", "Custom Checkout"],
+      "Engaging 60fps mobile experiences that users love. Leveraging React Native and native iOS/Android frameworks, we build frictionless mobile apps with biometric authentication, offline synchronization, and instant push updates.",
+    href: "/services/mobile-app-development",
+    icon: Smartphone,
+    stats: { label: "Frame Rate Performance", value: "60 FPS" },
+    deliverables: [
+      "Cross-Platform React Native & Flutter Apps",
+      "Native Swift & Kotlin High-Performance Modules",
+      "Offline-First SQLite / WatermelonDB Sync",
+      "App Store & Google Play Deployment & Optimization",
+    ],
+    techStack: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
+    accentColor: "#6366f1",
+    visualType: "mobile",
   },
   {
-    id: "cloud-solutions",
-    category: "engineering",
-    icon: Cloud,
-    title: "Cloud Solutions & DevOps",
-    badge: "AWS & Azure",
+    id: "cloud-devops",
+    number: "05",
+    title: "Cloud & DevOps Infrastructure",
+    category: "CLOUD MODERNIZATION",
+    tagline: "Multi-Cloud Deployments on AWS, Azure & Google Cloud",
+    description:
+      "Certified cloud architecture, migration, and cost optimization. We architect auto-scaling infrastructure, containerized Kubernetes meshes, and Infrastructure-as-Code (Terraform) to ensure peak resilience under viral load.",
     href: "/services/cloud-solutions",
-    description:
-      "AWS, Azure, and Google Cloud planning, migration, and management. High-concurrency containerized Kubernetes topologies that stay resilient, secure, and cost-effective as your business expands.",
-    tags: ["AWS Select Tier", "Microsoft Azure", "Google Cloud", "Kubernetes"],
-  },
-  {
-    id: "crm-solutions",
-    category: "enterprise",
-    icon: Users,
-    title: "CRM Solutions",
-    badge: "Salesforce & Zoho",
-    href: "/services/crm-solutions",
-    description:
-      "Salesforce, Zoho, and HubSpot implementation and customization, plus bespoke CRM systems for complex enterprise workflows. Custom module development, workflow automation, and legacy migration.",
-    tags: ["Salesforce Partner", "Zoho Authorized", "HubSpot Solutions", "Workflow Automation"],
-  },
-  {
-    id: "api-integration",
-    category: "engineering",
-    icon: Workflow,
-    title: "API Dev & Systems Integration",
-    badge: "Sub-50ms Latency",
-    href: "/services/api-development",
-    description:
-      "We develop and integrate APIs that connect the systems you rely on so data moves freely with zero friction. Public-facing endpoints, legacy ERP bridges, and real-time event-driven webhooks.",
-    tags: ["REST & GraphQL", "ERP Connectors", "Payment Gateways", "Zero Latency"],
-  },
-  {
-    id: "data-engineering",
-    category: "ai",
-    icon: Database,
-    title: "Data Engineering & Analytics",
-    badge: "Snowflake & BigQuery",
-    href: "/services/data-strategy",
-    description:
-      "ETL/ELT pipelines, modern cloud data warehouses on Snowflake, BigQuery, or Redshift, and real-time streaming architectures with Kafka and Spark for unified analytics and Power BI dashboards.",
-    tags: ["Snowflake", "BigQuery", "ETL Pipelines", "Power BI & Tableau"],
+    icon: Cloud,
+    stats: { label: "Cloud Cost Efficiency", value: "-40% Waste" },
+    deliverables: [
+      "Multi-Region AWS / Azure / GCP Cloud Topologies",
+      "Kubernetes (K8s) Cluster Management & Autoscaling",
+      "Terraform Infrastructure-as-Code (IaC)",
+      "Zero-Downtime Blue/Green Deployment Pipelines",
+    ],
+    techStack: ["AWS", "Microsoft Azure", "Google Cloud", "Terraform", "Docker"],
+    accentColor: "#0066cc",
+    visualType: "data",
   },
   {
     id: "cybersecurity",
-    category: "enterprise",
-    icon: ShieldCheck,
+    number: "06",
     title: "Cybersecurity & Compliance",
-    badge: "ISO 27001 & SOC 2",
-    href: "/services/custom-software-integration",
+    category: "ZERO-TRUST GOVERNANCE",
+    tagline: "CMMI Level 3, ISO 27001 & SOC 2 Security Auditing",
     description:
-      "Penetration testing across web applications, APIs, and cloud infrastructure. Actionable remediation, IAM access control, data encryption, and continuous SIEM threat monitoring.",
-    tags: ["Penetration Testing", "ISO 27001", "GDPR & SOC 2", "SIEM Monitoring"],
+      "Security engineered into every commit. We perform rigorous penetration testing, implement IAM zero-trust token controls, and provide complete compliance governance to guarantee data safety against modern cyber threats.",
+    href: "/services/custom-software-integration",
+    icon: ShieldCheck,
+    stats: { label: "Security Compliance", value: "ISO 27001" },
+    deliverables: [
+      "Comprehensive Web & API Penetration Testing",
+      "Zero-Trust Identity & Access Management (IAM)",
+      "GDPR, HIPAA & SOC 2 Audit Readiness",
+      "24/7 SIEM Infrastructure Monitoring & Threat Defense",
+    ],
+    techStack: ["OAuth2 / OIDC", "Cloudflare Zero Trust", "Vault", "WAF", "SonarQube"],
+    accentColor: "#10b981",
+    visualType: "security",
   },
 ];
 
-const CATEGORIES = [
-  { id: "all", label: "All Capabilities" },
-  { id: "ai", label: "AI & Data Solutions" },
-  { id: "engineering", label: "Software & Cloud" },
-  { id: "web-mobile", label: "Web & Mobile Apps" },
-  { id: "enterprise", label: "Enterprise & CRM" },
-] as const;
-
-function ServiceCard({ item, index }: { item: ServiceItem; index: number }) {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-  const Icon = item.icon;
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
-
-  return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 25 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.45, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-      className="h-full"
-    >
-      <Link
-        href={item.href}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-7 sm:p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0066cc]/40 hover:shadow-[0_22px_50px_rgba(0,102,204,0.1)] block"
-      >
-        {/* Interactive Mouse Spotlight Glow */}
-        <div
-          className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{
-            background: `radial-gradient(450px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 102, 204, 0.07), transparent 75%)`,
-          }}
-        />
-
-        {/* Top Gliding Accent Gradient Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066cc] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-t-3xl" />
-
-        <div>
-          {/* Card Top Row: Glowing Icon Badge & Right Action Pill */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50/50 text-[#0066cc] border border-blue-100/90 shadow-2xs transition-all duration-300 group-hover:scale-105 group-hover:bg-[#0066cc] group-hover:text-white group-hover:shadow-lg group-hover:shadow-blue-500/25">
-              <Icon size={26} className="transition-transform duration-300 group-hover:rotate-3" />
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-slate-50 border border-slate-200/70 px-2.5 py-1 text-[10.5px] font-bold text-slate-500 group-hover:bg-blue-50 group-hover:text-[#0066cc] group-hover:border-blue-200 transition-colors">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                {item.badge}
-              </span>
-
-              <div className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200/80 bg-white text-slate-400 shadow-2xs transition-all duration-300 group-hover:border-[#0066cc] group-hover:bg-[#0066cc] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                <ArrowUpRight size={17} />
-              </div>
-            </div>
-          </div>
-
-          {/* Service Title */}
-          <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-[#0066cc] transition-colors leading-snug tracking-tight mb-3">
-            {item.title}
-          </h3>
-
-          {/* Description */}
-          <p className="text-[13.5px] sm:text-[14px] text-slate-600 leading-relaxed mb-6 font-normal line-clamp-4">
-            {item.description}
-          </p>
-        </div>
-
-        {/* Bottom Interactive Tags */}
-        <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100">
-          {item.tags.map((tag, tIdx) => (
-            <span
-              key={tIdx}
-              className="rounded-lg bg-slate-50 border border-slate-200/80 px-2.5 py-1 text-[11px] font-semibold text-slate-600 transition-colors group-hover:border-blue-200 group-hover:bg-blue-50/50 group-hover:text-blue-900"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </Link>
-    </motion.div>
-  );
-}
-
 export function Services() {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const current = SHOWCASE_SERVICES[activeIdx];
 
-  const filteredServices =
-    activeCategory === "all"
-      ? SERVICES_DATA
-      : SERVICES_DATA.filter((s) => s.category === activeCategory);
+  // Auto-slide through services every 7 seconds, pauses when user hovers or interacts
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % SHOWCASE_SERVICES.length);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
 
   return (
-    <section className="relative py-24 sm:py-32 bg-gradient-to-b from-white via-slate-50/40 to-white overflow-hidden border-t border-slate-100">
-      {/* Background Subtle Tech Ambient Grids & Auras */}
+    <section className="relative py-24 sm:py-32 bg-[#F8FAFC] overflow-hidden border-t border-slate-200/80">
+      
+      {/* Background Technical Grid and Ambient Radial Aura */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.035]"
         style={{
@@ -258,99 +197,302 @@ export function Services() {
           backgroundSize: "48px 48px",
         }}
       />
-      <div className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[850px] h-[500px] rounded-full bg-blue-400/8 blur-3xl" />
+      <div className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[550px] rounded-full bg-blue-500/5 blur-[120px]" />
 
       <div className="relative mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16">
         
         {/* ── Section Header ── */}
-        <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-14">
+        <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/90 px-4 py-1.5 text-[11px] font-bold text-[#0066cc] uppercase tracking-widest mb-4 shadow-2xs backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-[#0066cc] animate-pulse" />
-            <span>BRIDGING INNOVATION &amp; EXCELLENCE</span>
+            <span>ENGINEERING EXCELLENCE &amp; CAPABILITIES</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-slate-900 tracking-tight leading-[1.14] mb-4">
-            Real Business Outcomes Powered by{" "}
+            Architecting Tomorrow&apos;s{" "}
             <span className="bg-gradient-to-r from-[#0066cc] to-[#00897b] bg-clip-text text-transparent">
-              AI &amp; Automation
+              Digital Infrastructure
             </span>
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            Modern software development, cloud infrastructure, and intelligent automation systems
-            tailored to how your business actually runs.
+            Explore our end-to-end engineering practices, bespoke AI models, and enterprise cloud
+            architectures built for measurable business impact.
           </p>
+        </div>
 
-          {/* ── Animated Category Filter Tabs ── */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-            {CATEGORIES.map((cat) => {
-              const isActive = activeCategory === cat.id;
+        {/* ── Interactive Split Bento Showcase (5 Cols Left Navigator / 7 Cols Right Dynamic Canvas) ── */}
+        <div
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          
+          {/* ── Left Column: Interactive Capability Navigator (5 Cols) ── */}
+          <div className="lg:col-span-5 flex flex-col justify-between gap-3">
+            {SHOWCASE_SERVICES.map((item, idx) => {
+              const isActive = idx === activeIdx;
+              const Icon = item.icon;
+
               return (
                 <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={`relative rounded-full px-5 py-2.5 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  key={item.id}
+                  onClick={() => setActiveIdx(idx)}
+                  className={`group relative text-left rounded-2xl p-4 sm:p-5 transition-all duration-300 cursor-pointer overflow-hidden border ${
                     isActive
-                      ? "text-white shadow-md shadow-blue-500/20"
-                      : "bg-white/80 text-slate-600 border border-slate-200/80 hover:bg-slate-50 hover:text-slate-900"
+                      ? "bg-white border-[#0066cc]/40 shadow-xl shadow-blue-500/10 scale-[1.01]"
+                      : "bg-white/60 border-slate-200/80 hover:bg-white hover:border-slate-300"
                   }`}
                 >
+                  {/* Active Left Indicator Accent Bar */}
                   {isActive && (
                     <motion.div
-                      layoutId="activeCategoryPill"
-                      className="absolute inset-0 rounded-full bg-gradient-to-r from-[#0066cc] to-blue-600"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      layoutId="activeServiceBar"
+                      className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#0066cc]"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
-                  <span className="relative z-10">{cat.label}</span>
+
+                  {/* Header Row */}
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <div
+                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-all duration-300 ${
+                          isActive
+                            ? "bg-[#0066cc] text-white shadow-md shadow-blue-500/25 scale-105"
+                            : "bg-slate-100 text-slate-600 group-hover:bg-blue-50 group-hover:text-[#0066cc]"
+                        }`}
+                      >
+                        <Icon size={20} />
+                      </div>
+                      
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-black uppercase tracking-wider text-[#0066cc]">
+                            {item.number}
+                          </span>
+                          <span className="text-[10.5px] font-bold text-slate-400 uppercase tracking-wider">
+                            {item.category}
+                          </span>
+                        </div>
+                        <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate">
+                          {item.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    <div className="shrink-0 flex items-center gap-2">
+                      <span
+                        className={`hidden sm:inline-block rounded-full px-2.5 py-0.5 text-[11px] font-bold ${
+                          isActive
+                            ? "bg-blue-50 text-[#0066cc] border border-blue-200/80"
+                            : "bg-slate-100 text-slate-500"
+                        }`}
+                      >
+                        {item.stats.value}
+                      </span>
+                      <div
+                        className={`h-7 w-7 rounded-full flex items-center justify-center transition-all ${
+                          isActive
+                            ? "bg-[#0066cc] text-white rotate-90"
+                            : "text-slate-300 group-hover:text-slate-600"
+                        }`}
+                      >
+                        <ChevronRight size={16} />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Expanded Teaser on Active */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="mt-3 text-xs sm:text-[13px] text-slate-600 leading-relaxed pl-14">
+                          {item.tagline}
+                        </p>
+                        
+                        {/* Auto-play progress bar */}
+                        {!isPaused && (
+                          <div className="mt-3.5 ml-14 h-1 w-full bg-slate-100 rounded-full overflow-hidden">
+                            <motion.div
+                              key={activeIdx}
+                              initial={{ width: "0%" }}
+                              animate={{ width: "100%" }}
+                              transition={{ duration: 7, ease: "linear" }}
+                              className="h-full bg-gradient-to-r from-[#0066cc] to-teal-400"
+                            />
+                          </div>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </button>
               );
             })}
           </div>
+
+          {/* ── Right Column: Living Dynamic Architecture Canvas (7 Cols) ── */}
+          <div className="lg:col-span-7">
+            <div className="relative h-full min-h-[560px] lg:min-h-[640px] rounded-3xl border border-slate-800 bg-[#071322] text-white p-6 sm:p-9 shadow-2xl flex flex-col justify-between overflow-hidden">
+              
+              {/* Background Futuristic Console Glow */}
+              <div className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-blue-500/15 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-teal-500/15 blur-3xl" />
+
+              {/* Console Header Bar */}
+              <div className="relative z-10 flex items-center justify-between pb-6 border-b border-slate-800/90">
+                <div className="flex items-center gap-3">
+                  <div className="flex gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-rose-500/80" />
+                    <span className="w-3 h-3 rounded-full bg-amber-500/80" />
+                    <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                  </div>
+                  <span className="text-xs font-mono text-slate-400 pl-2 border-l border-slate-800">
+                    webnatix://architecture/{current.id}.node
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 text-[11px] font-mono font-bold text-emerald-400">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                    {current.stats.label}: {current.stats.value}
+                  </span>
+                </div>
+              </div>
+
+              {/* Center Dynamic Visualizer Stage */}
+              <div className="relative z-10 my-8 flex-1 flex flex-col justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={current.id}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    className="space-y-6"
+                  >
+                    
+                    {/* Visualizer Header */}
+                    <div>
+                      <div className="inline-flex items-center gap-2 text-xs font-black tracking-widest text-[#38bdf8] uppercase mb-2">
+                        <Sparkles size={14} />
+                        <span>{current.category} ARCHITECTURE</span>
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+                        {current.title}
+                      </h3>
+                      <p className="text-sm sm:text-[15px] text-slate-300 leading-relaxed mt-2.5 max-w-xl">
+                        {current.description}
+                      </p>
+                    </div>
+
+                    {/* Interactive Animated Node Schematic Diagram */}
+                    <div className="rounded-2xl border border-slate-800 bg-[#0d1f35]/90 p-5 sm:p-6 backdrop-blur-md">
+                      <div className="flex items-center justify-between pb-3 border-b border-slate-800 text-xs font-mono text-slate-400">
+                        <span className="flex items-center gap-2">
+                          <Terminal size={14} className="text-[#38bdf8]" />
+                          <span>LIVE PIPELINE TOPOLOGY</span>
+                        </span>
+                        <span className="text-emerald-400 font-bold">100% OPERATIONAL</span>
+                      </div>
+
+                      {/* Schematic Flow Nodes */}
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4">
+                        {current.deliverables.map((deliv, dIdx) => (
+                          <div
+                            key={dIdx}
+                            className="rounded-xl border border-slate-700/60 bg-slate-900/80 p-3 flex flex-col justify-between hover:border-[#38bdf8]/50 transition-colors"
+                          >
+                            <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
+                              <span>STEP 0{dIdx + 1}</span>
+                              <CheckCircle2 size={13} className="text-emerald-400" />
+                            </div>
+                            <span className="text-xs font-semibold text-slate-200 leading-snug">
+                              {deliv}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Tech Stack Pills in Console */}
+                      <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-800/80">
+                        <span className="text-[11px] font-mono uppercase text-slate-400">Tech Stack:</span>
+                        {current.techStack.map((tech, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="rounded-md bg-slate-800 border border-slate-700/80 px-2 py-0.5 text-[11px] font-mono text-[#38bdf8]"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Console Footer: Actions & Direct Link */}
+              <div className="relative z-10 pt-5 border-t border-slate-800/90 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="text-left">
+                  <div className="text-xs text-slate-400">Full Architectural Specifications &amp; SLA</div>
+                  <div className="text-sm font-bold text-white">
+                    Explore Dedicated {current.title} Framework
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 shrink-0">
+                  <Link
+                    href={current.href}
+                    className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] hover:bg-blue-600 px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:scale-105 active:scale-95"
+                  >
+                    <span>View Specifications</span>
+                    <ArrowRight size={15} />
+                  </Link>
+
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-900/80 hover:bg-slate-800 px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-300 transition-all"
+                  >
+                    <span>Inquire</span>
+                  </Link>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
-        {/* ── Animated Cards Grid ── */}
-        <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence mode="popLayout">
-            {filteredServices.map((item, idx) => (
-              <ServiceCard key={item.id} item={item} index={idx} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* ── Bottom Interactive Discovery Bar ── */}
-        <div className="mt-14 sm:mt-16 rounded-3xl border border-slate-200/90 bg-gradient-to-r from-blue-50/60 via-white to-emerald-50/40 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
-          <div className="flex items-center gap-4 text-left">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#0066cc] text-white shadow-md shadow-blue-500/20">
-              <Code2 size={24} />
-            </div>
-            <div>
-              <h4 className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
-                Need a Bespoke Architecture or Dedicated Pod?
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-500">
-                Explore our certified technical collective, flexible engagement models, and 2-3 hour initial response SLA.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0052a3] transition-all hover:scale-105 active:scale-95"
+        {/* ── Bottom Metric Strip ── */}
+        <div className="mt-14 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+          {[
+            { label: "Engineering SLA", val: "99.99%", sub: "Guaranteed Production Uptime" },
+            { label: "Code Ownership", val: "100%", sub: "Full IP & Repo Handover" },
+            { label: "Average Response", val: "2-3 Hrs", sub: "Confidential Technical Review" },
+            { label: "Certified Team", val: "1,200+", sub: "Full-Time Technical Talent" },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-xs transition-all hover:border-[#0066cc]/40 hover:shadow-md"
             >
-              Discuss Your Requirement
-              <ArrowUpRight size={15} />
-            </Link>
-
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50 transition-all"
-            >
-              All 30+ Services
-              <ChevronRight size={14} />
-            </Link>
-          </div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-[#0066cc] tracking-tight">
+                {item.val}
+              </div>
+              <div className="text-xs sm:text-sm font-bold text-slate-800 mt-1">
+                {item.label}
+              </div>
+              <div className="text-[11px] text-slate-400 mt-0.5">
+                {item.sub}
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
