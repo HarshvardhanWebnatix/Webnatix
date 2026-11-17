@@ -1,8 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Brain,
   Layers,
@@ -16,16 +14,14 @@ import {
   ShieldCheck,
   ArrowRight,
   CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
   Sparkles,
+  PhoneCall,
 } from "lucide-react";
 
 interface ServiceItem {
   id: string;
   number: string;
   title: string;
-  shortLabel: string;
   badge: string;
   image: string;
   href: string;
@@ -40,13 +36,12 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "ai",
     number: "01",
     title: "AI & Machine Learning",
-    shortLabel: "AI & Machine Learning",
     badge: "CUSTOM LLMS & MLOPS",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew10.png",
     href: "/services/ai-machine-learning",
     icon: Brain,
     description:
-      "We build and deploy custom ML models, LLM-powered applications, and intelligent automation systems tailored to your data and business logic. From predictive analytics and NLP pipelines to computer vision and recommendation engines, we take AI beyond proof-of-concept into production, with the MLOps infrastructure to keep it running reliably.",
+      "We build and deploy custom ML models, LLM-powered applications, and intelligent automation systems tailored to your data and business logic. From predictive analytics and NLP pipelines to computer vision and recommendation engines, we take AI beyond proof-of-concept into production.",
     points: [
       "Custom Fine-Tuned Large Language Models (LLMs)",
       "Enterprise Retrieval-Augmented Generation (RAG)",
@@ -59,7 +54,6 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "software",
     number: "02",
     title: "Custom Software Development",
-    shortLabel: "Software Development",
     badge: "FULL LIFECYCLE ENGINEERING",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew1.png",
     href: "/services/full-stack-development",
@@ -78,13 +72,12 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "mobile",
     number: "03",
     title: "Mobile App Development",
-    shortLabel: "Mobile Apps",
     badge: "NATIVE & CROSS-PLATFORM",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew2.png",
     href: "/services/mobile-app-development",
     icon: Smartphone,
     description:
-      "Native iOS and Android or cross-platform using React Native and Flutter, whichever fits your product and timeline. We handle UX architecture, back-end API integration, device testing, and store submission, building for performance and long-term maintainability, not just the launch date.",
+      "Native iOS and Android or cross-platform using React Native and Flutter, whichever fits your product and timeline. We handle UX architecture, back-end API integration, device testing, and store submission, building for performance and long-term maintainability.",
     points: [
       "Cross-Platform React Native & Flutter Engineering",
       "Native Swift (iOS) & Kotlin (Android) Modules",
@@ -97,13 +90,12 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "web",
     number: "04",
     title: "Web Development & Headless CMS",
-    shortLabel: "Web Development",
     badge: "SUB-SECOND EDGE DELIVERY",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew3.png",
     href: "/services/website-development",
     icon: Layout,
     description:
-      "From headless CMS builds and React SPAs to enterprise Drupal and .NET platforms, we write clean, standards-compliant code with accessibility and Core Web Vitals baked in. Whether it's a CMS your marketing team can actually use or a high-traffic web app, we've built both.",
+      "From headless CMS builds and React SPAs to enterprise Drupal and .NET platforms, we write clean, standards-compliant code with accessibility and Core Web Vitals baked in. Whether it's a CMS your marketing team can actually use or a high-traffic web app, we deliver reliability.",
     points: [
       "Next.js 16 Server-Side Rendering (SSR) & Edge API",
       "Headless CMS Architectures (Sanity, Strapi, Contentful)",
@@ -116,7 +108,6 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "ecommerce",
     number: "05",
     title: "E-Commerce Solutions",
-    shortLabel: "E-Commerce",
     badge: "HIGH-CONVERSION COMMERCE",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew4.png",
     href: "/services/ecommerce-development",
@@ -135,7 +126,6 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "cloud",
     number: "06",
     title: "Cloud Solutions & DevOps",
-    shortLabel: "Cloud Solutions",
     badge: "MULTI-CLOUD RESILIENCE",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew5.png",
     href: "/services/cloud-solutions",
@@ -154,13 +144,12 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "crm",
     number: "07",
     title: "CRM Solutions",
-    shortLabel: "CRM Solutions",
     badge: "WORKFLOW AUTOMATION",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew6.png",
     href: "/services/crm-solutions",
     icon: Users,
     description:
-      "We implement and customise Salesforce, Zoho, and HubSpot, and build bespoke CRM systems where packaged solutions don't match the complexity of your operations. Our engagements cover custom module development, workflow automation, third-party integrations, and data migration from legacy systems.",
+      "We implement and customise Salesforce, Zoho, and HubSpot, and build bespoke CRM systems where packaged solutions don't match the complexity of your operations. Our engagements cover custom module development, workflow automation, and third-party integrations.",
     points: [
       "Salesforce Custom Apex & Lightning Development",
       "Zoho Authorized Partner Integration & Automation",
@@ -173,13 +162,12 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "api",
     number: "08",
     title: "API Dev & Integration",
-    shortLabel: "API Integration",
     badge: "SEAMLESS CONNECTIVITY",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew7.png",
     href: "/services/api-development",
     icon: Workflow,
     description:
-      "We develop and integrate APIs that connect the systems you rely on so data moves freely between them. Whether it's a public-facing API or a complex web of internal integrations, we make sure the plumbing works properly.",
+      "We develop and integrate APIs that connect the systems you rely on so data moves freely between them. Whether it's a public-facing API or a complex web of internal integrations, we make sure the plumbing works reliably with sub-50ms latency.",
     points: [
       "High-Throughput RESTful & GraphQL APIs",
       "Enterprise ERP & Legacy System Connectors",
@@ -192,13 +180,12 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "dataeng",
     number: "09",
     title: "Data Engineering",
-    shortLabel: "Data Engineering",
     badge: "MODERN DATA STACK",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew8.png",
     href: "/services/data-strategy",
     icon: Database,
     description:
-      "We build ETL/ELT pipelines, data warehouses on Snowflake, BigQuery, or Redshift, and real-time streaming architectures using Kafka and Spark. If your reporting is slow, inconsistent, or dependent on manual exports, we fix the underlying data infrastructure, not just the symptoms.",
+      "We build ETL/ELT pipelines, data warehouses on Snowflake, BigQuery, or Redshift, and real-time streaming architectures using Kafka and Spark. If your reporting is slow or inconsistent, we fix the underlying data infrastructure, not just the symptoms.",
     points: [
       "Automated ETL/ELT Pipelines & Orchestration",
       "Snowflake & Google BigQuery Data Warehousing",
@@ -211,13 +198,12 @@ const SERVICES_DATA: ServiceItem[] = [
     id: "cybersecurity",
     number: "10",
     title: "Cybersecurity & Governance",
-    shortLabel: "Cybersecurity",
     badge: "ENTERPRISE SECURITY",
     image: "https://cdn.dotsquares.com/assets/home-new/servicehomenew9.png",
     href: "/services/custom-software-integration",
     icon: ShieldCheck,
     description:
-      "We run penetration testing across web applications, APIs, and network infrastructure, and deliver remediation that's actionable, not just a report to file. We also implement IAM, data encryption, vulnerability management, and SIEM monitoring, with compliance support across ISO 27001, GDPR, and SOC 2.",
+      "We run penetration testing across web applications, APIs, and network infrastructure, and deliver remediation that's actionable. We also implement IAM, data encryption, vulnerability management, and SIEM monitoring with compliance across ISO 27001, GDPR, and SOC 2.",
     points: [
       "Comprehensive Web App & API Penetration Testing",
       "Zero-Trust Identity & Access Management (IAM)",
@@ -229,240 +215,169 @@ const SERVICES_DATA: ServiceItem[] = [
 ];
 
 export function Services() {
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const total = SERVICES_DATA.length;
-  const current = SERVICES_DATA[activeIdx];
-
-  const handleNext = () => {
-    setActiveIdx((prev) => (prev + 1) % total);
-  };
-
-  const handlePrev = () => {
-    setActiveIdx((prev) => (prev - 1 + total) % total);
-  };
-
-  // Auto-advance tabs smoothly every 7 seconds, pauses on hover
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      handleNext();
-    }, 7000);
-    return () => clearInterval(timer);
-  }, [isPaused, total]);
-
   return (
     <section className="relative py-24 sm:py-32 bg-white overflow-hidden border-t border-slate-100">
       
       {/* Background Soft Ambient Light */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
-        <div className="w-[800px] h-[500px] rounded-full bg-blue-50/60 blur-3xl opacity-80" />
+        <div className="w-[900px] h-[600px] rounded-full bg-blue-50/60 blur-3xl opacity-80" />
       </div>
 
       <div className="relative mx-auto max-w-[1780px] px-4 sm:px-8 lg:px-12 xl:px-16">
         
         {/* ── Section Header ── */}
-        <div className="text-center max-w-4xl mx-auto mb-14 sm:mb-16">
-          <div className="inline-block mb-3">
-            <span className="text-xs font-bold text-[#0066cc] tracking-[0.25em] uppercase">
-              SERVICES
-            </span>
+        <div className="max-w-3xl mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/70 px-3.5 py-1 text-xs font-bold text-[#0066cc] uppercase tracking-wider mb-4">
+            <Sparkles size={13} className="text-[#0066cc]" />
+            <span>Comprehensive IT &amp; Engineering Practices</span>
           </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-slate-900 tracking-tight leading-[1.14] mb-4">
-            Bridging Innovation &amp; Excellence With{" "}
-            <span className="text-[#0066cc]">Modern Tech Solutions</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-slate-900 tracking-tight leading-[1.15]">
+            Real Business Outcomes Powered by Custom Engineering &amp; AI
           </h2>
-
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            We design and develop scalable digital solutions tailored to your business needs,
-            helping you improve performance, streamline operations, and support long-term growth.
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+            Modern software engineering, cloud architecture, and intelligent automation systems tailored to how your business actually runs. Explore our 10 core capability practices below.
           </p>
         </div>
 
-        {/* ── Top Horizontal Services Navigation Tabs Bar ── */}
-        <div className="relative mb-10 sm:mb-12">
-          {/* Scrollable Tabs Row */}
-          <div className="flex items-center justify-start lg:justify-center gap-2 overflow-x-auto pb-3 pt-1 px-1 scrollbar-none no-scrollbar">
-            {SERVICES_DATA.map((item, idx) => {
-              const isActive = idx === activeIdx;
-              const Icon = item.icon;
+        {/* ── All 10 Services in a Modern 2-Column Split Cards Grid ── */}
+        {/* (No category tabs hiding content: each service is immediately visible with image & full data) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-9">
+          {SERVICES_DATA.map((service) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={service.id}
+                className="group relative rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-sm hover:shadow-xl hover:border-[#0066cc]/40 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+              >
+                {/* Top/Side Split: Left 3D Visual Stage | Right Data */}
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+                  
+                  {/* Left Column (5 cols): 3D Product Visual Stage */}
+                  <div className="sm:col-span-5 relative h-[220px] rounded-2xl bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100/70 border border-slate-100 flex items-center justify-center p-4 overflow-hidden group-hover:bg-gradient-to-br group-hover:from-blue-50/50 group-hover:via-slate-50 group-hover:to-blue-50/30 transition-all">
+                    {/* Watermark Number */}
+                    <span className="absolute top-3 left-3 text-xs font-black text-slate-400/80 tracking-wider">
+                      {service.number}
+                    </span>
 
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setActiveIdx(idx);
-                    setIsPaused(true);
-                  }}
-                  className={`group relative flex items-center gap-2 rounded-full px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 cursor-pointer shrink-0 border ${
-                    isActive
-                      ? "bg-[#0066cc] text-white border-[#0066cc] shadow-md shadow-blue-500/25 scale-[1.02]"
-                      : "bg-slate-50/80 text-slate-600 border-slate-200/80 hover:bg-white hover:text-slate-900 hover:border-slate-300"
-                  }`}
-                >
-                  <Icon
-                    size={16}
-                    className={`transition-colors duration-200 ${
-                      isActive ? "text-white" : "text-slate-400 group-hover:text-[#0066cc]"
-                    }`}
-                  />
-                  <span>{item.shortLabel}</span>
-
-                  {/* Active highlight pill */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeServiceTabPill"
-                      className="absolute inset-0 rounded-full bg-[#0066cc] -z-10"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* ── Active Service Showcase Card (Two-Column Split Stage) ── */}
-        <div
-          className="relative mx-auto max-w-[1400px] rounded-3xl sm:rounded-[36px] border border-slate-200/90 bg-white p-6 sm:p-10 lg:p-14 shadow-xl shadow-slate-200/50 overflow-hidden"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Top Subtle Progress Indicator */}
-          {!isPaused && (
-            <div className="absolute top-0 left-0 right-0 h-1 bg-slate-100 overflow-hidden">
-              <motion.div
-                key={activeIdx}
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 7, ease: "linear" }}
-                className="h-full bg-gradient-to-r from-[#0066cc] to-[#00897b]"
-              />
-            </div>
-          )}
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center"
-            >
-              
-              {/* ── Left Column: Rich 3D Showcase Graphic (6 Cols) ── */}
-              <div className="lg:col-span-6 flex items-center justify-center order-2 lg:order-1">
-                <div className="relative w-full max-w-[500px] rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/30 p-4 sm:p-8 flex items-center justify-center border border-slate-100/90">
-                  {/* Gentle Floating Motion */}
-                  <motion.div
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-                    className="w-full flex items-center justify-center"
-                  >
-                    <img
-                      src={current.image}
-                      alt={current.title}
-                      className="w-full max-h-[380px] sm:max-h-[420px] object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-[1.03]"
-                    />
-                  </motion.div>
-                </div>
-              </div>
-
-              {/* ── Right Column: Rich Human Agency Copy & Deliverables (6 Cols) ── */}
-              <div className="lg:col-span-6 space-y-6 text-left order-1 lg:order-2">
-                
-                {/* Badge Tag */}
-                <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-[11px] font-bold text-[#0066cc] uppercase tracking-wider">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0066cc]" />
-                  <span>
-                    SERVICE {current.number} · {current.badge}
-                  </span>
-                </div>
-
-                {/* Main Service Title */}
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                  {current.title}
-                </h3>
-
-                {/* Service Agency Description */}
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-                  {current.description}
-                </p>
-
-                {/* Key Deliverables Checklist */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  {current.points.map((point, pIdx) => (
-                    <div key={pIdx} className="flex items-start gap-2.5">
-                      <CheckCircle2 size={17} className="text-[#00897b] shrink-0 mt-0.5" />
-                      <span className="text-xs sm:text-[13px] font-medium text-slate-700 leading-snug">
-                        {point}
-                      </span>
+                    {/* Icon Badge */}
+                    <div className="absolute top-3 right-3 w-7 h-7 rounded-lg bg-white/90 border border-slate-200/60 shadow-2xs flex items-center justify-center text-[#0066cc]">
+                      <Icon size={14} />
                     </div>
-                  ))}
+
+                    {/* High-Definition 3D Illustration */}
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="max-h-[160px] w-auto object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1.5 select-none"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Right Column (7 cols): Rich Data & Deliverables */}
+                  <div className="sm:col-span-7 space-y-3">
+                    
+                    {/* Category Badge */}
+                    <div className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50/70 px-2.5 py-0.5 text-[10px] font-bold text-[#0066cc] uppercase tracking-wider">
+                      <span>{service.badge}</span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl sm:text-[22px] font-black text-slate-900 group-hover:text-[#0066cc] transition-colors leading-snug">
+                      <Link href={service.href} className="flex items-center justify-between hover:underline">
+                        <span>{service.title}</span>
+                        <ArrowRight size={17} className="text-slate-400 group-hover:text-[#0066cc] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+                      </Link>
+                    </h3>
+
+                    {/* Description Paragraph */}
+                    <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed font-normal line-clamp-3">
+                      {service.description}
+                    </p>
+
+                    {/* Key Deliverables Checkmarks */}
+                    <div className="space-y-1.5 pt-1">
+                      {service.points.slice(0, 3).map((pt, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
+                          <CheckCircle2 size={13} className="text-emerald-500 shrink-0 mt-0.5" />
+                          <span className="leading-tight font-medium line-clamp-1">{pt}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Tech Stack Tags */}
+                    <div className="flex flex-wrap gap-1.5 pt-1.5">
+                      {service.techStack.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="rounded-md border border-slate-200/80 bg-slate-50 px-2 py-0.5 text-[10.5px] font-semibold text-slate-600 group-hover:border-blue-200 transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                  </div>
+
                 </div>
 
-                {/* Tech Stack Pills */}
-                <div className="pt-2">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
-                    Technologies &amp; Frameworks
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {current.techStack.map((tech, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="rounded-md bg-slate-100 border border-slate-200/80 px-2.5 py-1 text-xs font-semibold text-slate-700"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action CTA Buttons */}
-                <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-100">
+                {/* Card Bottom Bar */}
+                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
                   <Link
-                    href={current.href}
-                    className="inline-flex items-center gap-2 rounded-full bg-[#0066cc] hover:bg-[#0052a3] text-white px-7 py-3 text-xs sm:text-sm font-bold shadow-md shadow-blue-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                    href={service.href}
+                    className="inline-flex items-center gap-1.5 font-bold text-[#0066cc] hover:text-[#0052a3] transition-colors"
                   >
-                    <span>Learn More</span>
-                    <ArrowRight size={15} />
+                    <span>Explore Full Architecture</span>
+                    <ArrowRight size={13} />
                   </Link>
 
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-1.5 rounded-full border-2 border-slate-200 hover:border-[#0066cc] hover:text-[#0066cc] bg-white px-6 py-2.5 text-xs sm:text-sm font-bold text-slate-700 transition-all cursor-pointer"
+                    className="inline-flex items-center gap-1 text-slate-500 hover:text-slate-900 font-semibold transition-colors"
                   >
-                    <span>Contact Us</span>
+                    <span>Consult Architects</span>
                   </Link>
-
-                  {/* Previous / Next Mini Control Arrows */}
-                  <div className="flex items-center gap-1.5 ml-auto">
-                    <button
-                      onClick={handlePrev}
-                      className="w-9 h-9 rounded-full border border-slate-200 hover:border-[#0066cc] hover:text-[#0066cc] flex items-center justify-center text-slate-600 transition-colors cursor-pointer bg-white"
-                      aria-label="Previous service"
-                    >
-                      <ChevronLeft size={16} />
-                    </button>
-                    <button
-                      onClick={handleNext}
-                      className="w-9 h-9 rounded-full border border-slate-200 hover:border-[#0066cc] hover:text-[#0066cc] flex items-center justify-center text-slate-600 transition-colors cursor-pointer bg-white"
-                      aria-label="Next service"
-                    >
-                      <ChevronRight size={16} />
-                    </button>
-                  </div>
                 </div>
 
               </div>
+            );
+          })}
+        </div>
 
-            </motion.div>
-          </AnimatePresence>
+        {/* ── Bottom Callout Banner ── */}
+        <div className="mt-16 sm:mt-20 rounded-3xl border border-slate-200/90 bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 p-8 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <span className="text-xs font-bold text-blue-400 uppercase tracking-widest">
+              BESPOKE ARCHITECTURAL SCOPING
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              Need a Custom Solution Built Around Your Specific Architecture?
+            </h3>
+            <p className="text-sm text-slate-300 max-w-2xl font-normal">
+              Our principal engineering architects review requirements, evaluate legacy constraints, and deliver an SLA-backed technical blueprint within 48 hours.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#e52320] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-red-500/25 hover:bg-[#c91c19] hover:shadow-xl hover:-translate-y-0.5 transition-all"
+            >
+              <span>Book Architecture Call</span>
+              <ArrowRight size={16} />
+            </Link>
+
+            <a
+              href="tel:+919252052623"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-bold text-white hover:bg-white/20 transition-all"
+            >
+              <PhoneCall size={15} />
+              <span>+91 9252052623</span>
+            </a>
+          </div>
         </div>
 
       </div>
+
     </section>
   );
 }
