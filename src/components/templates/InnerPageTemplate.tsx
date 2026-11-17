@@ -288,7 +288,7 @@ export function InnerPageTemplate({ data }: InnerPageTemplateProps) {
                     {/* Direct Quick Chat Links */}
                     <div className="pt-2 flex items-center justify-center gap-4 text-[11px] text-slate-500 font-semibold border-t border-slate-100">
                       <a
-                        href="https://wa.me/918619478769"
+                        href="https://wa.me/919252052623"
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center gap-1 hover:text-emerald-600 transition-colors"

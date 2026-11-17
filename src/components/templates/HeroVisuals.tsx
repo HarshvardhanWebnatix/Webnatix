@@ -42,6 +42,8 @@ import {
 
 export type HeroVisualType =
   | "api-flow"
+  | "unified-api"
+  | "betadrix-shield"
   | "lighthouse-speed"
   | "mobile-showcase"
   | "ecommerce-cart"
@@ -77,6 +79,9 @@ interface HeroVisualProps {
 export function HeroVisualRenderer({ type = "api-flow", title }: HeroVisualProps) {
   switch (type) {
     case "api-flow":
+    case "betadrix-shield":
+      return <BetadrixShieldVisual />;
+    case "unified-api":
       return <ApiFlowVisual />;
     case "lighthouse-speed":
       return <LighthouseSpeedVisual />;
@@ -136,7 +141,102 @@ export function HeroVisualRenderer({ type = "api-flow", title }: HeroVisualProps
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. FULL STACK: UNIFIED API AGGREGATION (Exact Match to User Reference Screenshot)
+// 1. FULL STACK: PRODUCTION-READY ENGINEERING SHIELD (Exact Match to Betadrix Reference)
+// ─────────────────────────────────────────────────────────────────────────────
+export function BetadrixShieldVisual() {
+  return (
+    <div className="relative w-full max-w-[520px] select-none animate-float-slow">
+      <div className="relative rounded-3xl border border-white/10 bg-[#0d0e14] p-6 sm:p-7 shadow-2xl overflow-hidden">
+        {/* Top Header */}
+        <div className="flex items-center justify-between pb-4 border-b border-white/5">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-red-500/40 bg-red-950/40 px-3 py-1 text-[11px] font-bold text-red-400">
+            <Zap size={11} className="text-[#e52320]" />
+            <span>Production Ready Engineering</span>
+          </div>
+          <span className="text-[11px] font-semibold text-slate-400">SLA Guaranteed</span>
+        </div>
+
+        {/* Center Stage with Glowing Hub & 4 Connected Nodes */}
+        <div className="relative h-[250px] my-4 flex items-center justify-center">
+          {/* Radial Red Glow */}
+          <div className="absolute w-48 h-48 rounded-full bg-red-600/30 blur-2xl pointer-events-none animate-pulse" />
+
+          {/* SVG Connecting Lines with glowing signal pulses */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 460 250" fill="none">
+            {/* Top-Left Line */}
+            <path d="M 120 48 L 195 105" stroke="#f59e0b" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="3 3" />
+            {/* Top-Right Line */}
+            <path d="M 340 48 L 265 105" stroke="#ef4444" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="3 3" />
+            {/* Bottom-Left Line */}
+            <path d="M 120 200 L 195 145" stroke="#10b981" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="3 3" />
+            {/* Bottom-Right Line */}
+            <path d="M 340 200 L 265 145" stroke="#06b6d4" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="3 3" />
+
+            {/* Moving Pulses */}
+            <circle r="3" fill="#f59e0b">
+              <animateMotion path="M 120 48 L 195 105" dur="2.4s" repeatCount="indefinite" />
+            </circle>
+            <circle r="3" fill="#ef4444">
+              <animateMotion path="M 265 105 L 340 48" dur="2.1s" repeatCount="indefinite" />
+            </circle>
+            <circle r="3" fill="#10b981">
+              <animateMotion path="M 120 200 L 195 145" dur="2.6s" repeatCount="indefinite" />
+            </circle>
+            <circle r="3" fill="#06b6d4">
+              <animateMotion path="M 265 145 L 340 200" dur="2.3s" repeatCount="indefinite" />
+            </circle>
+          </svg>
+
+          {/* Central Shield Box */}
+          <div className="relative z-10 w-20 h-20 rounded-2xl bg-gradient-to-b from-[#1e1013] to-[#12080a] border-2 border-red-500/70 shadow-[0_0_35px_rgba(229,35,32,0.55)] flex items-center justify-center transition-transform hover:scale-105 cursor-pointer">
+            <ShieldCheck size={36} className="text-white drop-shadow-[0_2px_8px_rgba(255,255,255,0.4)]" />
+          </div>
+
+          {/* 4 Corner Nodes */}
+          {/* Top-Left: Architecture (Scalable) */}
+          <div className="absolute top-2 left-2 flex items-center gap-1.5 rounded-full border border-white/10 bg-[#161822]/90 px-3 py-1.5 shadow-lg backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-amber-400 animate-ping" />
+            <span className="text-xs font-bold text-white">Architecture</span>
+            <span className="text-[10px] text-slate-400 font-medium">(Scalable)</span>
+          </div>
+
+          {/* Top-Right: Security (Enterprise) */}
+          <div className="absolute top-2 right-2 flex items-center gap-1.5 rounded-full border border-white/10 bg-[#161822]/90 px-3 py-1.5 shadow-lg backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-red-500 animate-ping" />
+            <span className="text-xs font-bold text-white">Security</span>
+            <span className="text-[10px] text-slate-400 font-medium">(Enterprise)</span>
+          </div>
+
+          {/* Bottom-Left: Performance (Optimized) */}
+          <div className="absolute bottom-2 left-2 flex items-center gap-1.5 rounded-full border border-white/10 bg-[#161822]/90 px-3 py-1.5 shadow-lg backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+            <span className="text-xs font-bold text-white">Performance</span>
+            <span className="text-[10px] text-slate-400 font-medium">(Optimized)</span>
+          </div>
+
+          {/* Bottom-Right: Integration (Seamless) */}
+          <div className="absolute bottom-2 right-2 flex items-center gap-1.5 rounded-full border border-white/10 bg-[#161822]/90 px-3 py-1.5 shadow-lg backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
+            <span className="text-xs font-bold text-white">Integration</span>
+            <span className="text-[10px] text-slate-400 font-medium">(Seamless)</span>
+          </div>
+        </div>
+
+        {/* Bottom Footer */}
+        <div className="flex items-center justify-between pt-3.5 border-t border-white/5 text-xs">
+          <div className="flex items-center gap-1.5 text-slate-300 font-medium">
+            <CheckCircle2 size={13} className="text-[#e52320]" />
+            <span>Enterprise Technical Stack</span>
+          </div>
+          <span className="text-red-400 font-bold tracking-wide">Production Hardened</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 1B. UNIFIED API AGGREGATION
 // ─────────────────────────────────────────────────────────────────────────────
 export function ApiFlowVisual() {
   return (
