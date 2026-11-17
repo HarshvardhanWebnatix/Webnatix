@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import {
   ShieldCheck,
@@ -9,7 +10,11 @@ import {
   Globe2,
   Mail,
   MessageCircle,
-  Send
+  Send,
+  Cpu,
+  Activity,
+  CheckCircle2,
+  Zap,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 
@@ -42,6 +47,8 @@ const highlights = [
 ];
 
 export function Hero() {
+  const [activeVisual, setActiveVisual] = useState<"architecture" | "console">("architecture");
+
   return (
     <section className="relative w-full overflow-hidden bg-[#FAFAF9]">
 
@@ -120,17 +127,72 @@ export function Hero() {
 
         </div>
 
-        {/* ── Right Column (54% width) with the Official WebP Image ── */}
-        <div className="w-full lg:w-[54%] flex items-center justify-center lg:justify-end px-2 sm:px-4 lg:px-0 pb-8 lg:pb-0 lg:self-stretch">
-          <div className="relative w-full max-w-[920px]">
-            <img
-              alt="Webnatix Technologies Platform Console"
-              title="Webnatix Technologies Platform Console"
-              width={817}
-              height={483}
-              className="w-full h-auto object-contain relative z-10 drop-shadow-xl"
-              src="/assets/home/hero/hero-image.png"
-            />
+        {/* ── Right Column (54% width) with Interactive 3D Enterprise Console ── */}
+        <div className="w-full lg:w-[54%] flex flex-col items-center lg:items-end justify-center px-2 sm:px-4 lg:px-0 pb-8 lg:pb-0 lg:self-stretch">
+          
+          {/* Top Interactive Switcher Pill */}
+          <div className="flex items-center gap-2 bg-white/95 border border-slate-200/90 rounded-full p-1.5 shadow-md shadow-slate-200/50 mb-4 z-20 backdrop-blur-md">
+            <button
+              onClick={() => setActiveVisual("architecture")}
+              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                activeVisual === "architecture"
+                  ? "bg-[#0066cc] text-white shadow-sm"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              }`}
+            >
+              <Layers size={13} />
+              <span>3D Architecture Stack</span>
+            </button>
+            <button
+              onClick={() => setActiveVisual("console")}
+              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                activeVisual === "console"
+                  ? "bg-[#0a192f] text-white shadow-sm ring-1 ring-cyan-400/40"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              }`}
+            >
+              <Cpu size={13} className={activeVisual === "console" ? "text-cyan-400" : ""} />
+              <span>3D AI &amp; Telemetry Console</span>
+            </button>
+          </div>
+
+          {/* 3D Visual Frame */}
+          <div className="relative w-full max-w-[920px] rounded-2xl overflow-hidden border border-slate-200/80 shadow-2xl bg-white group transition-all duration-500 hover:shadow-blue-500/10">
+            {activeVisual === "architecture" ? (
+              <div className="relative w-full aspect-[16/9] bg-gradient-to-br from-slate-50 to-blue-50/30 overflow-hidden">
+                <img
+                  alt="Webnatix Technologies 3D Layered Architecture Stack"
+                  title="Webnatix Technologies 3D Architecture Stack"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                  src="/images/webnatix-hero-light-3d.jpg"
+                />
+                
+                {/* Floating Micro-Badge Overlay */}
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-md border border-slate-200/90 rounded-full px-3 py-1 shadow-md">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                  <span className="text-[11px] font-bold text-slate-700">Multi-Tier Architecture Ready</span>
+                </div>
+              </div>
+            ) : (
+              <div className="relative w-full aspect-[16/9] bg-[#0a192f] overflow-hidden">
+                <img
+                  alt="Webnatix Technologies 3D Real-Time Telemetry & AI Console"
+                  title="Webnatix Technologies 3D Platform Console"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                  src="/images/webnatix-hero-3d.jpg"
+                />
+
+                {/* Floating Telemetry Micro-Badge Overlay */}
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-[#0a192f]/90 backdrop-blur-md border border-cyan-500/30 rounded-full px-3 py-1 shadow-md">
+                  <Activity size={12} className="text-cyan-400 animate-pulse" />
+                  <span className="text-[11px] font-bold text-cyan-200">Live 99.99% SLA Telemetry</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -149,13 +211,13 @@ export function Hero() {
                 <div className="relative w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
                   <Icon size={17} className="text-white" />
                 </div>
-                <div className="relative text-left">
-                  <div className="text-[13px] font-semibold text-white leading-tight">
+                <div>
+                  <div className="text-white font-bold text-[14px] leading-tight group-hover:text-blue-200 transition-colors">
                     {item.title}
                   </div>
-                  <p className="text-[11px] text-white/70 mt-0.5 font-medium">
+                  <div className="text-blue-200/70 text-[12px] leading-tight mt-0.5">
                     {item.sub}
-                  </p>
+                  </div>
                 </div>
               </div>
             );

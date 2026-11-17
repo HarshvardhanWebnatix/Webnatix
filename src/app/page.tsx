@@ -3,6 +3,7 @@ import { TrustBar } from "@/components/sections/TrustBar";
 import { Services } from "@/components/sections/Services";
 import { GlobalPresence } from "@/components/sections/GlobalPresence";
 import { CircularArchitecture } from "@/components/sections/CircularArchitecture";
+import { EnterpriseConsoleShowcase } from "@/components/sections/EnterpriseConsoleShowcase";
 import { Features } from "@/components/sections/Features";
 import { KnowledgeHub } from "@/components/sections/KnowledgeHub";
 import { Stats } from "@/components/sections/Stats";
@@ -17,6 +18,7 @@ export default function HomePage() {
       <Services />
       <GlobalPresence />
       <CircularArchitecture />
+      <EnterpriseConsoleShowcase />
       <Features />
       <KnowledgeHub />
       <Stats />
