@@ -3,8 +3,8 @@ import { InnerPageTemplate } from "@/components/templates/InnerPageTemplate";
 import { getInnerPageData } from "@/data/inner-pages";
 
 export const metadata: Metadata = {
-  title: "Next-Gen Turnkey Sportsbook Platform & Engine | Webnatixx",
-  description: "High-frequency betting velocity, ultra-low latency odds delivery, and institutional compliance.",
+  title: "High-Throughput Real-Time Streaming Platforms | Webnatix Technologies",
+  description: "Enterprise event-driven architecture, Kafka streaming, ultra-low latency telemetry, and microservices.",
 };
 
 export default function SportsbookPlatformPage() {

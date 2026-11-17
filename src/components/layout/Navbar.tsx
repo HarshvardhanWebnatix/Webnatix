@@ -52,7 +52,7 @@ export const HEADER_NAV_DATA = [
           { label: "Mobile App Development", href: "/services/mobile-app-development" },
           { label: "E-commerce Development", href: "/services/ecommerce-development" },
           { label: "Software Development", href: "/services/full-stack-development" },
-          { label: "Game Development", href: "/casino-game-development" },
+          { label: "Interactive 3D & Apps", href: "/casino-game-development" },
           { label: "API Development", href: "/services/api-development" },
           { label: "Custom Software Integration", href: "/services/custom-software-integration" },
         ],
@@ -465,11 +465,11 @@ export function Navbar() {
                       </div>
                       <div className="space-y-1">
                         {[
-                          { title: "Custom AI & LLM Systems", sub: "RAG · Fine-Tuning · Vectors", href: "/services#custom-ai", isNew: true },
-                          { title: "Agentic AI Automation", sub: "Autonomous Business Bots", href: "/services#agentic-ai", isNew: false },
-                          { title: "AI Business Intelligence", sub: "Predictive Analytics & ML", href: "/services#ai-bi", isNew: false },
-                          { title: "Blockchain & Web3", sub: "Smart Contracts · Cryptographic", href: "/services#blockchain", isNew: false },
-                          { title: "Legacy Modernization", sub: "Code refactoring & Cloud Migration", href: "/services#software", isNew: false },
+                          { title: "Custom AI & LLM Systems", sub: "RAG · Fine-Tuning · Vectors", href: "/services/custom-ai", isNew: true },
+                          { title: "Agentic AI Automation", sub: "Autonomous Business Bots", href: "/services/agentic-ai", isNew: false },
+                          { title: "AI Business Intelligence", sub: "Predictive Analytics & ML", href: "/services/ai-business-intelligence", isNew: false },
+                          { title: "Blockchain & Web3", sub: "Smart Contracts · Cryptographic", href: "/services/blockchain-development", isNew: false },
+                          { title: "Legacy Modernization", sub: "Code refactoring & Cloud Migration", href: "/services/custom-software-integration", isNew: false },
                         ].map((item, idx) => (
                           <Link
                             key={idx}
@@ -510,9 +510,9 @@ export function Navbar() {
                       </div>
                       <div className="space-y-1">
                         {[
-                          { title: "Data Strategy & Governance", sub: "Quality & ETL Pipelines", href: "/services#data-strategy", isNew: false },
-                          { title: "Data Analytics & Power BI", sub: "Real-time Dashboards", href: "/services#power-bi", isNew: false },
-                          { title: "Cloud DevOps & Architecture", sub: "AWS · GCP · Docker · K8s", href: "/services#cloud", isNew: false },
+                          { title: "Data Strategy & Governance", sub: "Quality & ETL Pipelines", href: "/services/data-strategy", isNew: false },
+                          { title: "Data Analytics & Power BI", sub: "Real-time Dashboards", href: "/services/data-analytics", isNew: false },
+                          { title: "Cloud DevOps & Architecture", sub: "AWS · GCP · Docker · K8s", href: "/services/cloud-solutions", isNew: false },
                         ].map((item, idx) => (
                           <Link
                             key={idx}
@@ -540,8 +540,8 @@ export function Navbar() {
                             <TrendingUp size={11} /> BUSINESS &amp; GROWTH SYSTEMS
                           </div>
                           {[
-                            { title: "SEO & Speed Engineering", sub: "Core Web Vitals & Conversion", href: "/services#seo" },
-                            { title: "CRM & Salesforce Suite", sub: "HubSpot · Salesforce · Zoho", href: "/services#crm" },
+                            { title: "SEO & Speed Engineering", sub: "Core Web Vitals & Conversion", href: "/services/search-engine-optimization" },
+                            { title: "CRM & Salesforce Suite", sub: "HubSpot · Salesforce · Zoho", href: "/services/salesforce-solutions" },
                           ].map((item, idx) => (
                             <Link
                               key={idx}

@@ -49,6 +49,8 @@ export type HeroVisualType =
   | "ecommerce-cart"
   | "casino-crash"
   | "sportsbook-engine"
+  | "interactive-3d-sim"
+  | "realtime-telemetry"
   | "api-latency"
   | "software-integration"
   | "crm-kanban"
@@ -89,10 +91,12 @@ export function HeroVisualRenderer({ type = "api-flow", title }: HeroVisualProps
       return <MobileShowcaseVisual />;
     case "ecommerce-cart":
       return <EcommerceCartVisual />;
+    case "interactive-3d-sim":
     case "casino-crash":
-      return <CasinoCrashVisual />;
+      return <Interactive3dEngineVisual />;
+    case "realtime-telemetry":
     case "sportsbook-engine":
-      return <SportsbookEngineVisual />;
+      return <RealtimeTelemetryVisual />;
     case "api-latency":
       return <ApiLatencyVisual />;
     case "software-integration":
@@ -486,65 +490,83 @@ export function EcommerceCartVisual() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. GAME DEVELOPMENT / CASINO: AVIATOR CRASH MULTIPLIER & CERTIFIED MATH
+// 5. INTERACTIVE 3D & GRAPHICS ENGINE: WEBGL, THREE.JS, 60FPS SHADERS
 // ─────────────────────────────────────────────────────────────────────────────
-export function CasinoCrashVisual() {
-  const [multiplier, setMultiplier] = useState(2.45);
+export function Interactive3dEngineVisual() {
+  const [fps, setFps] = useState(60.0);
+  const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setMultiplier((prev) => (prev > 6.5 ? 1.25 : parseFloat((prev + 0.12).toFixed(2))));
-    }, 180);
+      setRotation((prev) => (prev + 3) % 360);
+      setFps((prev) => +(59.7 + Math.random() * 0.5).toFixed(1));
+    }, 50);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="relative w-full max-w-[540px] select-none animate-float-slow">
-      <div className="relative rounded-3xl border border-purple-900/60 bg-[#0d0a1a] p-6 shadow-2xl overflow-hidden">
-        <div className="pointer-events-none absolute -bottom-10 -right-10 w-48 h-48 rounded-full bg-purple-600/20 blur-3xl" />
-        <div className="flex items-center justify-between pb-3 border-b border-purple-900/40">
+      <div className="relative rounded-3xl border border-blue-900/60 bg-[#071326] p-6 shadow-2xl overflow-hidden">
+        <div className="pointer-events-none absolute -bottom-10 -right-10 w-48 h-48 rounded-full bg-blue-600/20 blur-3xl" />
+        <div className="flex items-center justify-between pb-3 border-b border-blue-900/40">
           <div className="flex items-center gap-2">
-            <Flame size={14} className="text-rose-400 animate-pulse" />
-            <span className="text-xs font-extrabold uppercase tracking-wide text-rose-400">
-              AVIATOR CRASH ENGINE
+            <Boxes size={14} className="text-[#38bdf8] animate-pulse" />
+            <span className="text-xs font-extrabold uppercase tracking-wide text-[#38bdf8]">
+              3D WEBGL GRAPHICS ENGINE
             </span>
           </div>
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-            PROVABLY FAIR · SHA-256
+            WebGL 2.0 · Three.js · 60 FPS
           </span>
         </div>
+
+        {/* 3D Wireframe Canvas Visualization */}
         <div className="relative h-44 my-4 flex items-center justify-center overflow-hidden">
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 160" fill="none">
-            <defs>
-              <linearGradient id="crashGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.1" />
-                <stop offset="100%" stopColor="#ec4899" stopOpacity="0.7" />
-              </linearGradient>
-            </defs>
-            <path d="M 10 150 Q 150 140, 270 25" stroke="#ec4899" strokeWidth="3.5" fill="none" strokeDasharray="4 2" />
-            <path d="M 10 150 Q 150 140, 270 25 L 270 150 Z" fill="url(#crashGrad)" />
+          <svg className="w-40 h-40" viewBox="0 0 160 160">
+            {/* Animated Rotating Isometric Wireframe Cube */}
+            <g transform={`rotate(${rotation} 80 80)`}>
+              {/* Outer Hexagon / Cube Projection */}
+              <polygon
+                points="80,25 130,55 130,105 80,135 30,105 30,55"
+                fill="rgba(0, 102, 204, 0.08)"
+                stroke="#0066cc"
+                strokeWidth="1.5"
+                strokeDasharray="4 2"
+              />
+              {/* Internal Cube Edges meeting at center */}
+              <line x1="80" y1="25" x2="80" y2="80" stroke="#38bdf8" strokeWidth="2" />
+              <line x1="130" y1="105" x2="80" y2="80" stroke="#38bdf8" strokeWidth="2" />
+              <line x1="30" y1="105" x2="80" y2="80" stroke="#38bdf8" strokeWidth="2" />
+              {/* Glowing Corner Vertices */}
+              <circle cx="80" cy="25" r="3.5" fill="#38bdf8" />
+              <circle cx="130" cy="55" r="3" fill="#60a5fa" />
+              <circle cx="130" cy="105" r="3.5" fill="#38bdf8" />
+              <circle cx="80" cy="135" r="3" fill="#60a5fa" />
+              <circle cx="30" cy="105" r="3.5" fill="#38bdf8" />
+              <circle cx="30" cy="55" r="3" fill="#60a5fa" />
+              <circle cx="80" cy="80" r="4.5" fill="#ffffff" />
+            </g>
           </svg>
-          <div className="relative z-10 text-center space-y-1">
-            <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-rose-400 to-pink-500 tracking-tight">
-              {multiplier}x
-            </div>
-            <div className="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 px-3 py-0.5 text-[11px] font-bold text-emerald-400">
-              <span>🚀 Trajectory Climbing</span>
-            </div>
+
+          <div className="absolute right-4 top-2 text-right space-y-1">
+            <div className="text-[10px] font-bold text-slate-400">FRAME RATE</div>
+            <div className="text-xl font-black text-[#38bdf8]">{fps} FPS</div>
+            <div className="text-[10px] text-emerald-400 font-semibold">● 0 Frame Drops</div>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2.5 pt-3 border-t border-purple-900/40 text-center">
-          <div className="rounded-xl bg-purple-950/40 border border-purple-900/50 p-2">
-            <div className="text-[10px] text-slate-400">Certified RTP</div>
-            <div className="text-xs font-bold text-white">97.5%</div>
+
+        <div className="grid grid-cols-3 gap-2.5 pt-3 border-t border-blue-900/40 text-center">
+          <div className="rounded-xl bg-blue-950/40 border border-blue-900/50 p-2">
+            <div className="text-[10px] text-slate-400">Draw Calls</div>
+            <div className="text-xs font-bold text-white">14 Calls</div>
           </div>
-          <div className="rounded-xl bg-purple-950/40 border border-purple-900/50 p-2">
-            <div className="text-[10px] text-slate-400">WebSocket Ping</div>
-            <div className="text-xs font-bold text-emerald-400">&lt;15ms</div>
+          <div className="rounded-xl bg-blue-950/40 border border-blue-900/50 p-2">
+            <div className="text-[10px] text-slate-400">Shader Pipeline</div>
+            <div className="text-xs font-bold text-emerald-400">GLSL / PBR</div>
           </div>
-          <div className="rounded-xl bg-purple-950/40 border border-purple-900/50 p-2">
-            <div className="text-[10px] text-slate-400">Certified RNG</div>
-            <div className="text-xs font-bold text-white">GLI-19</div>
+          <div className="rounded-xl bg-blue-950/40 border border-blue-900/50 p-2">
+            <div className="text-[10px] text-slate-400">Memory Usage</div>
+            <div className="text-xs font-bold text-white">&lt;28 MB</div>
           </div>
         </div>
       </div>
@@ -552,79 +574,88 @@ export function CasinoCrashVisual() {
   );
 }
 
+// Named alias for backward compatibility
+export { Interactive3dEngineVisual as CasinoCrashVisual };
+
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. SPORTSBOOK PLATFORM: LIVE IN-PLAY BETTING ODDS & SCORE TICKER
+// 6. REAL-TIME TELEMETRY & HIGH-THROUGHPUT STREAMING ENGINE
 // ─────────────────────────────────────────────────────────────────────────────
-export function SportsbookEngineVisual() {
-  const [oddsHighlight, setOddsHighlight] = useState(false);
+export function RealtimeTelemetryVisual() {
+  const [streamActive, setStreamActive] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setOddsHighlight((prev) => !prev);
-    }, 2800);
+      setStreamActive((prev) => !prev);
+    }, 2400);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="relative w-full max-w-[540px] select-none animate-float-slow">
-      <div className="relative rounded-3xl border border-slate-800 bg-[#0c1220] p-6 shadow-2xl overflow-hidden">
-        <div className="pointer-events-none absolute -top-10 -right-10 w-44 h-44 rounded-full bg-emerald-500/20 blur-3xl" />
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+      <div className="relative rounded-3xl border border-blue-900/60 bg-[#071326] p-6 shadow-2xl overflow-hidden">
+        <div className="pointer-events-none absolute -top-10 -right-10 w-44 h-44 rounded-full bg-blue-500/20 blur-3xl" />
+        <div className="flex items-center justify-between pb-3 border-b border-blue-900/40">
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-xs font-bold text-emerald-400 tracking-wide uppercase">
-              LIVE IN-PLAY · 78&apos;
+              LIVE EVENT STREAM · ACTIVE
             </span>
           </div>
           <span className="text-[11px] font-semibold text-slate-400">
-            UEFA Champions League
+            Kafka · WebSockets · gRPC
           </span>
         </div>
-        <div className="py-5 flex items-center justify-between border-b border-slate-800/80">
-          <div className="space-y-1 text-left">
-            <div className="text-base font-extrabold text-white">Manchester City</div>
-            <div className="text-xs text-slate-400">Home · Attack: 68%</div>
+
+        {/* Real-time Streaming Metrics */}
+        <div className="py-4 space-y-3">
+          <div className="flex items-center justify-between text-left">
+            <div>
+              <div className="text-xs text-slate-400">Throughput Velocity</div>
+              <div className="text-2xl font-black text-white">142,500 <span className="text-xs font-medium text-slate-400">events/sec</span></div>
+            </div>
+            <div className="text-right">
+              <div className="text-xs text-slate-400">Consumer Lag</div>
+              <div className="text-2xl font-black text-emerald-400">0 ms</div>
+            </div>
           </div>
-          <div className="rounded-2xl border border-slate-700 bg-slate-800/80 px-4 py-2 text-xl font-black text-emerald-400 tracking-wider">
-            2 - 1
+
+          {/* Animated Packet Stream Bar */}
+          <div className="relative w-full h-3 rounded-full bg-blue-950 border border-blue-900 overflow-hidden">
+            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#0066cc] via-[#38bdf8] to-emerald-400 rounded-full w-full animate-pulse" />
           </div>
-          <div className="space-y-1 text-right">
-            <div className="text-base font-extrabold text-white">Real Madrid</div>
-            <div className="text-xs text-slate-400">Away · Corners: 5</div>
+
+          <div className="grid grid-cols-3 gap-2.5 pt-1">
+            <div className={`rounded-xl border p-2.5 text-center transition-all ${streamActive ? "border-[#0066cc] bg-blue-950/60 text-white" : "border-slate-800 bg-slate-900/90 text-slate-300"}`}>
+              <div className="text-[10px] text-slate-400">Broker Partition</div>
+              <div className="text-xs font-bold">Node A (US-East)</div>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-900/90 p-2.5 text-center text-slate-300">
+              <div className="text-[10px] text-slate-400">Avg Latency</div>
+              <div className="text-xs font-bold text-emerald-400">2.4 ms</div>
+            </div>
+            <div className={`rounded-xl border p-2.5 text-center transition-all ${!streamActive ? "border-[#0066cc] bg-blue-950/60 text-white" : "border-slate-800 bg-slate-900/90 text-slate-300"}`}>
+              <div className="text-[10px] text-slate-400">Broker Partition</div>
+              <div className="text-xs font-bold">Node B (EU-West)</div>
+            </div>
           </div>
         </div>
-        <div className="py-4 space-y-2">
-          <div className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">
-            1X2 MATCH WINNER (REAL-TIME STREAM)
-          </div>
-          <div className="grid grid-cols-3 gap-2.5">
-            <div className={`rounded-xl border p-2.5 text-center transition-all ${oddsHighlight ? "border-emerald-500 bg-emerald-950/40 text-emerald-300 scale-[1.02]" : "border-slate-800 bg-slate-900/90 text-slate-200"}`}>
-              <div className="text-[10px] text-slate-400">Home (1)</div>
-              <div className="text-base font-black">1.75</div>
-            </div>
-            <div className="rounded-xl border border-slate-800 bg-slate-900/90 p-2.5 text-center text-slate-200">
-              <div className="text-[10px] text-slate-400">Draw (X)</div>
-              <div className="text-base font-black">3.60</div>
-            </div>
-            <div className={`rounded-xl border p-2.5 text-center transition-all ${!oddsHighlight ? "border-amber-500 bg-amber-950/40 text-amber-300 scale-[1.02]" : "border-slate-800 bg-slate-900/90 text-slate-200"}`}>
-              <div className="text-[10px] text-slate-400">Away (2)</div>
-              <div className="text-base font-black">4.90</div>
-            </div>
-          </div>
-        </div>
-        <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+
+        <div className="pt-3 border-t border-blue-900/40 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-            <Trophy size={14} className="text-amber-400" />
-            <span>Slip Velocity: &lt;10ms</span>
+            <ShieldCheck size={14} className="text-[#38bdf8]" />
+            <span>Zero-Loss At-Least-Once Delivery</span>
           </div>
-          <div className="rounded-lg bg-emerald-500 text-slate-950 font-bold px-3 py-1 text-xs shadow-md">
-            1-Tap Cashout Active
+          <div className="rounded-lg bg-[#0066cc] text-white font-bold px-3 py-1 text-xs shadow-md">
+            99.999% SLA
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+// Named alias for backward compatibility
+export { RealtimeTelemetryVisual as SportsbookEngineVisual };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 7. API DEVELOPMENT: LIVE REST / GRAPHQL ENDPOINT TERMINAL & LATENCY

@@ -3,8 +3,8 @@ import { InnerPageTemplate } from "@/components/templates/InnerPageTemplate";
 import { getInnerPageData } from "@/data/inner-pages";
 
 export const metadata: Metadata = {
-  title: "Provably Fair Casino Game Development Studio | Webnatixx",
-  description: "Certified RNG mathematics, 3D animations, and cross-platform HTML5 performance.",
+  title: "Interactive 3D WebGL & Simulation Development | Webnatix Technologies",
+  description: "Cross-platform 3D web applications, digital twins, Three.js shaders, and interactive enterprise simulations.",
 };
 
 export default function CasinoGameDevelopmentPage() {
