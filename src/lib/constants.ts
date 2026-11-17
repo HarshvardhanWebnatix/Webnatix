@@ -1,106 +1,154 @@
 export const SITE_CONFIG = {
-  name: "Webnatix Technologies",
-  shortName: "Webnatix",
-  tagline: "We Build Digital Products That Move Businesses Forward",
+  name: "Dotsquares",
+  shortName: "Dotsquares",
+  tagline: "Modern Software Development with AI, Cloud & Data Expertise",
   description:
-    "Global software engineering studio designing and building high-performance websites, SaaS platforms, portals, dashboards, mobile apps, and AI platforms for ambitious businesses worldwide.",
-  email: "info@webnatix.com",
-  phone: "+91 9252052623",
-  whatsapp: "https://wa.me/919252052623",
-  telegram: "https://t.me/webnatix",
+    "Partnered with Startups and Fortune 500 Companies to design, develop, and scale future-ready digital platforms. 24+ years of global technology expertise, 1,200+ certified engineers, and 27,000+ completed projects worldwide.",
+  email: "office@dotsquares.com",
+  phone: "+44 1273 575190",
+  tollFreeUS: "+1 866 978 2220",
+  phoneAU: "+61 3 9013 4567",
+  whatsapp: "https://wa.me/441273575190",
+  telegram: "https://t.me/dotsquares",
   meetingUrl: "/contact",
-  address: "Global Studio · US · APAC · Europe",
+  address: "London & Brighton (UK) · Texas & Maryland (USA) · Melbourne (AU) · Dubai (UAE) · Jaipur (India)",
+  gccAddress: "CP4-228, 229, Apparel Park, Mahal Road, Jagatpura, Jaipur, Rajasthan, India 302017",
+  ukAddress: "Unit 2, Albourne Court, Henfield Road, Albourne, West Sussex, BN6 9FF, United Kingdom",
   social: {
-    twitter: "https://twitter.com/webnatix",
-    linkedin: "https://linkedin.com/company/webnatix",
-    github: "https://github.com/webnatix",
+    twitter: "https://twitter.com/dotsquares",
+    linkedin: "https://linkedin.com/company/dotsquares",
+    github: "https://github.com/dotsquares",
   },
 };
 
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
-  { label: "Selected Work", href: "/work" },
-  { label: "Why Webnatix", href: "/about" },
-  { label: "Our Process", href: "/about#process" },
-  { label: "Engineering Stack", href: "/services#stack" },
+  { label: "Case Studies", href: "/casestudies" },
+  { label: "About Us", href: "/about" },
+  { label: "Global Capability Center", href: "/about#gcc" },
+  { label: "Technologies", href: "/technologies" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const SERVICES = [
   {
-    id: "web-platforms",
-    icon: "Layout",
-    title: "High-Performance Web Platforms",
+    id: "ai-machine-learning",
+    icon: "Brain",
+    title: "AI & Machine Learning",
     description:
-      "Ultra-fast platforms engineered with modern stacks like Next.js and Astro, featuring custom headless CMS architectures and Core Web Vitals optimization.",
-    tags: ["Next.js", "Astro", "Headless CMS", "Tailwind CSS"],
+      "We build and deploy custom ML models, LLM-powered applications, and intelligent automation systems tailored to your data and business logic. From predictive analytics and NLP pipelines to computer vision and recommendation engines, we take AI beyond proof-of-concept into production, with MLOps infrastructure.",
+    tags: ["Custom LLMs", "Predictive Analytics", "NLP Pipelines", "MLOps"],
   },
   {
-    id: "saas-products",
+    id: "software-development",
     icon: "Layers",
-    title: "SaaS Platforms & Products",
+    title: "Custom Software Development",
     description:
-      "Scalable multi-tenant SaaS applications equipped with role-based auth, automated Stripe subscription billing, and real-time interactive user dashboards.",
-    tags: ["Multi-Tenant", "Stripe Billing", "RBAC Auth", "PostgreSQL"],
+      "We build custom software from the ground up, tailored to how your business actually runs, not the other way around. Whether it's a standalone tool or an end-to-end platform, our teams handle the full build cycle, from scoping and architecture through to deployment and long-term support.",
+    tags: ["Full Lifecycle", "Enterprise Architecture", "Microservices", "CMMI Level 3"],
   },
   {
-    id: "portals-dashboards",
-    icon: "Gauge",
-    title: "Enterprise Portals & Dashboards",
-    description:
-      "Custom business management consoles, analytics reporting dashboards, client portals, and internal workflows engineered for enterprise clarity.",
-    tags: ["Real-time Analytics", "Data Viz", "Audit Logging", "APIs"],
-  },
-  {
-    id: "mobile-apps",
+    id: "mobile-app-development",
     icon: "Smartphone",
     title: "Mobile App Development",
     description:
-      "High-performance native and cross-platform mobile apps for iOS and Android, built with React Native and smooth 60fps gesture-driven interfaces.",
-    tags: ["React Native", "iOS & Android", "Offline Sync", "Push Notifs"],
+      "Native iOS and Android or cross-platform using React Native and Flutter, whichever fits your product and timeline. We handle UX architecture, back-end API integration, device testing, and store submission, building for performance and long-term maintainability.",
+    tags: ["iOS & Android", "React Native", "Flutter", "API Integration"],
   },
   {
-    id: "ai-solutions",
-    icon: "Brain",
-    title: "AI & Autonomous Workflows",
+    id: "web-development",
+    icon: "Layout",
+    title: "Web Development & Headless CMS",
     description:
-      "Custom RAG vector databases, enterprise LLM integrations, intelligent conversational agents, and multi-agent workflow systems engineered for automation.",
-    tags: ["Custom RAG", "Vector DBs", "OpenAI / Claude", "Agents"],
+      "From headless CMS builds and React SPAs to enterprise Drupal and .NET platforms, we write clean, standards-compliant code with accessibility and Core Web Vitals baked in. Whether it's a marketing CMS or a high-traffic web app, we've built both.",
+    tags: ["React & Next.js", "Headless CMS", "Enterprise .NET", "Core Web Vitals"],
   },
   {
-    id: "legacy-modernization",
+    id: "ecommerce-development",
     icon: "Workflow",
-    title: "Cloud & Legacy Modernization",
+    title: "E-Commerce Solutions",
     description:
-      "Auditing, refactoring, and migrating complex legacy web infrastructure into modern Docker/Kubernetes cloud microservices with 99.99% uptime.",
-    tags: ["AWS / GCP", "Docker", "Kubernetes", "Zero Downtime"],
+      "We build ecommerce platforms that convert, on Magento, BigCommerce, WooCommerce, Shopify Plus, or fully bespoke. From product catalogue structure and checkout flow to payment integration and post-purchase experience, we turn browsers into buyers.",
+    tags: ["Shopify Plus", "Magento", "BigCommerce", "Custom Checkout"],
+  },
+  {
+    id: "cloud-solutions",
+    icon: "Gauge",
+    title: "Cloud Solutions & DevOps",
+    description:
+      "Moving to the cloud, scaling infrastructure, or getting more from what you already have, we handle the full picture. Our teams work across AWS, Azure, and Google Cloud to plan, migrate, and manage environments that stay stable, secure, and cost-effective as your business grows.",
+    tags: ["AWS Select Tier", "Microsoft Azure", "Google Cloud", "Kubernetes"],
+  },
+  {
+    id: "crm-solutions",
+    icon: "Workflow",
+    title: "CRM Solutions",
+    description:
+      "We implement and customise Salesforce, Zoho, and HubSpot, and build bespoke CRM systems where packaged solutions don't match the complexity of your operations. Custom module development, workflow automation, third-party integrations, and legacy migration.",
+    tags: ["Salesforce Partner", "Zoho Authorized", "HubSpot Solutions", "Workflow Automation"],
+  },
+  {
+    id: "api-integration",
+    icon: "Layers",
+    title: "API Dev & Systems Integration",
+    description:
+      "We develop and integrate APIs that connect the systems you rely on so data moves freely between them. Whether it's a public-facing API or a complex web of internal integrations, we make sure the plumbing works properly.",
+    tags: ["REST & GraphQL", "ERP Connectors", "Payment Gateways", "Zero Latency"],
+  },
+  {
+    id: "data-engineering",
+    icon: "Gauge",
+    title: "Data Engineering & Analytics",
+    description:
+      "We build ETL/ELT pipelines, data warehouses on Snowflake, BigQuery, or Redshift, and real-time streaming architectures using Kafka and Spark. If your reporting is slow or dependent on manual exports, we fix the underlying data infrastructure.",
+    tags: ["Snowflake", "BigQuery", "ETL Pipelines", "Power BI & Tableau"],
+  },
+  {
+    id: "cybersecurity",
+    icon: "Brain",
+    title: "Cybersecurity & Compliance",
+    description:
+      "We run penetration testing across web applications, APIs, and network infrastructure, and deliver remediation that's actionable. We also implement IAM, data encryption, vulnerability management, and SIEM monitoring (ISO 27001, GDPR, and SOC 2).",
+    tags: ["Penetration Testing", "ISO 27001", "GDPR & SOC 2", "SIEM Monitoring"],
   },
 ];
 
 export const STATS = [
-  { value: "100%", label: "Source Code & IP Ownership" },
-  { value: "4-8 wks", label: "Average MVP Launch Velocity" },
-  { value: "24/7", label: "Global Dedicated Tech Coverage" },
-  { value: "99.99%", label: "Uptime SLA Guarantee" },
+  { value: "24+", label: "Years of Global Excellence" },
+  { value: "1,200+", label: "Full-Time Technical Team" },
+  { value: "15,000+", label: "Happy Clients Worldwide" },
+  { value: "27,000+", label: "Projects Completed Globally" },
 ];
 
 export const TESTIMONIALS = [
   {
-    name: "Alex V.",
-    role: "Founder, Fintech SaaS",
+    name: "Avatier Corporation",
+    role: "Enterprise IT & Identity Management, USA",
     content:
-      "Webnatix delivered our complete multi-tenant platform 2 weeks ahead of schedule. The code quality, speed, and architectural clarity were exceptional.",
+      "Dotsquares delivered website performance optimization and headless CMS modernization that drastically improved our Core Web Vitals, reduced page latency by 65%, and accelerated our organic pipeline.",
   },
   {
-    name: "David K.",
-    role: "VP of Engineering, Logistics Network",
+    name: "Sunsoul Wellness Platform",
+    role: "Digital Health & Community, Australia",
     content:
-      "Working with Webnatix felt like having a senior Principal Engineering collective embedded right inside our company. Clean code, 100% IP handed over.",
+      "By integrating GoHighlevel CRM and intelligent automated workflows, Dotsquares streamlined our lead capture, personalized communication, and enabled our platform to scale effortlessly while deepening user trust.",
   },
   {
-    name: "Elena R.",
-    role: "Co-Founder, AI Productivity Suite",
+    name: "LHC Procurement Frameworks",
+    role: "Public Sector Infrastructure, United Kingdom",
     content:
-      "From database schema to real-time agent workflows, they architected everything flawlessly. Highly recommend Webnatix for any ambitious founder.",
+      "LHC replaced a manual, department-by-department policy process with a single secure intranet — where every policy is classified, version-controlled, and visible only to authorized personnel.",
+  },
+  {
+    name: "Getinge Medical Technologies",
+    role: "Global Medical Devices, Sweden / Global",
+    content:
+      "Dotsquares engineered our global task management system, cascading complex directives from global headquarters to local operating companies across Europe, the Americas, and Asia-Pacific.",
+  },
+  {
+    name: "Australian Aged Care Group",
+    role: "Healthcare Services, Australia",
+    content:
+      "An Australian-only aged care intranet, architected and delivered in just six weeks with complete compliance, biometric security, and role-based staff communication.",
   },
 ];

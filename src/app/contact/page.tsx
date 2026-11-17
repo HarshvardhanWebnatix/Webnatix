@@ -6,8 +6,8 @@ import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Start a project with Webnatix or just say hello.",
+  title: "Contact Dotsquares — Software & AI Solutions",
+  description: "Discuss your project with Dotsquares certified technical architects. We respond within 2-3 business hours confidentially.",
 };
 
 export default function ContactPage() {
@@ -19,24 +19,26 @@ export default function ContactPage() {
             {/* Left — info */}
             <div>
               <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
-                Get In Touch
+                Get In Touch · 2-3 Hour Response SLA
               </p>
               <h1 className="mb-6 text-4xl font-bold leading-tight text-[var(--text-primary)] sm:text-5xl">
                 Let's Build
                 <br />
-                <GradientText>Something Great</GradientText>
+                <GradientText>Your Next Solution</GradientText>
               </h1>
               <p className="mb-10 leading-relaxed text-[var(--text-secondary)]">
-                Whether you have a detailed spec or a rough idea, we'd love to
-                hear from you. Tell us about your project and we'll get back to
-                you within one business day.
+                Whether you have an enterprise RFQ or a new product roadmap, we'd love to
+                hear from you. Tell us about your project and our certified technical team will get back to
+                you within 2-3 business hours confidentially.
               </p>
 
               <div className="space-y-4">
                 {[
                   { icon: Mail, label: "Email", value: SITE_CONFIG.email },
-                  { icon: Phone, label: "Phone", value: SITE_CONFIG.phone },
-                  { icon: MapPin, label: "Location", value: SITE_CONFIG.address },
+                  { icon: Phone, label: "United Kingdom", value: "+44 1273 575190" },
+                  { icon: Phone, label: "United States (Toll Free)", value: "+1 866 978 2220" },
+                  { icon: Phone, label: "Australia", value: "+61 3 9013 4567" },
+                  { icon: MapPin, label: "Global Locations", value: SITE_CONFIG.address },
                 ].map(({ icon: Icon, label, value }) => (
                   <div key={label} className="flex items-center gap-4">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-elevated)] text-[var(--accent)]">

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
-  keywords: ["software engineering studio", "SaaS development", "Next.js", "AI automation", "mobile apps", "Webnatix Technologies", "custom software"],
+  keywords: ["software development company", "AI machine learning", "cloud solutions", "mobile apps", "Dotsquares", "CMMI Level 3", "enterprise digital transformation", "Salesforce Zoho HubSpot"],
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
   openGraph: {

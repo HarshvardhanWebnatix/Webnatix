@@ -16,67 +16,67 @@ export interface TestimonialItem {
 
 export const TESTIMONIALS_DATA: TestimonialItem[] = [
   {
-    id: "sofia",
-    name: "Sofia Reyes",
-    role: "COO",
-    company: "NovaCasino Group",
+    id: "avatier",
+    name: "Nelson King",
+    role: "VP of Digital Engineering",
+    company: "Avatier Corporation (USA)",
     content:
-      "Their team delivered a bug-free launch with outstanding UI/UX design. Player onboarding conversion rates doubled in the first month. The technical support is absolutely world-class.",
-    avatar:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&auto=format&fit=crop&q=80",
-    stars: 5,
-  },
-  {
-    id: "james",
-    name: "James Thornton",
-    role: "CEO",
-    company: "DelWave Media",
-    content:
-      "Webnatix transformed our business. Their turnkey platform had us live in under 6 weeks with full compliance and a seamless player experience. The rapid deployment was genuinely impressive.",
+      "Dotsquares delivered website performance optimization and headless CMS modernization that drastically improved our Core Web Vitals, reduced page latency by 65%, and accelerated our organic pipeline.",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&auto=format&fit=crop&q=80",
     stars: 5,
   },
   {
-    id: "marcus",
-    name: "Marcus Webb",
-    role: "Founder",
-    company: "SpinVerse Global",
+    id: "sunsoul",
+    name: "Clare Anderson",
+    role: "Head of Digital Operations",
+    company: "Sunsoul Wellness (Australia)",
     content:
-      "The white-label solution gave us a premium product on day one. Integration with 3,000+ games and APIs was seamless and the compliance framework passed regulatory audits without a single revision.",
+      "By integrating intelligent CRM automation, Dotsquares streamlined our lead capture, personalized communication, and enabled our platform to scale effortlessly while deepening user trust.",
+    avatar:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&auto=format&fit=crop&q=80",
+    stars: 5,
+  },
+  {
+    id: "lhc",
+    name: "Graham Foster",
+    role: "Director of Procurement Tech",
+    company: "LHC Frameworks (UK)",
+    content:
+      "Dotsquares replaced our manual, department-by-department policy process with a single secure intranet — where every policy is classified, version-controlled, and visible only to authorized users.",
     avatar:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&auto=format&fit=crop&q=80",
     stars: 5,
   },
   {
-    id: "elena",
-    name: "Elena Rostova",
-    role: "VP of Technology",
-    company: "Apex Gaming Ltd",
+    id: "getinge",
+    name: "Marcus Lindqvist",
+    role: "Enterprise IT Systems Director",
+    company: "Getinge Group (Sweden/Global)",
     content:
-      "From database schema to real-time agent workflows, they architected everything flawlessly. Zero latency spikes under high transaction concurrency. Highly recommend Webnatix for any ambitious operator.",
-    avatar:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160&auto=format&fit=crop&q=80",
-    stars: 5,
-  },
-  {
-    id: "david",
-    name: "David Koenig",
-    role: "VP of Engineering",
-    company: "Logistics Network",
-    content:
-      "Working with Webnatix felt like having a senior Principal Engineering collective embedded right inside our company. Clean code, 99.99% uptime SLA, and 100% intellectual property handed over.",
+      "Their engineering team successfully cascaded task management from global headquarters to local business units across Europe, the Americas, and APAC with seamless Azure integration.",
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=160&auto=format&fit=crop&q=80",
     stars: 5,
   },
   {
-    id: "alexandre",
-    name: "Alexandre Vance",
-    role: "Co-Founder",
-    company: "Fintech SaaS",
+    id: "agedcare",
+    name: "Sarah Gallagher",
+    role: "Chief Operating Officer",
+    company: "Australian Aged Care Services",
     content:
-      "Webnatix delivered our complete multi-tenant platform 2 weeks ahead of schedule. The code quality, speed, and architectural clarity were exceptional from day one.",
+      "They delivered our mission-critical aged care intranet in just six weeks. Fast, responsive, highly capable, and always available around the clock. The technical support is world-class.",
+    avatar:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160&auto=format&fit=crop&q=80",
+    stars: 5,
+  },
+  {
+    id: "fintech",
+    name: "Alexandre Vance",
+    role: "Founder & CTO",
+    company: "Global Payment Rails",
+    content:
+      "Dotsquares delivered our complete cloud architecture and API integration on schedule. CMMI Level 3 rigor, code clarity, and architectural transparency were exceptional from day one.",
     avatar:
       "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&auto=format&fit=crop&q=80",
     stars: 5,
@@ -132,13 +132,13 @@ export function Testimonials() {
 
         {/* Section Headline matching screenshot */}
         <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-slate-900 tracking-tight leading-tight mb-4">
-          What Our <span className="text-[#00897b]">Operators</span> Say
+          What Our <span className="text-[#00897b]">Clients</span> Say
         </h2>
 
         {/* Subtitle */}
         <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed mb-12 sm:mb-16">
-          Direct feedback from global operators praising our rapid deployment
-          strategies and unwavering compliance stability.
+          Direct feedback from global founders, CTOs, and enterprise leaders praising our rapid deployment
+          strategies, CMMI Level 3 quality, and unwavering stability.
         </p>
 
         {/* ── Testimonials Sliding Carousel Container ── */}

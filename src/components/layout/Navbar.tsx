@@ -311,10 +311,10 @@ export function Navbar() {
           />
           <div className="flex flex-col">
             <span className="text-lg font-extrabold text-slate-900 leading-tight tracking-tight">
-              Webnatix <span className="text-[#0066cc] font-semibold text-xs">Technologies</span>
+              Dotsquares <span className="text-[#0066cc] font-semibold text-xs">Technologies</span>
             </span>
             <span className="text-[9.5px] uppercase font-bold tracking-widest text-slate-400">
-              IT Consulting &amp; Technology Solutions
+              Software, AI &amp; Digital Transformation
             </span>
           </div>
         </Link>
@@ -1278,13 +1278,13 @@ export function Navbar() {
                       onClick={() => setActiveMenu(null)}
                       className="text-xs font-semibold text-[#0066cc] hover:underline flex items-center gap-1"
                     >
-                      About Webnatixx <ArrowRight size={13} />
+                      About Dotsquares <ArrowRight size={13} />
                     </Link>
                   </div>
 
                   <div className="grid grid-cols-3 gap-6">
                     {[
-                      { title: "About Webnatixx", desc: "Our mission, engineering philosophy, and client-first mindset.", href: "/about", icon: Building2 },
+                      { title: "About Dotsquares", desc: "Our 24+ year mission, engineering pedigree, and client-first mindset.", href: "/about", icon: Building2 },
                       { title: "Our Process & Milestones", desc: "Transparent agile development with fixed-price commitments.", href: "/about#process", icon: CheckCircle2 },
                       { title: "Careers & Leadership", desc: "Join our global team of senior engineers and tech leaders.", href: "/about#careers", icon: Users },
                     ].map((item, idx) => (

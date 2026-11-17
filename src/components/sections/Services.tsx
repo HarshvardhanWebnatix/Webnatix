@@ -29,13 +29,13 @@ export function Services() {
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-[11px] font-bold text-blue-900 uppercase mb-3">
-            Core Engineering Capabilities
+            Bridging Innovation &amp; Excellence
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            We Engineer Digital Products That <span className="text-[#0066cc]">Drive Real Impact</span>
+            Real Business Outcomes Powered by <span className="text-[#0066cc]">AI &amp; Automation</span>
           </h2>
           <p className="mt-4 text-base text-slate-600 leading-relaxed">
-            From high-growth startup MVPs to enterprise-grade cloud ecosystems, we engineer software designed for speed, scale, and long-term business value.
+            Modern software development, cloud infrastructure, and intelligent automation systems tailored to how your business actually runs.
           </p>
         </div>
 

@@ -21,7 +21,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 const testimonials = [
   {
     quote:
-      "Webnatix delivered our complete multi-tenant SaaS platform 2 weeks ahead of schedule. Clear processes, technical precision, and rapid response times throughout.",
+      "Dotsquares delivered our complete cloud platform 2 weeks ahead of schedule. CMMI Level 3 processes, technical precision, and rapid response times throughout.",
     name: "James Okafor",
     role: "CTO, FinVault Technologies",
     rating: "5.0",

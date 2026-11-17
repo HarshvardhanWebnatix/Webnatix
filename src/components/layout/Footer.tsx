@@ -23,41 +23,44 @@ const GithubIcon = () => (
 
 const footerSections = [
   {
-    title: "Engineering Services",
+    title: "Core Services",
     links: [
-      { label: "High-Performance Web", href: "/services#web" },
-      { label: "SaaS Platforms & Products", href: "/services#saas" },
-      { label: "Portals & Custom Dashboards", href: "/services#portals" },
-      { label: "Mobile Applications", href: "/services#mobile" },
-      { label: "AI & Autonomous Workflows", href: "/services#ai" },
+      { label: "AI & Machine Learning", href: "/services/ai-machine-learning" },
+      { label: "Custom Software Development", href: "/services/full-stack-development" },
+      { label: "Mobile App Development", href: "/services/mobile-app-development" },
+      { label: "Web & Headless CMS", href: "/services/website-development" },
+      { label: "E-Commerce Solutions", href: "/services/ecommerce-development" },
+      { label: "Cloud & DevOps", href: "/services/cloud-solutions" },
     ],
   },
   {
-    title: "Engagement Models",
+    title: "Enterprise Solutions",
     links: [
-      { label: "Founder & Startup MVP", href: "/solutions#mvp" },
-      { label: "Enterprise Architecture", href: "/solutions#enterprise" },
-      { label: "Dedicated Engineering Pod", href: "/solutions#pod" },
-      { label: "Legacy Modernization", href: "/solutions#legacy" },
+      { label: "CRM (Salesforce, Zoho, HubSpot)", href: "/services/crm-solutions" },
+      { label: "API Dev & Integration", href: "/services/api-development" },
+      { label: "Data Engineering & Snowflake", href: "/services/data-strategy" },
+      { label: "Cybersecurity & Compliance", href: "/services/custom-software-integration" },
+      { label: "CMMI Level 3 Quality", href: "/about" },
     ],
   },
   {
-    title: "Why Webnatix",
+    title: "Global Hubs",
     links: [
-      { label: "100% IP & Code Ownership", href: "/about#ownership" },
-      { label: "Fixed-Price Delivery", href: "/about#milestones" },
-      { label: "Zero Vendor Lock-in", href: "/about#freedom" },
-      { label: "Global 24/7 Coverage", href: "/about#coverage" },
-      { label: "Architecture Auditing", href: "/about#audits" },
+      { label: "United Kingdom (Brighton/London)", href: "/contact" },
+      { label: "United States (Maryland/Texas)", href: "/contact" },
+      { label: "Australia (Melbourne/Sydney)", href: "/contact" },
+      { label: "UAE (Dubai Silicon Oasis)", href: "/contact" },
+      { label: "India (Global Capability Center)", href: "/contact" },
     ],
   },
   {
     title: "Connect & Inquire",
     links: [
-      { label: "Book 20-min Call", href: "/contact" },
-      { label: "info@webnatix.com", href: "mailto:info@webnatix.com" },
-      { label: "+91 9252052623", href: "tel:+919252052623" },
-      { label: "WhatsApp Support", href: "https://wa.me/919252052623" },
+      { label: "office@dotsquares.com", href: "mailto:office@dotsquares.com" },
+      { label: "UK: +44 1273 575190", href: "tel:+441273575190" },
+      { label: "US: +1 866 978 2220", href: "tel:+18669782220" },
+      { label: "AU: +61 3 9013 4567", href: "tel:+61390134567" },
+      { label: "Schedule Consultation", href: "/contact" },
     ],
   },
 ];
@@ -80,16 +83,16 @@ export function Footer() {
               />
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-white tracking-tight">
-                  Webnatix <span className="text-[#38bdf8]">Technologies</span>
+                  Dotsquares <span className="text-[#38bdf8]">Technologies</span>
                 </span>
                 <span className="text-[10px] text-blue-300 uppercase tracking-widest font-semibold">
-                  Global Software Engineering Studio
+                  Software, AI &amp; Digital Transformation
                 </span>
               </div>
             </Link>
 
             <p className="text-xs text-slate-400 leading-relaxed mb-6 max-w-sm">
-              Global software engineering studio designing and building high-performance websites, SaaS platforms, portals, dashboards, mobile apps, and AI platforms for ambitious businesses.
+              Modern software development with AI, cloud, and data expertise. 24+ years of proven delivery, 1,200+ certified engineers, and 27,000+ completed projects worldwide.
             </p>
 
             <div className="flex items-center gap-3">

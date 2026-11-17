@@ -16,28 +16,28 @@ import { SITE_CONFIG } from "@/lib/constants";
 const highlights = [
   {
     icon: ShieldCheck,
-    title: "100% Platform",
-    sub: "Ownership Model (Full IP)",
+    title: "24+ Years",
+    sub: "Proven Global Expertise",
   },
   {
     icon: Layers,
-    title: "Zero Hidden Fees",
-    sub: "Fixed-Price Milestones",
+    title: "1,200+ Engineers",
+    sub: "Full-Time Technical Team",
   },
   {
     icon: Sparkles,
-    title: "AI-Driven Systems",
-    sub: "Next.js & Cloud Native",
+    title: "AI & Automation",
+    sub: "Future-Ready Platforms",
   },
   {
     icon: Smartphone,
-    title: "SaaS & Mobile Apps",
-    sub: "Production-Grade Velocity",
+    title: "27,000+ Projects",
+    sub: "Delivered Worldwide",
   },
   {
     icon: Globe2,
-    title: "Global Timezones",
-    sub: "US, APAC & Europe SLA",
+    title: "Global Hubs",
+    sub: "UK, US, AU, UAE & India",
   },
 ];
 
@@ -53,21 +53,21 @@ export function Hero() {
 
           {/* Badge Pill */}
           <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 mb-5 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#e52320] shrink-0 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#00897b] shrink-0 animate-pulse" />
             <span className="text-[11px] font-semibold tracking-widest text-blue-900 uppercase leading-none">
-              Software Studio · 100% IP Transferred · AI-Driven
+              24+ Years of Global Excellence · CMMI Level 3 Certified
             </span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-[50px] xl:text-[58px] font-bold text-gray-900 leading-[1.12] tracking-tight mb-5">
-            We Build Digital Products <br />
-            That Move <span className="text-[#0066cc]">Businesses Forward.</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-[48px] xl:text-[54px] font-bold text-gray-900 leading-[1.12] tracking-tight mb-5">
+            Modern Software Development with <br />
+            <span className="text-[#0066cc]">AI, Cloud &amp; Data Expertise.</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-gray-500 text-[15px] lg:text-[16.5px] leading-[1.8] mb-9 max-w-[560px]">
-            Global software engineering studio designing and building high-performance websites, SaaS platforms, portals, dashboards, mobile apps, and AI platforms for ambitious businesses.
+            Real business outcomes powered by AI &amp; automation. Partnered with startups and Fortune 500 companies to design, develop, and scale high-performance digital systems.
           </p>
 
           {/* Action CTAs & Socials */}
@@ -76,14 +76,14 @@ export function Hero() {
               href="/contact"
               className="px-7 py-3 rounded-full bg-[#0066cc] hover:bg-[#0052a3] text-white font-semibold text-sm transition-all shadow-md shadow-blue-500/20 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
-              Start Project
+              Discuss Your Requirements
             </Link>
 
             <Link
-              href="/contact"
+              href="/casestudies"
               className="px-7 py-3 rounded-full border-2 border-[#0066cc] text-[#0066cc] hover:bg-blue-50 font-semibold text-sm transition-all hover:-translate-y-0.5 active:translate-y-0 bg-white cursor-pointer"
             >
-              Book 20-min Call
+              Explore Case Studies
             </Link>
 
             {/* Circular Social Buttons */}

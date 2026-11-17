@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Dotsquares — Software, AI & Digital Transformation",
   description:
-    "Learn about Webnatix — our story, values, and the team behind the products.",
+    "Learn about Dotsquares — 24+ years of global expertise, 1,200+ certified engineers, and 27,000+ completed projects worldwide.",
 };
 
 export default function AboutPage() {
@@ -18,18 +18,15 @@ export default function AboutPage() {
         <Container size="lg">
           <div className="max-w-3xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
-              About Us
+              Who We Are · 24+ Years of Excellence
             </p>
             <h1 className="mb-6 text-5xl font-bold leading-tight text-[var(--text-primary)] sm:text-6xl">
-              We Build with
+              Your Trusted Global
               <br />
-              <GradientText>Purpose and Precision</GradientText>
+              <GradientText>Technology Partner</GradientText>
             </h1>
             <p className="mb-8 max-w-xl text-lg leading-relaxed text-[var(--text-secondary)]">
-              Webnatix is a full-stack product studio founded by engineers and
-              designers who believe great software changes how people live and
-              work. We partner with startups and enterprises to build digital
-              products that endure.
+              Dotsquares works with businesses across the globe to design, develop, and manage high-quality digital solutions. With certified experts, 1,200+ technology professionals, and 27,000+ successful projects delivered, we help you build systems that are efficient, scalable, and ready for future growth.
             </p>
             <Button variant="primary" href="/contact">
               Work With Us <ArrowRight size={16} />

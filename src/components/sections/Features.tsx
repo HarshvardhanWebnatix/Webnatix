@@ -4,25 +4,25 @@ import { CheckCircle2, ShieldCheck, Zap, Bot, Code2, Server } from "lucide-react
 
 const featureBlocks = [
   {
-    tag: "Enterprise Engineering",
-    title: "High-Throughput Cloud & Microservices Architecture",
-    description: "Architected from day one for seamless multi-tenant scaling, resilient failovers, and sub-50ms global API responses without vendor lock-in.",
+    tag: "Global Delivery Framework",
+    title: "CMMI Level 3 & ISO Certified Agile Engineering",
+    description: "Delivering robust digital systems through structured quality processes, agile development methodologies, peer code reviews, automated testing frameworks, and strict data security protocols.",
     items: [
-      "100% client source code & intellectual property transfer upon delivery",
-      "Auto-scaling Docker & Kubernetes cloud infrastructure on AWS/GCP",
-      "Automated CI/CD release pipelines with comprehensive test suites",
-      "Next.js App Router & serverless edge deployments worldwide",
+      "Two flexible engagement models: Staff Augmentation or Fixed-Price Milestone Delivery",
+      "100% intellectual property, source code, and design asset ownership transferred",
+      "Certified cloud architects across AWS, Microsoft Azure, and Google Cloud",
+      "ISO 27001, GDPR & SOC 2 compliant development and SIEM monitoring",
     ],
   },
   {
-    tag: "Autonomous Intelligence",
-    title: "Enterprise AI & Multi-Agent Workflow Automation",
-    description: "Embed autonomous capabilities directly into your software. We build production-ready RAG pipelines and custom vector search engines.",
+    tag: "Custom AI & Automation",
+    title: "Real Business Outcomes Powered by AI & Intelligent Systems",
+    description: "We build cutting-edge solutions and transform existing ones through collaborative development. From custom ML models and LLMs to automated agent workflows.",
     items: [
-      "Custom vector databases (Pinecone, pgvector) with semantic search",
-      "Multi-agent autonomous systems for business workflow execution",
-      "Enterprise security safeguards with zero data leakage guarantees",
-      "Custom fine-tuned LLM models tailored to your industry data",
+      "Custom AI pipelines, LLM-powered applications, and intelligent automation tailored to your business logic",
+      "Enterprise CRM integrations: Salesforce Partner, HubSpot Solutions, and Zoho Authorized Partner",
+      "Data warehousing & streaming pipelines with Snowflake, BigQuery, Kafka, and Spark",
+      "24/7 dedicated support, flexible maintenance plans, and continuous optimization",
     ],
   },
 ];
