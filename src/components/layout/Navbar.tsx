@@ -199,12 +199,12 @@ export const HEADER_NAV_DATA = [
     href: "/about",
     isMega: false,
     items: [
-      { label: "About Us", href: "/about" },
-      { label: "Our Team & Leadership", href: "/about#team" },
-      { label: "Our Expertise", href: "/about#expertise" },
-      { label: "Our Development Process", href: "/about#process" },
-      { label: "Careers & Openings", href: "/about#careers" },
-      { label: "Strategic Partnerships", href: "/about#partnerships" },
+      { label: "About Webnatix", href: "/about" },
+      { label: "Our Process & Milestones", href: "/process" },
+      { label: "Careers & Leadership", href: "/careers" },
+      { label: "Global Presence", href: "/about#global" },
+      { label: "Our Values & Culture", href: "/about#values" },
+      { label: "Certifications & Security", href: "/about#certifications" },
     ],
   },
 ];
@@ -1278,15 +1278,15 @@ export function Navbar() {
                       onClick={() => setActiveMenu(null)}
                       className="text-xs font-semibold text-[#0066cc] hover:underline flex items-center gap-1"
                     >
-                      About Webnatixx <ArrowRight size={13} />
+                      About Webnatix <ArrowRight size={13} />
                     </Link>
                   </div>
 
                   <div className="grid grid-cols-3 gap-6">
                     {[
-                      { title: "About Webnatixx", desc: "Our mission, engineering philosophy, and client-first mindset.", href: "/about", icon: Building2 },
-                      { title: "Our Process & Milestones", desc: "Transparent agile development with fixed-price commitments.", href: "/about#process", icon: CheckCircle2 },
-                      { title: "Careers & Leadership", desc: "Join our global team of senior engineers and tech leaders.", href: "/about#careers", icon: Users },
+                      { title: "About Webnatix", desc: "Our mission, 24+ years history, and engineering philosophy.", href: "/about", icon: Building2 },
+                      { title: "Our Process & Milestones", desc: "Transparent agile sprints with 100% fixed-price commitments.", href: "/process", icon: CheckCircle2 },
+                      { title: "Careers & Leadership", desc: "Join our global team of 1,200+ senior engineers and tech leaders.", href: "/careers", icon: Users },
                     ].map((item, idx) => (
                       <Link
                         key={idx}
